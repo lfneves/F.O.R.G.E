@@ -1,0 +1,11 @@
+webframework:
+  port: 8081
+  virtual-threads:
+    enabled: true
+    thread-name-prefix: "dev-vt-webframework"
+    enable-metrics: true
+
+logging:
+  level:
+    com.webframework: TRACE
+    root: DEBUG

@@ -1,0 +1,15 @@
+webframework:
+  port: 8080
+  virtual-threads:
+    enabled: true
+    thread-name-prefix: "prod-vt-webframework"
+    max-concurrent-tasks: 10000
+    enable-metrics: false
+    shutdown-timeout-ms: 30000
+
+logging:
+  level:
+    com.webframework: INFO
+    root: WARN
+  file:
+    name: "/var/log/webframework/application.log"
