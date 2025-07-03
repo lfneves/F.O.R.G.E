@@ -1,16 +1,24 @@
 # WebFramework
 
-A modern, lightweight web framework for Kotlin/Java built on JDK 21 Virtual Threads, with Spring Boot integration support.
+A modern, lightweight web framework for Kotlin/Java with virtual threads support, Spring Boot integration, and comprehensive security features.
 
 [![Build Status](https://github.com/lfneves/webframework/workflows/CI%2FCD%20Pipeline/badge.svg)](https://github.com/lfneves/webframework/actions)
 [![Security](https://github.com/lfneves/webframework/workflows/Security%20Checks/badge.svg)](https://github.com/lfneves/webframework/security)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![JDK Version](https://img.shields.io/badge/JDK-21-orange)](https://openjdk.org/projects/jdk/21/)
+[![JDK Version](https://img.shields.io/badge/JDK-17%2B-orange)](https://openjdk.org/projects/jdk/17/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2.1-green)](https://spring.io/projects/spring-boot)
 [![Version](https://img.shields.io/badge/version-1.0.0-blue)](https://github.com/lfneves/webframework/releases)
 [![Release](https://img.shields.io/github/v/release/lfneves/webframework)](https://github.com/lfneves/webframework/releases)
 [![Downloads](https://img.shields.io/github/downloads/lfneves/webframework/total)](https://github.com/lfneves/webframework/releases)
-[![Virtual Threads](https://img.shields.io/badge/Virtual%20Threads-JDK%2021-brightgreen)](https://openjdk.org/jeps/444)
+[![Virtual Threads](https://img.shields.io/badge/Virtual%20Threads-Ready-brightgreen)](https://openjdk.org/jeps/444)
+
+## Current Status
+
+✅ **Java 17 Compatible** - Build and core functionality work on JDK 17+  
+🚧 **Virtual Threads** - Full virtual threads support available on JDK 21+  
+✅ **GitHub Actions** - CI/CD pipeline running successfully  
+✅ **Security Framework** - Complete security features implemented  
+✅ **Spring Boot** - Full Spring Boot integration available  
 
 ## Table of Contents
 - [Installation](#installation)
@@ -31,7 +39,7 @@ A modern, lightweight web framework for Kotlin/Java built on JDK 21 Virtual Thre
 
 ## Features
 
-- 🚀 **JDK 21 Virtual Threads**: High-performance concurrent request handling
+- 🚀 **Virtual Threads Ready**: High-performance concurrent request handling (JDK 21+)
 - 🔧 **Simple API**: Intuitive and easy-to-use routing and middleware system
 - 🌱 **Spring Boot Integration**: Seamless integration with Spring Boot ecosystem
 - ⚡ **High Performance**: Optimized for I/O-bound operations and high concurrency
@@ -77,7 +85,7 @@ Add to your `pom.xml`:
 
 ### Requirements
 
-- **JDK 21+** (Required for virtual threads)
+- **JDK 17+** (JDK 21+ recommended for virtual threads)
 - **Gradle 8.0+** or **Maven 3.8+**
 - **Kotlin 1.9.20+** (Optional, Java compatible)
 
@@ -242,6 +250,8 @@ src/main/kotlin/com/webframework/
 ```
 
 ## Virtual Threads Configuration
+
+> **Note**: Virtual threads require JDK 21+. On JDK 17, the framework uses platform threads with similar API compatibility.
 
 ### Programmatic Configuration
 
@@ -817,7 +827,7 @@ Memory Usage (1,000 threads):
 
 ### Requirements
 
-- JDK 21 or higher
+- JDK 17 or higher (JDK 21+ for virtual threads)
 - Gradle 8.0+
 
 ### Build
@@ -945,7 +955,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 #### What's New in v1.0.0
 
 - 🎉 **Initial Release**: Complete framework implementation
-- 🚀 **JDK 21 Virtual Threads**: High-performance concurrent processing
+- 🚀 **JDK 17+ Compatible**: Virtual threads ready for JDK 21+
 - 🌱 **Spring Boot Integration**: Seamless ecosystem compatibility
 - 📦 **Maven/Gradle Support**: Standard build tool integration
 - 📚 **Comprehensive Documentation**: Examples and guides
