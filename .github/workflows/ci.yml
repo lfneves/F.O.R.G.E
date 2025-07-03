@@ -240,8 +240,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
     - name: Publish to Maven Central (Optional)
-      if: ${{ secrets.MAVEN_USERNAME != '' }}
       run: ./gradlew publish
+      continue-on-error: true
       env:
         MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
         MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
