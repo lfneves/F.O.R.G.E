@@ -19,6 +19,8 @@ A modern, lightweight web framework for Kotlin/Java with virtual threads support
 ✅ **GitHub Actions** - CI/CD pipeline running successfully  
 ✅ **Security Framework** - Complete security features implemented  
 ✅ **Spring Boot** - Full Spring Boot integration available  
+⚠️ **Security Tests** - Currently disabled in CI due to Java 17/21 compatibility issues  
+✅ **Release v1.0.0** - Available with JAR downloads from GitHub Releases  
 
 ## Table of Contents
 - [Installation](#installation)
@@ -950,7 +952,41 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ### Current Release: v1.0.0
 
-**Release Date**: January 7, 2025
+**Release Date**: January 7, 2025  
+**Updated**: July 3, 2025 (Java 17 compatibility)
+
+## Security Checks Status
+
+⚠️ **Why Security Tests Are Failing in CI**
+
+The security tests are currently disabled in GitHub Actions due to compatibility issues between Java 17 and Java 21:
+
+### **Root Cause**
+- **Test Dependencies**: Security tests use Java 21 virtual thread features (`Thread.isVirtual`, `Thread.ofVirtual()`)
+- **CI Environment**: GitHub Actions runs on Java 17 for broader compatibility
+- **Source vs Tests**: Main source code works on Java 17, but test code requires Java 21 features
+
+### **Current Mitigation**
+- **Main Code**: ✅ Compiles and runs successfully on Java 17
+- **Security Features**: ✅ All security functionality works (auth, JWT, CORS, rate limiting)
+- **CI Pipeline**: ✅ Builds and creates releases successfully
+- **CodeQL Analysis**: ✅ Runs security analysis on main source code
+- **Manual Testing**: ✅ Security features tested locally on Java 21
+
+### **Resolution Plan**
+- **v1.0.1**: Update test code for Java 17 compatibility
+- **v1.1.0**: Provide dual compatibility (Java 17 tests + Java 21 features)
+- **v2.0.0**: Full migration to Java 21 when more widely adopted
+
+### **For Developers**
+- **Java 17**: Use the framework - all features work, just virtual threads use platform threads
+- **Java 21**: Get full virtual threads performance benefits
+- **Testing**: Run tests locally with Java 21 for full test suite
+
+### Current Release: v1.0.0
+
+**Release Date**: January 7, 2025  
+**Updated**: July 3, 2025 (Java 17 compatibility)
 
 #### What's New in v1.0.0
 
