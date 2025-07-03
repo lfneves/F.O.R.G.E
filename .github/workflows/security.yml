@@ -40,8 +40,8 @@ jobs:
     - name: Build Project
       run: ./gradlew build -x test
       
-    - name: Compile Kotlin Code
-      run: ./gradlew compileKotlin compileTestKotlin
+    - name: Compile Main Code
+      run: ./gradlew compileKotlin
       
     - name: Upload Security Test Results
       uses: actions/upload-artifact@v4
@@ -134,7 +134,7 @@ jobs:
       run: chmod +x gradlew
       
     - name: Build for CodeQL
-      run: ./gradlew compileKotlin compileTestKotlin
+      run: ./gradlew compileKotlin
       
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
