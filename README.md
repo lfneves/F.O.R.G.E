@@ -3,11 +3,13 @@
 A modern, lightweight web framework for Kotlin/Java with virtual threads support, Spring Boot integration, and comprehensive security features.
 
 [![Build Status](https://github.com/lfneves/webframework/workflows/CI%2FCD%20Pipeline/badge.svg)](https://github.com/lfneves/webframework/actions)
-[![Security](https://github.com/lfneves/webframework/workflows/Security%20Checks/badge.svg)](https://github.com/lfneves/webframework/security)
+[![Security Framework](https://img.shields.io/badge/Security%20Framework-Implemented-green)](https://github.com/lfneves/webframework#security-features)
+[![Security Tests](https://img.shields.io/badge/Security%20Tests-Java%2017%20Issue-yellow)](https://github.com/lfneves/webframework#security-checks-status)
+[![CodeQL](https://github.com/lfneves/webframework/workflows/Security%20Checks/badge.svg)](https://github.com/lfneves/webframework/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![JDK Version](https://img.shields.io/badge/JDK-17%2B-orange)](https://openjdk.org/projects/jdk/17/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2.1-green)](https://spring.io/projects/spring-boot)
-[![Version](https://img.shields.io/badge/version-1.0.0-blue)](https://github.com/lfneves/webframework/releases)
+[![Version](https://img.shields.io/badge/version-1.0.1-blue)](https://github.com/lfneves/webframework/releases)
 [![Release](https://img.shields.io/github/v/release/lfneves/webframework)](https://github.com/lfneves/webframework/releases)
 [![Downloads](https://img.shields.io/github/downloads/lfneves/webframework/total)](https://github.com/lfneves/webframework/releases)
 [![Virtual Threads](https://img.shields.io/badge/Virtual%20Threads-Ready-brightgreen)](https://openjdk.org/jeps/444)
