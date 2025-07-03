@@ -1,7 +1,6 @@
 # Gradle
 .gradle/
 build/
-!gradle-wrapper.jar
 *.gradle.kts.backup
 
 # IDE
@@ -16,6 +15,7 @@ build/
 # Java/Kotlin
 *.class
 *.jar
+!gradle/wrapper/gradle-wrapper.jar
 *.war
 *.ear
 *.log
