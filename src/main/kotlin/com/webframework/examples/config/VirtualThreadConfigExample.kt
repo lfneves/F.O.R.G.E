@@ -3,6 +3,15 @@ package com.webframework.examples.config
 import com.webframework.core.WebFramework
 import com.webframework.config.VirtualThreadConfig
 
+// Helper function to check if thread is virtual using reflection
+fun isVirtualThread(thread: Thread): Boolean {
+    return try {
+        thread::class.java.getMethod("isVirtual").invoke(thread) as Boolean
+    } catch (e: Exception) {
+        false
+    }
+}
+
 fun main() {
     val customConfig = VirtualThreadConfig.builder()
         .enabled(true)
@@ -18,8 +27,8 @@ fun main() {
             "message" to "Using custom virtual thread configuration",
             "threadInfo" to mapOf(
                 "name" to Thread.currentThread().name,
-                "isVirtual" to false, // Thread.currentThread().isVirtual // Java 21 feature commented out
-                "id" to Thread.currentThread().id // Java 17 compatible
+                "isVirtual" to isVirtualThread(Thread.currentThread()),
+                "id" to Thread.currentThread().getId()
             )
         ))
     }
@@ -32,8 +41,8 @@ fun main() {
             "message" to "Using traditional platform threads",
             "threadInfo" to mapOf(
                 "name" to Thread.currentThread().name,
-                "isVirtual" to false, // Thread.currentThread().isVirtual // Java 21 feature commented out
-                "id" to Thread.currentThread().id // Java 17 compatible
+                "isVirtual" to isVirtualThread(Thread.currentThread()),
+                "id" to Thread.currentThread().getId()
             )
         ))
     }

@@ -13,7 +13,7 @@ plugins {
 }
 
 group = "com.webframework"
-version = "1.0.1"
+version = "1.1.0"
 description = "A modern, lightweight web framework for Kotlin/Java built on JDK 21 Virtual Threads"
 
 val isSnapshot = version.toString().endsWith("-SNAPSHOT")
@@ -42,21 +42,25 @@ dependencies {
     
     // Configuration processor for IDE support
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor:3.2.1")
-    kapt("org.springframework.boot:spring-boot-configuration-processor:3.2.1")
+    // TODO: kapt has issues with JDK 21, using annotationProcessor instead
+    // kapt("org.springframework.boot:spring-boot-configuration-processor:3.2.1")
     
     testImplementation("org.junit.jupiter:junit-jupiter:5.10.1")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5:1.9.20")
     testImplementation("org.springframework.boot:spring-boot-starter-test:3.2.1")
+    testImplementation("org.mockito:mockito-core:5.8.0")
+    testImplementation("org.mockito:mockito-junit-jupiter:5.8.0")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:5.2.1")
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = "21"
         freeCompilerArgs = listOf("-Xjsr305=strict")
     }
 }

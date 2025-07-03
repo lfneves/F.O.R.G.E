@@ -5,6 +5,41 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2025-07-03
+
+### Added
+- **JDK 21 Native Support**: Full native JDK 21 virtual threads implementation
+- **Enhanced Virtual Thread API**: Complete virtual thread features with `Thread.ofVirtual()` and `Thread.isVirtual`
+- **Reflection-based Compatibility**: Backward compatibility helpers for mixed JDK environments
+- **Performance Optimizations**: Native virtual thread performance improvements
+- **Extended Test Suite**: Comprehensive JDK 21 virtual thread testing
+
+### Changed
+- **JDK Requirement**: Now requires JDK 21+ (upgraded from JDK 17+)
+- **GitHub Actions**: All CI/CD workflows updated to use JDK 21
+- **Build System**: Gradle configuration optimized for JDK 21
+- **Virtual Threads**: Restored native virtual thread implementations
+- **API Improvements**: Enhanced thread detection and management APIs
+
+### Fixed
+- **Compilation Issues**: Resolved all JDK 21 compilation errors in tests
+- **Type Inference**: Fixed generic type issues and annotations
+- **Import Updates**: Updated servlet imports from javax to jakarta
+- **Test Dependencies**: Added missing Mockito and testing dependencies
+- **Virtual Thread Detection**: Implemented robust virtual thread detection across all components
+
+### Restored
+- **Security Tests**: All security tests now enabled and running in CI
+- **Performance Tests**: Virtual thread performance benchmarks restored
+- **Virtual Thread Features**: Complete virtual thread functionality active
+- **Examples**: All virtual thread examples working with JDK 21
+
+### Technical Details
+- **Kotlin Version**: Maintained at 1.9.20 for stability
+- **Spring Boot**: Updated to work properly with JDK 21
+- **Test Framework**: Enhanced with JDK 21 virtual thread testing capabilities
+- **Build Time**: Improved compilation and test execution performance
+
 ## [1.0.1] - 2025-07-03
 
 ### Changed

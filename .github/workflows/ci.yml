@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        java: ['17']
+        java: ['21']
     
     steps:
     - name: Checkout Code
@@ -39,11 +39,11 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
       
-    - name: Build Project
-      run: ./gradlew build -x test
+    - name: Run Tests
+      run: ./gradlew test
       
-    - name: Compile Main Code
-      run: ./gradlew compileKotlin
+    - name: Run Security Tests
+      run: ./gradlew test --tests "*Security*"
       
     - name: Create JAR
       run: ./gradlew jar
@@ -72,10 +72,10 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v4
       
-    - name: Set up JDK 17
+    - name: Set up JDK 21
       uses: actions/setup-java@v4
       with:
-        java-version: '17'
+        java-version: '21'
         distribution: 'temurin'
         
     - name: Cache Gradle packages
@@ -119,10 +119,10 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v4
       
-    - name: Set up JDK 17
+    - name: Set up JDK 21
       uses: actions/setup-java@v4
       with:
-        java-version: '17'
+        java-version: '21'
         distribution: 'temurin'
         
     - name: Cache Gradle packages
@@ -162,10 +162,10 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v4
       
-    - name: Set up JDK 17
+    - name: Set up JDK 21
       uses: actions/setup-java@v4
       with:
-        java-version: '17'
+        java-version: '21'
         distribution: 'temurin'
         
     - name: Cache Gradle packages
@@ -181,8 +181,8 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
       
-    - name: Skip Performance Tests (Java 21 required)
-      run: echo "Performance tests require Java 21 virtual threads - skipping on Java 17"
+    - name: Run Performance Tests
+      run: ./gradlew test --tests "*VirtualThread*" --tests "*Performance*"
       
     - name: Upload Performance Results
       uses: actions/upload-artifact@v4
@@ -200,10 +200,10 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v4
       
-    - name: Set up JDK 17
+    - name: Set up JDK 21
       uses: actions/setup-java@v4
       with:
-        java-version: '17'
+        java-version: '21'
         distribution: 'temurin'
         
     - name: Cache Gradle packages

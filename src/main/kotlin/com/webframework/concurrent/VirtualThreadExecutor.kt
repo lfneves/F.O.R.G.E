@@ -16,23 +16,28 @@ class VirtualThreadExecutor private constructor(
     private val executor: ExecutorService
     
     init {
-        // TODO: Java 21 Virtual Thread features commented out for Java 17 compatibility
-        // val threadFactory = ThreadFactory { runnable ->
-        //     Thread.ofVirtual()
-        //         .name("$threadNamePrefix-${threadCounter.incrementAndGet()}")
-        //         .factory()
-        //         .newThread(runnable)
-        // }
-        // 
-        // executor = Executors.newThreadPerTaskExecutor(threadFactory)
-        
-        // Java 17 compatible implementation using fixed thread pool
         val threadFactory = ThreadFactory { runnable ->
-            Thread(runnable, "$threadNamePrefix-${threadCounter.incrementAndGet()}")
+            try {
+                // Try to use virtual threads if available (JDK 21)
+                val virtualBuilder = Thread::class.java.getMethod("ofVirtual").invoke(null)
+                val namedBuilder = virtualBuilder::class.java.getMethod("name", String::class.java).invoke(virtualBuilder, "$threadNamePrefix-${threadCounter.incrementAndGet()}")
+                val factoryMethod = namedBuilder::class.java.getMethod("factory")
+                val factory = factoryMethod.invoke(namedBuilder) as ThreadFactory
+                factory.newThread(runnable)
+            } catch (e: Exception) {
+                // Fallback to regular threads if virtual threads not available
+                Thread(runnable, "$threadNamePrefix-${threadCounter.incrementAndGet()}")
+            }
         }
         
-        executor = Executors.newCachedThreadPool(threadFactory)
-        logger.info("VirtualThreadExecutor initialized with prefix: $threadNamePrefix (Java 17 compatible mode)")
+        executor = try {
+            // Try to use newThreadPerTaskExecutor if available (JDK 21)
+            Executors::class.java.getMethod("newThreadPerTaskExecutor", ThreadFactory::class.java).invoke(null, threadFactory) as ExecutorService
+        } catch (e: Exception) {
+            // Fallback to cached thread pool
+            Executors.newCachedThreadPool(threadFactory)
+        }
+        logger.info("VirtualThreadExecutor initialized with prefix: $threadNamePrefix")
     }
     
     companion object {

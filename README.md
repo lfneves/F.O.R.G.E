@@ -1,28 +1,28 @@
 # WebFramework
 
-A modern, lightweight web framework for Kotlin/Java with virtual threads support, Spring Boot integration, and comprehensive security features.
+A modern, lightweight web framework for Kotlin/Java built on JDK 21 Virtual Threads, with Spring Boot integration and comprehensive security features.
 
 [![Build Status](https://github.com/lfneves/webframework/workflows/CI%2FCD%20Pipeline/badge.svg)](https://github.com/lfneves/webframework/actions)
 [![Security Framework](https://img.shields.io/badge/Security%20Framework-Implemented-green)](https://github.com/lfneves/webframework#security-features)
-[![Security Tests](https://img.shields.io/badge/Security%20Tests-Java%2017%20Issue-yellow)](https://github.com/lfneves/webframework#security-checks-status)
+[![Security Tests](https://img.shields.io/badge/Security%20Tests-Enabled-green)](https://github.com/lfneves/webframework/actions)
 [![CodeQL](https://github.com/lfneves/webframework/workflows/Security%20Checks/badge.svg)](https://github.com/lfneves/webframework/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![JDK Version](https://img.shields.io/badge/JDK-17%2B-orange)](https://openjdk.org/projects/jdk/17/)
+[![JDK Version](https://img.shields.io/badge/JDK-21%2B-orange)](https://openjdk.org/projects/jdk/21/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2.1-green)](https://spring.io/projects/spring-boot)
-[![Version](https://img.shields.io/badge/version-1.0.1-blue)](https://github.com/lfneves/webframework/releases)
+[![Version](https://img.shields.io/badge/version-1.1.0-blue)](https://github.com/lfneves/webframework/releases)
 [![Release](https://img.shields.io/github/v/release/lfneves/webframework)](https://github.com/lfneves/webframework/releases)
 [![Downloads](https://img.shields.io/github/downloads/lfneves/webframework/total)](https://github.com/lfneves/webframework/releases)
-[![Virtual Threads](https://img.shields.io/badge/Virtual%20Threads-Ready-brightgreen)](https://openjdk.org/jeps/444)
+[![Virtual Threads](https://img.shields.io/badge/Virtual%20Threads-JDK%2021-brightgreen)](https://openjdk.org/jeps/444)
 
 ## Current Status
 
-✅ **Java 17 Compatible** - Build and core functionality work on JDK 17+  
-🚧 **Virtual Threads** - Full virtual threads support available on JDK 21+  
-✅ **GitHub Actions** - CI/CD pipeline running successfully  
+✅ **JDK 21 Native** - Built specifically for JDK 21 Virtual Threads  
+✅ **Virtual Threads** - Full virtual threads support with high performance  
+✅ **GitHub Actions** - CI/CD pipeline running successfully with JDK 21  
 ✅ **Security Framework** - Complete security features implemented  
 ✅ **Spring Boot** - Full Spring Boot integration available  
-⚠️ **Security Tests** - Currently disabled in CI due to Java 17/21 compatibility issues  
-✅ **Release v1.0.0** - Available with JAR downloads from GitHub Releases  
+✅ **Security Tests** - All security tests enabled and passing  
+✅ **Release v1.1.0** - JDK 21 native release with full virtual thread support  
 
 ## Table of Contents
 - [Installation](#installation)
@@ -43,7 +43,7 @@ A modern, lightweight web framework for Kotlin/Java with virtual threads support
 
 ## Features
 
-- 🚀 **Virtual Threads Ready**: High-performance concurrent request handling (JDK 21+)
+- 🚀 **JDK 21 Virtual Threads**: High-performance concurrent request handling
 - 🔧 **Simple API**: Intuitive and easy-to-use routing and middleware system
 - 🌱 **Spring Boot Integration**: Seamless integration with Spring Boot ecosystem
 - ⚡ **High Performance**: Optimized for I/O-bound operations and high concurrency
@@ -89,7 +89,7 @@ Add to your `pom.xml`:
 
 ### Requirements
 
-- **JDK 17+** (JDK 21+ recommended for virtual threads)
+- **JDK 21+** (Required for virtual threads)
 - **Gradle 8.0+** or **Maven 3.8+**
 - **Kotlin 1.9.20+** (Optional, Java compatible)
 
@@ -255,7 +255,7 @@ src/main/kotlin/com/webframework/
 
 ## Virtual Threads Configuration
 
-> **Note**: Virtual threads require JDK 21+. On JDK 17, the framework uses platform threads with similar API compatibility.
+WebFramework is built natively for JDK 21 virtual threads, providing optimal performance and scalability.
 
 ### Programmatic Configuration
 
@@ -831,7 +831,7 @@ Memory Usage (1,000 threads):
 
 ### Requirements
 
-- JDK 17 or higher (JDK 21+ for virtual threads)
+- JDK 21 or higher
 - Gradle 8.0+
 
 ### Build
@@ -957,33 +957,9 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 **Release Date**: January 7, 2025  
 **Updated**: July 3, 2025 (Java 17 compatibility)
 
-## Security Checks Status
+## JDK 21 Virtual Threads
 
-⚠️ **Why Security Tests Are Failing in CI**
-
-The security tests are currently disabled in GitHub Actions due to compatibility issues between Java 17 and Java 21:
-
-### **Root Cause**
-- **Test Dependencies**: Security tests use Java 21 virtual thread features (`Thread.isVirtual`, `Thread.ofVirtual()`)
-- **CI Environment**: GitHub Actions runs on Java 17 for broader compatibility
-- **Source vs Tests**: Main source code works on Java 17, but test code requires Java 21 features
-
-### **Current Mitigation**
-- **Main Code**: ✅ Compiles and runs successfully on Java 17
-- **Security Features**: ✅ All security functionality works (auth, JWT, CORS, rate limiting)
-- **CI Pipeline**: ✅ Builds and creates releases successfully
-- **CodeQL Analysis**: ✅ Runs security analysis on main source code
-- **Manual Testing**: ✅ Security features tested locally on Java 21
-
-### **Resolution Plan**
-- **v1.0.1**: Update test code for Java 17 compatibility
-- **v1.1.0**: Provide dual compatibility (Java 17 tests + Java 21 features)
-- **v2.0.0**: Full migration to Java 21 when more widely adopted
-
-### **For Developers**
-- **Java 17**: Use the framework - all features work, just virtual threads use platform threads
-- **Java 21**: Get full virtual threads performance benefits
-- **Testing**: Run tests locally with Java 21 for full test suite
+WebFramework is built specifically for JDK 21 and leverages virtual threads for maximum performance and scalability. All features are optimized for the virtual thread execution model.
 
 ### Current Release: v1.0.0
 

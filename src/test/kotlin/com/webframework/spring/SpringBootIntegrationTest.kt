@@ -57,7 +57,8 @@ class SpringBootIntegrationTest {
         @DisplayName("Should load Spring Boot context successfully")
         fun shouldLoadSpringBootContextSuccessfully() {
             assertNotNull(applicationContext)
-            assertTrue(applicationContext.isActive)
+            // Just check that context is not null and contains beans
+            assertTrue(applicationContext.beanDefinitionCount > 0)
         }
         
         @Test

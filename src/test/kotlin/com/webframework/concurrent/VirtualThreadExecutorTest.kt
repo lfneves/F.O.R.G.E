@@ -13,6 +13,15 @@ import java.util.concurrent.atomic.AtomicInteger
 import java.util.concurrent.atomic.AtomicLong
 import kotlin.system.measureTimeMillis
 
+// Helper function to check if thread is virtual using reflection
+fun isVirtualThread(thread: Thread): Boolean {
+    return try {
+        thread::class.java.getMethod("isVirtual").invoke(thread) as Boolean
+    } catch (e: Exception) {
+        false
+    }
+}
+
 @DisplayName("Virtual Thread Executor Tests")
 class VirtualThreadExecutorTest {
     
@@ -121,7 +130,7 @@ class VirtualThreadExecutorTest {
         @DisplayName("Should execute tasks on virtual threads")
         fun shouldExecuteTasksOnVirtualThreads() {
             val future = executor.executeWithResult {
-                Thread.currentThread().isVirtual
+                isVirtualThread(Thread.currentThread())
             }
             
             val isVirtual = future.get(5, TimeUnit.SECONDS)
@@ -387,13 +396,12 @@ class VirtualThreadExecutorTest {
             val taskCounter = AtomicLong(0)
             val startTime = System.currentTimeMillis()
             
-            val futures = mutableListOf<CompletableFuture<Void>>()
+            val futures = mutableListOf<CompletableFuture<Long>>()
             
             while (System.currentTimeMillis() - startTime < duration) {
                 val future = executor.executeWithResult {
                     Thread.sleep(10)
                     taskCounter.incrementAndGet()
-                    null
                 }
                 futures.add(future)
             }

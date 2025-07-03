@@ -17,6 +17,15 @@ import java.util.concurrent.CompletableFuture
 import java.util.concurrent.atomic.AtomicInteger
 import kotlin.system.measureTimeMillis
 
+// Helper function to check if thread is virtual using reflection
+fun isVirtualThread(thread: Thread): Boolean {
+    return try {
+        thread::class.java.getMethod("isVirtual").invoke(thread) as Boolean
+    } catch (e: Exception) {
+        false
+    }
+}
+
 @DisplayName("API Verification and End-to-End Tests")
 class ApiVerificationTest {
     
@@ -90,8 +99,8 @@ class ApiVerificationTest {
                     if (userIndex != -1) {
                         val updateData = ctx.bodyAsClass(Map::class.java)
                         val existingUser = users[userIndex].toMutableMap()
-                        existingUser["name"] = updateData["name"] ?: existingUser["name"]
-                        existingUser["email"] = updateData["email"] ?: existingUser["email"]
+                        existingUser["name"] = (updateData["name"] ?: existingUser["name"]) as Any
+                        existingUser["email"] = (updateData["email"] ?: existingUser["email"]) as Any
                         existingUser["updatedAt"] = System.currentTimeMillis()
                         users[userIndex] = existingUser
                         ctx.json(existingUser)
@@ -187,7 +196,7 @@ class ApiVerificationTest {
                 Thread.sleep(requestDelay) // Simulate I/O
                 ctx.json(mapOf(
                     "thread" to Thread.currentThread().name,
-                    "isVirtual" to Thread.currentThread().isVirtual,
+                    "isVirtual" to isVirtualThread(Thread.currentThread()),
                     "timestamp" to System.currentTimeMillis()
                 ))
             }
@@ -244,7 +253,7 @@ class ApiVerificationTest {
                 ctx.json(mapOf(
                     "requestNumber" to requestNumber,
                     "thread" to Thread.currentThread().name,
-                    "isVirtual" to Thread.currentThread().isVirtual
+                    "isVirtual" to isVirtualThread(Thread.currentThread())
                 ))
             }
             
@@ -305,7 +314,7 @@ class ApiVerificationTest {
             customFramework.get("/config-test") { ctx ->
                 ctx.json(mapOf(
                     "thread" to Thread.currentThread().name,
-                    "isVirtual" to Thread.currentThread().isVirtual,
+                    "isVirtual" to isVirtualThread(Thread.currentThread()),
                     "config" to "custom"
                 ))
             }
@@ -340,7 +349,7 @@ class ApiVerificationTest {
             traditionalFramework.get("/traditional-test") { ctx ->
                 ctx.json(mapOf(
                     "thread" to Thread.currentThread().name,
-                    "isVirtual" to Thread.currentThread().isVirtual,
+                    "isVirtual" to isVirtualThread(Thread.currentThread()),
                     "mode" to "traditional"
                 ))
             }

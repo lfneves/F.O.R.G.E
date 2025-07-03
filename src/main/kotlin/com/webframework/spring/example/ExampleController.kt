@@ -7,6 +7,15 @@ import java.time.LocalDateTime
 import java.util.concurrent.CompletableFuture
 import kotlin.random.Random
 
+// Helper function to check if thread is virtual using reflection
+fun isVirtualThread(thread: Thread): Boolean {
+    return try {
+        thread::class.java.getMethod("isVirtual").invoke(thread) as Boolean
+    } catch (e: Exception) {
+        false
+    }
+}
+
 @WebFrameworkController
 class ExampleController(private val userService: UserService) {
     
@@ -16,7 +25,7 @@ class ExampleController(private val userService: UserService) {
             "message" to "Welcome to WebFramework with Spring Boot!",
             "timestamp" to LocalDateTime.now(),
             "thread" to Thread.currentThread().toString(),
-            "isVirtual" to false // Thread.currentThread().isVirtual // Java 21 feature commented out
+            "isVirtual" to isVirtualThread(Thread.currentThread())
         ))
     }
     
@@ -63,7 +72,7 @@ class ExampleController(private val userService: UserService) {
                     "taskId" to taskId,
                     "processingTime" to processingTime,
                     "thread" to Thread.currentThread().toString(),
-                    "isVirtual" to false // Thread.currentThread().isVirtual // Java 21 feature commented out
+                    "isVirtual" to isVirtualThread(Thread.currentThread())
                 )
             }
         }
@@ -85,7 +94,7 @@ class ExampleController(private val userService: UserService) {
             "status" to "UP",
             "timestamp" to LocalDateTime.now(),
             "framework" to "WebFramework with Spring Boot",
-            "virtualThreads" to false // Thread.currentThread().isVirtual // Java 21 feature commented out
+            "virtualThreads" to isVirtualThread(Thread.currentThread())
         ))
     }
 }

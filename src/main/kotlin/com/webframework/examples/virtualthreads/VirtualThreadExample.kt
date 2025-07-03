@@ -6,6 +6,15 @@ import java.time.LocalDateTime
 import java.util.concurrent.CompletableFuture
 import kotlin.random.Random
 
+// Helper function to check if thread is virtual using reflection
+fun isVirtualThread(thread: Thread): Boolean {
+    return try {
+        thread::class.java.getMethod("isVirtual").invoke(thread) as Boolean
+    } catch (e: Exception) {
+        false
+    }
+}
+
 fun main() {
     val config = VirtualThreadConfig.builder()
         .enabled(true)
@@ -100,8 +109,8 @@ fun main() {
         val currentThread = Thread.currentThread()
         ctx.json(mapOf(
             "threadName" to currentThread.name,
-            "threadId" to currentThread.id, // Java 17 compatible
-            "isVirtual" to false, // currentThread.isVirtual // Java 21 feature commented out
+            "threadId" to currentThread.getId(),
+            "isVirtual" to isVirtualThread(currentThread),
             "threadGroup" to currentThread.threadGroup?.name,
             "activeCount" to Thread.activeCount(),
             "timestamp" to LocalDateTime.now()
@@ -135,7 +144,7 @@ fun main() {
         ))
     }
     
-    println("Starting Virtual Threads Web Framework on port 8080 (Java 17 Compatible Mode)...")
+    println("Starting Virtual Threads Web Framework on port 8080...")
     println("Try these endpoints:")
     println("  GET /                           - Basic info")
     println("  GET /sleep/3                    - Sleep for 3 seconds")

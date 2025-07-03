@@ -40,5 +40,5 @@ application-local.properties
 *.pem
 secrets/
 
-# Claude Code
+# Development environment
 .claude/
