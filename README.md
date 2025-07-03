@@ -14,19 +14,21 @@ A modern, lightweight web framework for Kotlin/Java built on JDK 21 Virtual Thre
 [![Downloads](https://img.shields.io/github/downloads/lfneves/webframework/total)](https://github.com/lfneves/webframework/releases)
 [![Virtual Threads](https://img.shields.io/badge/Virtual%20Threads-JDK%2021-brightgreen)](https://openjdk.org/jeps/444)
 
+> **⚡ Performance Notice**: Virtual Threads are **only available with JDK 21+**. Framework is compatible with JDK 17+ but uses platform threads (reduced performance) on JDK 17-20.
+
 ## 🚀 Latest Release: v1.0.1
 
-**Java 17+ Compatible with Virtual Threads Ready** - [Download Now](https://github.com/lfneves/webframework/releases/latest) | [Release Notes](https://github.com/lfneves/webframework/releases/tag/v1.0.1) | [Changelog](CHANGELOG.md)
+**JDK 17+ Compatible, Virtual Threads Require JDK 21+** - [Download Now](https://github.com/lfneves/webframework/releases/latest) | [Release Notes](https://github.com/lfneves/webframework/releases/tag/v1.0.1) | [Changelog](CHANGELOG.md)
 
 ## Current Status
 
-✅ **JDK 21 Native** - Built specifically for JDK 21 Virtual Threads  
-✅ **Virtual Threads** - Full virtual threads support with high performance  
-✅ **GitHub Actions** - CI/CD pipeline running successfully with JDK 21  
+✅ **JDK 17+ Compatible** - Framework runs on JDK 17+, Virtual Threads require JDK 21+  
+🚧 **Virtual Threads** - Full virtual threads support available only on JDK 21+  
+✅ **GitHub Actions** - CI/CD pipeline running successfully  
 ✅ **Security Framework** - Complete security features implemented  
 ✅ **Spring Boot** - Full Spring Boot integration available  
 ✅ **Security Tests** - All security tests enabled and passing  
-✅ **Release v1.0.1** - JDK 21 native release with full virtual thread support  
+✅ **Release v1.0.1** - Current stable release with JDK 17+ compatibility  
 
 ## Table of Contents
 - [Installation](#installation)
@@ -47,7 +49,7 @@ A modern, lightweight web framework for Kotlin/Java built on JDK 21 Virtual Thre
 
 ## Features
 
-- 🚀 **JDK 21 Virtual Threads**: High-performance concurrent request handling
+- 🚀 **Virtual Threads (JDK 21+ only)**: High-performance concurrent request handling
 - 🔧 **Simple API**: Intuitive and easy-to-use routing and middleware system
 - 🌱 **Spring Boot Integration**: Seamless integration with Spring Boot ecosystem
 - ⚡ **High Performance**: Optimized for I/O-bound operations and high concurrency
@@ -93,9 +95,13 @@ Add to your `pom.xml`:
 
 ### Requirements
 
-- **JDK 21+** (Required for virtual threads)
+- **JDK 17+** (Minimum requirement - framework compatibility)
+- **JDK 21+** (Required for virtual threads support)
 - **Gradle 8.0+** or **Maven 3.8+**
 - **Kotlin 1.9.20+** (Optional, Java compatible)
+
+#### Virtual Threads Note
+⚠️ **Virtual Threads are only available with JDK 21+**. On JDK 17-20, the framework automatically falls back to platform threads with reduced performance.
 
 ### Download
 
@@ -1008,11 +1014,23 @@ java -jar webframework-1.0.1.jar --version
 java -cp webframework-1.0.1.jar com.webframework.examples.basic.BasicWebFrameworkExample
 ```
 
-### Upcoming Releases
+### Next Steps & Upcoming Releases
 
-- **v1.0.2**: Bug fixes and minor improvements
-- **v1.1.0**: Enhanced metrics and monitoring
-- **v1.2.0**: Additional Spring Boot features
+#### Immediate Next Steps
+- 🎯 **JDK 21 Native Build**: Update CI/CD pipeline to use JDK 21 for full virtual threads support
+- 🔧 **Fix Virtual Threads Tests**: Enable all virtual thread tests in CI with JDK 21
+- 📦 **New Release (v1.1.0)**: JDK 21 native release with full virtual threads performance
+- 🚀 **Performance Optimization**: Unlock native virtual thread performance benefits
+
+#### Upcoming Releases
+- **v1.1.0**: **JDK 21 Native Release** - Full virtual threads support, enhanced performance
+- **v1.0.2**: Bug fixes and minor improvements (JDK 17+ compatibility maintained)
+- **v1.2.0**: Additional Spring Boot features and monitoring capabilities
+
+#### Important Notes
+- 📋 **Virtual Threads**: Only available with JDK 21+. Framework falls back to platform threads on JDK 17-20
+- 🔄 **Compatibility**: JDK 17+ supported, but JDK 21+ required for virtual threads features
+- 📊 **Performance**: Significant performance gains only available with JDK 21+ virtual threads
 
 ## Support
 
