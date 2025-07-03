@@ -14,6 +14,10 @@ A modern, lightweight web framework for Kotlin/Java built on JDK 21 Virtual Thre
 [![Downloads](https://img.shields.io/github/downloads/lfneves/webframework/total)](https://github.com/lfneves/webframework/releases)
 [![Virtual Threads](https://img.shields.io/badge/Virtual%20Threads-JDK%2021-brightgreen)](https://openjdk.org/jeps/444)
 
+## 🚀 Latest Release: v1.1.0
+
+**JDK 21 Native Virtual Threads** - [Download Now](https://github.com/lfneves/webframework/releases/latest) | [Release Notes](https://github.com/lfneves/webframework/releases/tag/v1.1.0) | [Changelog](CHANGELOG.md)
+
 ## Current Status
 
 ✅ **JDK 21 Native** - Built specifically for JDK 21 Virtual Threads  
@@ -65,7 +69,7 @@ Add to your `build.gradle.kts`:
 
 ```kotlin
 dependencies {
-    implementation("com.webframework:webframework:1.0.0")
+    implementation("com.webframework:webframework:1.1.0")
 }
 
 repositories {
@@ -83,7 +87,7 @@ Add to your `pom.xml`:
 <dependency>
     <groupId>com.webframework</groupId>
     <artifactId>webframework</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
 </dependency>
 ```
 
@@ -97,9 +101,9 @@ Add to your `pom.xml`:
 
 Direct JAR downloads available from [GitHub Releases](https://github.com/lfneves/webframework/releases):
 
-- **Main JAR**: `webframework-1.0.0.jar`
-- **Sources JAR**: `webframework-1.0.0-sources.jar`
-- **Javadoc JAR**: `webframework-1.0.0-javadoc.jar`
+- **Main JAR**: `webframework-1.1.0.jar`
+- **Sources JAR**: `webframework-1.1.0-sources.jar`
+- **Javadoc JAR**: `webframework-1.1.0-javadoc.jar`
 
 ## Quick Start
 
@@ -961,27 +965,27 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 WebFramework is built specifically for JDK 21 and leverages virtual threads for maximum performance and scalability. All features are optimized for the virtual thread execution model.
 
-### Current Release: v1.0.0
+### Current Release: v1.1.0
 
-**Release Date**: January 7, 2025  
-**Updated**: July 3, 2025 (Java 17 compatibility)
+**Release Date**: July 3, 2025  
+**JDK 21 Native Release**
 
-#### What's New in v1.0.0
+#### What's New in v1.1.0
 
-- 🎉 **Initial Release**: Complete framework implementation
-- 🚀 **JDK 17+ Compatible**: Virtual threads ready for JDK 21+
-- 🌱 **Spring Boot Integration**: Seamless ecosystem compatibility
-- 📦 **Maven/Gradle Support**: Standard build tool integration
-- 📚 **Comprehensive Documentation**: Examples and guides
-- 🔧 **Production Ready**: Full configuration and monitoring support
+- 🚀 **JDK 21 Native**: Full native JDK 21 virtual threads implementation
+- ✅ **Security Tests**: All security tests enabled and passing in CI
+- ⚡ **Performance**: Complete virtual thread performance optimizations
+- 🔧 **Enhanced API**: Native virtual thread APIs (Thread.ofVirtual, Thread.isVirtual)
+- 🧪 **Extended Testing**: Comprehensive JDK 21 virtual thread test suite
+- 🔄 **Breaking Change**: Now requires JDK 21+ (upgraded from JDK 17+)
 
 #### Downloads
 
 | Artifact | Size | Download |
 |----------|------|----------|
-| Main JAR | ~2.5MB | [webframework-1.0.0.jar](https://github.com/lfneves/webframework/releases/download/v1.0.0/webframework-1.0.0.jar) |
-| Sources JAR | ~800KB | [webframework-1.0.0-sources.jar](https://github.com/lfneves/webframework/releases/download/v1.0.0/webframework-1.0.0-sources.jar) |
-| Javadoc JAR | ~1.2MB | [webframework-1.0.0-javadoc.jar](https://github.com/lfneves/webframework/releases/download/v1.0.0/webframework-1.0.0-javadoc.jar) |
+| Main JAR | ~2.5MB | [webframework-1.1.0.jar](https://github.com/lfneves/webframework/releases/download/v1.1.0/webframework-1.1.0.jar) |
+| Sources JAR | ~800KB | [webframework-1.1.0-sources.jar](https://github.com/lfneves/webframework/releases/download/v1.1.0/webframework-1.1.0-sources.jar) |
+| Javadoc JAR | ~1.2MB | [webframework-1.1.0-javadoc.jar](https://github.com/lfneves/webframework/releases/download/v1.1.0/webframework-1.1.0-javadoc.jar) |
 
 #### Release Notes
 
