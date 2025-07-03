@@ -100,8 +100,8 @@ fun main() {
         val currentThread = Thread.currentThread()
         ctx.json(mapOf(
             "threadName" to currentThread.name,
-            "threadId" to currentThread.threadId(),
-            "isVirtual" to currentThread.isVirtual,
+            "threadId" to currentThread.id, // Java 17 compatible
+            "isVirtual" to false, // currentThread.isVirtual // Java 21 feature commented out
             "threadGroup" to currentThread.threadGroup?.name,
             "activeCount" to Thread.activeCount(),
             "timestamp" to LocalDateTime.now()
@@ -135,7 +135,7 @@ fun main() {
         ))
     }
     
-    println("Starting Virtual Threads Web Framework on port 8080...")
+    println("Starting Virtual Threads Web Framework on port 8080 (Java 17 Compatible Mode)...")
     println("Try these endpoints:")
     println("  GET /                           - Basic info")
     println("  GET /sleep/3                    - Sleep for 3 seconds")

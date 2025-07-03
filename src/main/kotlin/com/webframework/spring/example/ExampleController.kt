@@ -16,7 +16,7 @@ class ExampleController(private val userService: UserService) {
             "message" to "Welcome to WebFramework with Spring Boot!",
             "timestamp" to LocalDateTime.now(),
             "thread" to Thread.currentThread().toString(),
-            "isVirtual" to Thread.currentThread().isVirtual
+            "isVirtual" to false // Thread.currentThread().isVirtual // Java 21 feature commented out
         ))
     }
     
@@ -63,7 +63,7 @@ class ExampleController(private val userService: UserService) {
                     "taskId" to taskId,
                     "processingTime" to processingTime,
                     "thread" to Thread.currentThread().toString(),
-                    "isVirtual" to Thread.currentThread().isVirtual
+                    "isVirtual" to false // Thread.currentThread().isVirtual // Java 21 feature commented out
                 )
             }
         }
@@ -85,7 +85,7 @@ class ExampleController(private val userService: UserService) {
             "status" to "UP",
             "timestamp" to LocalDateTime.now(),
             "framework" to "WebFramework with Spring Boot",
-            "virtualThreads" to Thread.currentThread().isVirtual
+            "virtualThreads" to false // Thread.currentThread().isVirtual // Java 21 feature commented out
         ))
     }
 }

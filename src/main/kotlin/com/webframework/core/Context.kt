@@ -71,4 +71,11 @@ class Context(
     fun req(): HttpServletRequest = request
     
     fun res(): HttpServletResponse = response
+    
+    fun setAttribute(name: String, value: Any): Context {
+        request.setAttribute(name, value)
+        return this
+    }
+    
+    fun getAttribute(name: String): Any? = request.getAttribute(name)
 }

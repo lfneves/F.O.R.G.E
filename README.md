@@ -2,14 +2,15 @@
 
 A modern, lightweight web framework for Kotlin/Java built on JDK 21 Virtual Threads, with Spring Boot integration support.
 
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)]()
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)]()
-[![JDK Version](https://img.shields.io/badge/JDK-21-orange)]()
-[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2.1-green)]()
-[![Version](https://img.shields.io/badge/version-1.0.0-blue)]()
-[![Release](https://img.shields.io/github/v/release/example/webframework)]()
-[![Downloads](https://img.shields.io/github/downloads/example/webframework/total)]()
-[![Virtual Threads](https://img.shields.io/badge/Virtual%20Threads-JDK%2021-brightgreen)]()
+[![Build Status](https://github.com/lfneves/webframework/workflows/CI%2FCD%20Pipeline/badge.svg)](https://github.com/lfneves/webframework/actions)
+[![Security](https://github.com/lfneves/webframework/workflows/Security%20Checks/badge.svg)](https://github.com/lfneves/webframework/security)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![JDK Version](https://img.shields.io/badge/JDK-21-orange)](https://openjdk.org/projects/jdk/21/)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2.1-green)](https://spring.io/projects/spring-boot)
+[![Version](https://img.shields.io/badge/version-1.0.0-blue)](https://github.com/lfneves/webframework/releases)
+[![Release](https://img.shields.io/github/v/release/lfneves/webframework)](https://github.com/lfneves/webframework/releases)
+[![Downloads](https://img.shields.io/github/downloads/lfneves/webframework/total)](https://github.com/lfneves/webframework/releases)
+[![Virtual Threads](https://img.shields.io/badge/Virtual%20Threads-JDK%2021-brightgreen)](https://openjdk.org/jeps/444)
 
 ## Table of Contents
 - [Installation](#installation)
@@ -82,7 +83,7 @@ Add to your `pom.xml`:
 
 ### Download
 
-Direct JAR downloads available from [GitHub Releases](https://github.com/example/webframework/releases):
+Direct JAR downloads available from [GitHub Releases](https://github.com/lfneves/webframework/releases):
 
 - **Main JAR**: `webframework-1.0.0.jar`
 - **Sources JAR**: `webframework-1.0.0-sources.jar`
@@ -954,9 +955,9 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 | Artifact | Size | Download |
 |----------|------|----------|
-| Main JAR | ~2.5MB | [webframework-1.0.0.jar](https://github.com/example/webframework/releases/download/v1.0.0/webframework-1.0.0.jar) |
-| Sources JAR | ~800KB | [webframework-1.0.0-sources.jar](https://github.com/example/webframework/releases/download/v1.0.0/webframework-1.0.0-sources.jar) |
-| Javadoc JAR | ~1.2MB | [webframework-1.0.0-javadoc.jar](https://github.com/example/webframework/releases/download/v1.0.0/webframework-1.0.0-javadoc.jar) |
+| Main JAR | ~2.5MB | [webframework-1.0.0.jar](https://github.com/lfneves/webframework/releases/download/v1.0.0/webframework-1.0.0.jar) |
+| Sources JAR | ~800KB | [webframework-1.0.0-sources.jar](https://github.com/lfneves/webframework/releases/download/v1.0.0/webframework-1.0.0-sources.jar) |
+| Javadoc JAR | ~1.2MB | [webframework-1.0.0-javadoc.jar](https://github.com/lfneves/webframework/releases/download/v1.0.0/webframework-1.0.0-javadoc.jar) |
 
 #### Release Notes
 
@@ -966,7 +967,7 @@ View the complete [CHANGELOG.md](CHANGELOG.md) for detailed release information.
 
 ```bash
 # Clone and build the release
-git clone https://github.com/example/webframework.git
+git clone https://github.com/lfneves/webframework.git
 cd webframework
 git checkout v1.0.0
 ./gradlew release
@@ -994,7 +995,7 @@ java -cp webframework-1.0.0.jar com.webframework.examples.basic.BasicWebFramewor
 
 - 📖 [Documentation](README-SpringBoot.md)
 - 📋 [Changelog](CHANGELOG.md)
-- 🚀 [Releases](https://github.com/example/webframework/releases)
-- 🐛 [Issues](https://github.com/example/webframework/issues)
-- 💬 [Discussions](https://github.com/example/webframework/discussions)
-- ❓ [FAQ](https://github.com/example/webframework/wiki/FAQ)
+- 🚀 [Releases](https://github.com/lfneves/webframework/releases)
+- 🐛 [Issues](https://github.com/lfneves/webframework/issues)
+- 💬 [Discussions](https://github.com/lfneves/webframework/discussions)
+- ❓ [FAQ](https://github.com/lfneves/webframework/wiki/FAQ)

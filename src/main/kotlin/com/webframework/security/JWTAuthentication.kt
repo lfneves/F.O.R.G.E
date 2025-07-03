@@ -121,7 +121,7 @@ class JWTService(private val config: JWTConfig) {
             
             // Parse claims
             val claimsJson = String(Base64.getUrlDecoder().decode(payload), StandardCharsets.UTF_8)
-            val claimsMap = objectMapper.readValue<Map<String, Any>>(claimsJson)
+            val claimsMap: Map<String, Any> = objectMapper.readValue(claimsJson)
             
             val claims = parseClaimsFromMap(claimsMap)
             val jwtToken = JWTToken(token, claims)
@@ -197,8 +197,8 @@ class JWTService(private val config: JWTConfig) {
             expiresAt = (map["exp"] as Number).toLong(),
             notBefore = (map["nbf"] as? Number)?.toLong(),
             jwtId = map["jti"] as? String,
-            roles = ((map["roles"] as? List<*>) ?: emptyList()).filterIsInstance<String>().toSet(),
-            permissions = ((map["permissions"] as? List<*>) ?: emptyList()).filterIsInstance<String>().toSet(),
+            roles = ((map["roles"] as? List<*>) ?: emptyList<String>()).filterIsInstance<String>().toSet(),
+            permissions = ((map["permissions"] as? List<*>) ?: emptyList<String>()).filterIsInstance<String>().toSet(),
             customClaims = map.filterKeys { it !in setOf("sub", "iss", "aud", "iat", "exp", "nbf", "jti", "roles", "permissions") }
         )
     }

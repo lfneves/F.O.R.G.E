@@ -27,7 +27,7 @@ jobs:
         distribution: 'temurin'
         
     - name: Cache Gradle packages
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: |
           ~/.gradle/caches
@@ -49,7 +49,7 @@ jobs:
       run: ./gradlew jacocoTestReport
       
     - name: Upload Test Results
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: test-results-${{ matrix.java }}
@@ -58,7 +58,7 @@ jobs:
           build/reports/jacoco/test/
           
     - name: Upload Coverage to Codecov
-      uses: codecov/codecov-action@v3
+      uses: codecov/codecov-action@v4
       with:
         file: build/reports/jacoco/test/jacocoTestReport.xml
         fail_ci_if_error: false
@@ -79,7 +79,7 @@ jobs:
         distribution: 'temurin'
         
     - name: Cache Gradle packages
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: |
           ~/.gradle/caches
@@ -92,11 +92,19 @@ jobs:
       run: chmod +x gradlew
       
     - name: OWASP Dependency Check
-      run: ./gradlew dependencyCheckAnalyze --info
+      run: |
+        # Skip dependency check if plugin not configured
+        if ./gradlew tasks | grep -q "dependencyCheckAnalyze"; then
+          ./gradlew dependencyCheckAnalyze --info
+        else
+          echo "OWASP Dependency Check plugin not configured, skipping..."
+          mkdir -p build/reports
+          echo "<html><body><h1>Dependency Check Skipped</h1><p>OWASP Dependency Check plugin not configured.</p></body></html>" > build/reports/dependency-check-report.html
+        fi
       continue-on-error: true
       
     - name: Upload Security Report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: security-report
@@ -118,7 +126,7 @@ jobs:
         distribution: 'temurin'
         
     - name: Cache Gradle packages
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: |
           ~/.gradle/caches
@@ -137,7 +145,7 @@ jobs:
       run: ./gradlew javadoc
       
     - name: Upload Build Artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: build-artifacts
         path: |
@@ -161,7 +169,7 @@ jobs:
         distribution: 'temurin'
         
     - name: Cache Gradle packages
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: |
           ~/.gradle/caches
@@ -177,16 +185,16 @@ jobs:
       run: ./gradlew test --tests "*VirtualThread*" --tests "*Performance*"
       
     - name: Upload Performance Results
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: performance-results
         path: build/reports/tests/test/
 
-  publish:
-    name: Publish Release
+  release:
+    name: Create Release
     runs-on: ubuntu-latest
     needs: [test, security-scan, build, performance-test]
-    if: github.event_name == 'release'
+    if: github.event_name == 'release' || (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v'))
     
     steps:
     - name: Checkout Code
@@ -199,7 +207,7 @@ jobs:
         distribution: 'temurin'
         
     - name: Cache Gradle packages
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: |
           ~/.gradle/caches
@@ -211,20 +219,31 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
       
-    - name: Publish to Maven Central
+    - name: Build Release JARs
+      run: |
+        ./gradlew clean build
+        ./gradlew jar
+        ./gradlew sourcesJar
+        ./gradlew javadocJar
+      
+    - name: List build artifacts
+      run: ls -la build/libs/
+      
+    - name: Upload Release Assets
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/v')
+      with:
+        files: |
+          build/libs/*.jar
+        generate_release_notes: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Publish to Maven Central (Optional)
+      if: ${{ secrets.MAVEN_USERNAME != '' }}
       run: ./gradlew publish
       env:
         MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
         MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
         SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
         SIGNING_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
-        
-    - name: Upload Release Assets
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ github.event.release.upload_url }}
-        asset_path: build/libs/webframework-${{ github.event.release.tag_name }}.jar
-        asset_name: webframework-${{ github.event.release.tag_name }}.jar
-        asset_content_type: application/java-archive

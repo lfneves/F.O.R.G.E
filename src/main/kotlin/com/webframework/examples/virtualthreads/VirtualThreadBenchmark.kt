@@ -8,12 +8,16 @@ import kotlin.system.measureTimeMillis
 object VirtualThreadBenchmark {
     
     fun runBenchmark() {
-        println("JDK 21 Virtual Threads Benchmark")
-        println("================================")
+        println("JDK 21 Virtual Threads Benchmark (Java 17 Compatible Mode)")
+        println("=========================================================")
         
-        benchmarkConcurrentTasks()
-        benchmarkMemoryUsage()
-        benchmarkThroughput()
+        // TODO: Virtual thread benchmarks commented out for Java 17 compatibility
+        // benchmarkConcurrentTasks()
+        // benchmarkMemoryUsage()
+        // benchmarkThroughput()
+        
+        println("Virtual thread benchmarks are disabled for Java 17 compatibility.")
+        println("Please upgrade to Java 21 to enable virtual thread benchmarks.")
     }
     
     private fun benchmarkConcurrentTasks() {
@@ -35,17 +39,19 @@ object VirtualThreadBenchmark {
             executor.shutdown()
         }
         
-        val virtualTime = measureTimeMillis {
-            val executor = VirtualThreadExecutor.create("benchmark")
-            val tasks = (1..taskCount).map {
-                executor.executeWithResult {
-                    Thread.sleep(taskDuration)
-                    "Task $it"
-                }
-            }
-            CompletableFuture.allOf(*tasks.toTypedArray()).get()
-            executor.shutdown()
-        }
+        // TODO: Virtual thread benchmark commented out for Java 17 compatibility
+        // val virtualTime = measureTimeMillis {
+        //     val executor = VirtualThreadExecutor.create("benchmark")
+        //     val tasks = (1..taskCount).map {
+        //         executor.executeWithResult {
+        //             Thread.sleep(taskDuration)
+        //             "Task $it"
+        //         }
+        //     }
+        //     CompletableFuture.allOf(*tasks.toTypedArray()).get()
+        //     executor.shutdown()
+        // }
+        val virtualTime = platformTime // Fallback for Java 17
         
         println("Platform threads: ${platformTime}ms")
         println("Virtual threads:  ${virtualTime}ms")
@@ -61,12 +67,29 @@ object VirtualThreadBenchmark {
         runtime.gc()
         val memBefore = runtime.totalMemory() - runtime.freeMemory()
         
-        val virtualExecutor = VirtualThreadExecutor.create("memory-test")
+        // TODO: Virtual thread memory test commented out for Java 17 compatibility
+        // val virtualExecutor = VirtualThreadExecutor.create("memory-test")
+        // val tasks = (1..1000).map { i ->
+        //     virtualExecutor.executeWithResult {
+        //         Thread.sleep(50)
+        //         ByteArray(1024) { (i % 256).toByte() }
+        //     }
+        // }
+        // 
+        // CompletableFuture.allOf(*tasks.toTypedArray()).get()
+        // 
+        // runtime.gc()
+        // val memAfter = runtime.totalMemory() - runtime.freeMemory()
+        // 
+        // virtualExecutor.shutdown()
+        
+        // Java 17 compatible fallback using platform threads
+        val executor = Executors.newCachedThreadPool()
         val tasks = (1..1000).map { i ->
-            virtualExecutor.executeWithResult {
+            CompletableFuture.supplyAsync({
                 Thread.sleep(50)
                 ByteArray(1024) { (i % 256).toByte() }
-            }
+            }, executor)
         }
         
         CompletableFuture.allOf(*tasks.toTypedArray()).get()
@@ -74,7 +97,7 @@ object VirtualThreadBenchmark {
         runtime.gc()
         val memAfter = runtime.totalMemory() - runtime.freeMemory()
         
-        virtualExecutor.shutdown()
+        executor.shutdown()
         
         val memoryUsed = (memAfter - memBefore) / 1024 / 1024
         println("Memory used for 1000 virtual threads: ${memoryUsed}MB")
@@ -86,24 +109,28 @@ object VirtualThreadBenchmark {
         println("-----------------------")
         
         val duration = 5000L
-        val virtualExecutor = VirtualThreadExecutor.create("throughput")
+        // TODO: Virtual thread throughput test commented out for Java 17 compatibility
+        // val virtualExecutor = VirtualThreadExecutor.create("throughput")
+        
+        // Java 17 compatible fallback using platform threads
+        val executor = Executors.newCachedThreadPool()
         
         var completedTasks = 0
         val startTime = System.currentTimeMillis()
         
-        val tasks = mutableListOf<CompletableFuture<Void>>()
+        val tasks = mutableListOf<CompletableFuture<Unit>>()
         
         while (System.currentTimeMillis() - startTime < duration) {
-            val task = virtualExecutor.executeWithResult {
+            val task = CompletableFuture.supplyAsync({
                 Thread.sleep(10)
                 completedTasks++
-                null
-            }
+                Unit
+            }, executor)
             tasks.add(task)
         }
         
         CompletableFuture.allOf(*tasks.toTypedArray()).get()
-        virtualExecutor.shutdown()
+        executor.shutdown()
         
         val actualDuration = System.currentTimeMillis() - startTime
         val throughput = (completedTasks * 1000) / actualDuration

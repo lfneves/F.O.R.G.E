@@ -18,8 +18,8 @@ fun main() {
             "message" to "Using custom virtual thread configuration",
             "threadInfo" to mapOf(
                 "name" to Thread.currentThread().name,
-                "isVirtual" to Thread.currentThread().isVirtual,
-                "id" to Thread.currentThread().threadId()
+                "isVirtual" to false, // Thread.currentThread().isVirtual // Java 21 feature commented out
+                "id" to Thread.currentThread().id // Java 17 compatible
             )
         ))
     }
@@ -32,8 +32,8 @@ fun main() {
             "message" to "Using traditional platform threads",
             "threadInfo" to mapOf(
                 "name" to Thread.currentThread().name,
-                "isVirtual" to Thread.currentThread().isVirtual,
-                "id" to Thread.currentThread().threadId()
+                "isVirtual" to false, // Thread.currentThread().isVirtual // Java 21 feature commented out
+                "id" to Thread.currentThread().id // Java 17 compatible
             )
         ))
     }

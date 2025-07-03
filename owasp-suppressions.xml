@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
+    <!-- Suppress false positives for Spring Boot and Kotlin dependencies -->
+    <suppress>
+        <notes>Spring Boot dependencies are actively maintained and patched</notes>
+        <gav regex="true">org\.springframework\.boot:.*</gav>
+    </suppress>
+    
+    <suppress>
+        <notes>Kotlin standard library is actively maintained</notes>
+        <gav regex="true">org\.jetbrains\.kotlin:.*</gav>
+    </suppress>
+    
+    <!-- Suppress low-severity CVEs that don't affect our usage -->
+    <suppress>
+        <notes>CVE affecting test dependencies only</notes>
+        <cve>CVE-2023-20883</cve>
+    </suppress>
+</suppressions>

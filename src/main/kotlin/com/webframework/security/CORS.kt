@@ -215,8 +215,8 @@ class CORSConfigBuilder {
         return this
     }
     
-    fun preflightContinue(continue: Boolean = true): CORSConfigBuilder {
-        preflightContinue = continue
+    fun preflightContinue(continueValue: Boolean = true): CORSConfigBuilder {
+        preflightContinue = continueValue
         return this
     }
     

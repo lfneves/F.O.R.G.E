@@ -16,15 +16,23 @@ class VirtualThreadExecutor private constructor(
     private val executor: ExecutorService
     
     init {
+        // TODO: Java 21 Virtual Thread features commented out for Java 17 compatibility
+        // val threadFactory = ThreadFactory { runnable ->
+        //     Thread.ofVirtual()
+        //         .name("$threadNamePrefix-${threadCounter.incrementAndGet()}")
+        //         .factory()
+        //         .newThread(runnable)
+        // }
+        // 
+        // executor = Executors.newThreadPerTaskExecutor(threadFactory)
+        
+        // Java 17 compatible implementation using fixed thread pool
         val threadFactory = ThreadFactory { runnable ->
-            Thread.ofVirtual()
-                .name("$threadNamePrefix-${threadCounter.incrementAndGet()}")
-                .factory()
-                .newThread(runnable)
+            Thread(runnable, "$threadNamePrefix-${threadCounter.incrementAndGet()}")
         }
         
-        executor = Executors.newThreadPerTaskExecutor(threadFactory)
-        logger.info("VirtualThreadExecutor initialized with prefix: $threadNamePrefix")
+        executor = Executors.newCachedThreadPool(threadFactory)
+        logger.info("VirtualThreadExecutor initialized with prefix: $threadNamePrefix (Java 17 compatible mode)")
     }
     
     companion object {

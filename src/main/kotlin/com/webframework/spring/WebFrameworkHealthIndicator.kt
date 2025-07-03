@@ -1,5 +1,9 @@
 package com.webframework.spring
 
+// TODO: Spring Boot Actuator health indicator commented out for dependency compatibility
+// This can be re-enabled when Spring Boot Actuator dependencies are properly configured
+
+/*
 import com.webframework.core.WebFramework
 import org.springframework.boot.actuator.health.Health
 import org.springframework.boot.actuator.health.HealthIndicator
@@ -32,3 +36,4 @@ class WebFrameworkHealthIndicator(
         }
     }
 }
+*/

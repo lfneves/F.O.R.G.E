@@ -1,3 +1,5 @@
+import java.time.LocalDateTime
+
 plugins {
     kotlin("jvm") version "1.9.20"
     kotlin("kapt") version "1.9.20"
@@ -6,6 +8,8 @@ plugins {
     `maven-publish`
     id("org.springframework.boot") version "3.2.1"
     id("io.spring.dependency-management") version "1.1.4"
+    id("org.owasp.dependencycheck") version "9.0.7"
+    jacoco
 }
 
 group = "com.webframework"
@@ -20,8 +24,8 @@ repositories {
 
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.20")
-    implementation("org.eclipse.jetty:jetty-server:12.0.5")
-    implementation("org.eclipse.jetty:jetty-servlet:12.0.5")
+    implementation("org.eclipse.jetty:jetty-server:11.0.18")
+    implementation("org.eclipse.jetty:jetty-servlet:11.0.18")
     implementation("com.fasterxml.jackson.core:jackson-databind:2.16.1")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.16.1")
     implementation("org.slf4j:slf4j-api:2.0.12")
@@ -30,6 +34,7 @@ dependencies {
     // Spring Boot dependencies
     implementation("org.springframework.boot:spring-boot-starter:3.2.1")
     implementation("org.springframework.boot:spring-boot-starter-web:3.2.1")
+    implementation("org.springframework.boot:spring-boot-starter-actuator:3.2.1")
     implementation("org.springframework.boot:spring-boot-autoconfigure:3.2.1")
     implementation("org.springframework:spring-context:6.1.2")
     implementation("org.springframework:spring-beans:6.1.2")
@@ -45,19 +50,44 @@ dependencies {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_21
-    targetCompatibility = JavaVersion.VERSION_21
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions {
-        jvmTarget = "21"
+        jvmTarget = "17"
         freeCompilerArgs = listOf("-Xjsr305=strict")
     }
 }
 
+// Configure Spring Boot plugin
+springBoot {
+    mainClass.set("com.webframework.spring.example.SpringBootWebFrameworkApplicationKt")
+}
+
 tasks.test {
     useJUnitPlatform()
+    finalizedBy(tasks.jacocoTestReport)
+}
+
+// JaCoCo configuration
+tasks.jacocoTestReport {
+    dependsOn(tasks.test)
+    reports {
+        xml.required.set(true)
+        csv.required.set(false)
+        html.required.set(true)
+    }
+}
+
+// OWASP Dependency Check configuration
+dependencyCheck {
+    format = "HTML"
+    suppressionFile = "owasp-suppressions.xml"
+    failBuildOnCVSS = 7.0f
+    analyzers.assemblyEnabled = false
+    analyzers.nodeEnabled = false
 }
 
 // Publishing configuration
@@ -69,7 +99,7 @@ publishing {
             pom {
                 name.set("WebFramework")
                 description.set("A modern, lightweight web framework for Kotlin/Java built on JDK 21 Virtual Threads")
-                url.set("https://github.com/example/webframework")
+                url.set("https://github.com/lfneves/webframework")
                 
                 licenses {
                     license {
@@ -80,16 +110,16 @@ publishing {
                 
                 developers {
                     developer {
-                        id.set("webframework-team")
-                        name.set("WebFramework Team")
-                        email.set("team@webframework.com")
+                        id.set("lfneves")
+                        name.set("lfneves")
+                        email.set("lfneves@github.com")
                     }
                 }
                 
                 scm {
-                    connection.set("scm:git:git://github.com/example/webframework.git")
-                    developerConnection.set("scm:git:ssh://github.com:example/webframework.git")
-                    url.set("https://github.com/example/webframework")
+                    connection.set("scm:git:git://github.com/lfneves/webframework.git")
+                    developerConnection.set("scm:git:ssh://github.com:lfneves/webframework.git")
+                    url.set("https://github.com/lfneves/webframework")
                 }
             }
         }
@@ -98,7 +128,7 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/example/webframework")
+            url = uri("https://maven.pkg.github.com/lfneves/webframework")
             credentials {
                 username = project.findProperty("gpr.user") as String? ?: System.getenv("USERNAME")
                 password = project.findProperty("gpr.key") as String? ?: System.getenv("TOKEN")
@@ -114,13 +144,15 @@ tasks.jar {
     
     manifest {
         attributes(
-            "Implementation-Title" to "WebFramework",
-            "Implementation-Version" to version,
-            "Implementation-Vendor" to "WebFramework Team",
-            "Built-By" to System.getProperty("user.name"),
-            "Built-Date" to java.time.LocalDateTime.now().toString(),
-            "Built-JDK" to System.getProperty("java.version"),
-            "Built-Gradle" to gradle.gradleVersion
+            mapOf(
+                "Implementation-Title" to "WebFramework",
+                "Implementation-Version" to version,
+                "Implementation-Vendor" to "WebFramework Team",
+                "Built-By" to System.getProperty("user.name"),
+                "Built-Date" to LocalDateTime.now().toString(),
+                "Built-JDK" to System.getProperty("java.version"),
+                "Built-Gradle" to gradle.gradleVersion
+            )
         )
     }
 }
