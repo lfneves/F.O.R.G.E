@@ -13,7 +13,7 @@ plugins {
 }
 
 group = "com.webframework"
-version = "1.0.0"
+version = "1.0.1"
 description = "A modern, lightweight web framework for Kotlin/Java built on JDK 21 Virtual Threads"
 
 val isSnapshot = version.toString().endsWith("-SNAPSHOT")
