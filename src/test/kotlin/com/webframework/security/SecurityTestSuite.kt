@@ -155,6 +155,8 @@ class SecurityTestSuite {
         fun testJsonResponse() {
             val mockRequest = mock<HttpServletRequest>()
             val mockResponse = mock<HttpServletResponse>()
+            val mockOutputStream = mock<jakarta.servlet.ServletOutputStream>()
+            whenever(mockResponse.outputStream).thenReturn(mockOutputStream)
             val ctx = Context(mockRequest, mockResponse, objectMapper)
             
             val testData = mapOf("message" to "Hello World")
@@ -171,6 +173,8 @@ class SecurityTestSuite {
         fun testHtmlResponse() {
             val mockRequest = mock<HttpServletRequest>()
             val mockResponse = mock<HttpServletResponse>()
+            val mockOutputStream = mock<jakarta.servlet.ServletOutputStream>()
+            whenever(mockResponse.outputStream).thenReturn(mockOutputStream)
             val ctx = Context(mockRequest, mockResponse, objectMapper)
             
             assertDoesNotThrow {

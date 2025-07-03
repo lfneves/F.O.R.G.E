@@ -47,11 +47,45 @@ class ApiVerificationTest {
         Thread.sleep(200) // Allow server to stop completely
     }
     
+    private fun setupHealthEndpoint() {
+        framework.get("/health") { ctx ->
+            ctx.json(mapOf("status" to "UP", "timestamp" to System.currentTimeMillis()))
+        }
+    }
+    
     private fun startFrameworkAsync() {
+        setupHealthEndpoint() // Ensure health endpoint is always available
+        
         CompletableFuture.runAsync {
             framework.start(testPort)
         }
-        Thread.sleep(1000) // Allow server to start
+        
+        // Wait for server to actually be ready
+        var retries = 0
+        val maxRetries = 30
+        while (retries < maxRetries) {
+            try {
+                val healthCheck = HttpRequest.newBuilder()
+                    .uri(URI.create("$baseUrl/health"))
+                    .timeout(Duration.ofSeconds(1))
+                    .GET()
+                    .build()
+                
+                val response = httpClient.send(healthCheck, HttpResponse.BodyHandlers.ofString())
+                if (response.statusCode() == 200) {
+                    // Server is responding
+                    Thread.sleep(100) // Small additional buffer
+                    return
+                }
+            } catch (e: Exception) {
+                // Server not ready yet
+            }
+            Thread.sleep(100)
+            retries++
+        }
+        
+        // Fallback - just wait a bit longer
+        Thread.sleep(500)
     }
     
     @Nested

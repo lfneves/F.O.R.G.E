@@ -39,4 +39,9 @@ class WebFrameworkAutoConfiguration(
     fun webFrameworkStarter(webFramework: WebFramework): WebFrameworkStarter {
         return WebFrameworkStarter(webFramework, properties)
     }
+    
+    @Bean
+    fun webFrameworkControllerProcessor(webFramework: WebFramework, applicationContext: org.springframework.context.ApplicationContext): WebFrameworkControllerProcessor {
+        return WebFrameworkControllerProcessor(webFramework, applicationContext)
+    }
 }

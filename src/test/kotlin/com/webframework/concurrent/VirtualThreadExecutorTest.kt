@@ -280,9 +280,12 @@ class VirtualThreadExecutorTest {
                 throw RuntimeException("Test exception")
             }
             
-            assertThrows(RuntimeException::class.java) {
+            val exception = assertThrows(java.util.concurrent.ExecutionException::class.java) {
                 future.get(5, TimeUnit.SECONDS)
             }
+            
+            assertTrue(exception.cause is RuntimeException)
+            assertEquals("Test exception", exception.cause?.message)
         }
         
         @Test
@@ -293,12 +296,15 @@ class VirtualThreadExecutorTest {
             
             repeat(10) { i ->
                 executor.executeAsync {
-                    if (i % 3 == 0) {
-                        throw RuntimeException("Exception in task $i")
-                    } else {
-                        successfulTasks.incrementAndGet()
+                    try {
+                        if (i % 3 == 0) {
+                            throw RuntimeException("Exception in task $i")
+                        } else {
+                            successfulTasks.incrementAndGet()
+                        }
+                    } finally {
+                        latch.countDown()
                     }
-                    latch.countDown()
                 }
             }
             
