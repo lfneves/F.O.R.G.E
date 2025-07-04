@@ -62,7 +62,7 @@ ls -la build/libs/
 #### Test Examples
 ```bash
 # Test basic example
-./gradlew run -PmainClass=com.forge.examples.basic.BasicWebFrameworkExample
+./gradlew run -PmainClass=com.forge.examples.basic.BasicForgeExample
 
 # Test virtual threads example
 ./gradlew run -PmainClass=com.forge.examples.virtualthreads.VirtualThreadExample

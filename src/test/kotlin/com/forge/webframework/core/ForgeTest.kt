@@ -15,10 +15,10 @@ import java.time.Duration
 import java.util.concurrent.CompletableFuture
 import java.util.concurrent.TimeUnit
 
-@DisplayName("WebFramework Core Tests")
-class WebFrameworkTest {
+@DisplayName("Forge Core Tests")
+class ForgeTest {
     
-    private lateinit var framework: WebFramework
+    private lateinit var framework: Forge
     private val testPort = 8081
     private val baseUrl = "http://localhost:$testPort"
     private val httpClient = HttpClient.newBuilder()
@@ -27,7 +27,7 @@ class WebFrameworkTest {
     
     @BeforeEach
     fun setUp() {
-        framework = WebFramework.create()
+        framework = Forge.create()
     }
     
     @AfterEach
@@ -43,7 +43,7 @@ class WebFrameworkTest {
         @Test
         @DisplayName("Should create framework with default configuration")
         fun shouldCreateFrameworkWithDefaultConfig() {
-            val fw = WebFramework.create()
+            val fw = Forge.create()
             assertNotNull(fw)
         }
         
@@ -55,7 +55,7 @@ class WebFrameworkTest {
                 .threadNamePrefix("test-vt")
                 .build()
             
-            val fw = WebFramework.create(config)
+            val fw = Forge.create(config)
             assertNotNull(fw)
         }
         
@@ -63,7 +63,7 @@ class WebFrameworkTest {
         @DisplayName("Should create framework with disabled virtual threads")
         fun shouldCreateFrameworkWithDisabledVirtualThreads() {
             val config = VirtualThreadConfig.disabled()
-            val fw = WebFramework.create(config)
+            val fw = Forge.create(config)
             assertNotNull(fw)
         }
     }

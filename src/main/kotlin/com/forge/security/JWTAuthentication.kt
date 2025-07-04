@@ -18,7 +18,7 @@ import com.fasterxml.jackson.module.kotlin.readValue
  */
 data class JWTConfig(
     val secret: String,
-    val issuer: String = "webframework",
+    val issuer: String = "forge",
     val expirationMinutes: Long = 60,
     val algorithm: String = "HS256",
     val clockSkewSeconds: Long = 30,
@@ -516,7 +516,7 @@ data class JWTSessionConfig(
  */
 class JWTConfigBuilder {
     private var secret: String = "default-secret-change-in-production"
-    private var issuer: String = "webframework"
+    private var issuer: String = "forge"
     private var expirationMinutes: Long = 60
     private var algorithm: String = "HS256"
     private var clockSkewSeconds: Long = 30

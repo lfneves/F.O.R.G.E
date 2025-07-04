@@ -5,4 +5,4 @@ import org.springframework.stereotype.Component
 @Target(AnnotationTarget.CLASS)
 @Retention(AnnotationRetention.RUNTIME)
 @Component
-annotation class WebFrameworkController(val value: String = "")
+annotation class ForgeController(val value: String = "")

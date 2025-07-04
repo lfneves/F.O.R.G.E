@@ -1,6 +1,6 @@
 package com.forge.examples.basic
 
-import com.forge.core.WebFramework
+import com.forge.core.Forge
 
 data class User(val id: Int, val name: String, val email: String)
 
@@ -10,12 +10,12 @@ fun main() {
         User(2, "Jane Smith", "jane@example.com")
     )
     
-    WebFramework.create()
+    Forge.create()
         .before { ctx ->
             println("Request: ${ctx.req().method} ${ctx.req().requestURI}")
         }
         .get("/") { ctx ->
-            ctx.result("Hello, WebFramework!")
+            ctx.result("Hello, Forge!")
         }
         .get("/users") { ctx ->
             ctx.json(users)

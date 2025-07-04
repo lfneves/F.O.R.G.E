@@ -1,14 +1,14 @@
 package com.forge.spring.example
 
-import com.forge.spring.WebFrameworkProperties
+import com.forge.spring.ForgeProperties
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-@EnableConfigurationProperties(WebFrameworkProperties::class)
-class SpringBootWebFrameworkApplication
+@EnableConfigurationProperties(ForgeProperties::class)
+class SpringBootForgeApplication
 
 fun main(args: Array<String>) {
-    runApplication<SpringBootWebFrameworkApplication>(*args)
+    runApplication<SpringBootForgeApplication>(*args)
 }

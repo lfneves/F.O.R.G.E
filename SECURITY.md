@@ -32,7 +32,7 @@ We take security seriously. If you discover a security vulnerability, please rep
 
 ## Security Features
 
-WebFramework includes comprehensive security features:
+Forge includes comprehensive security features:
 - Authentication and authorization
 - JWT token management
 - Input validation and sanitization
@@ -43,7 +43,7 @@ WebFramework includes comprehensive security features:
 
 ## Security Best Practices
 
-When using WebFramework:
+When using Forge:
 - Keep dependencies updated
 - Use strong JWT secrets in production
 - Configure HTTPS in production
@@ -52,4 +52,4 @@ When using WebFramework:
 - Use rate limiting appropriately
 - Monitor security logs
 
-Thank you for helping keep WebFramework secure!
+Thank you for helping keep Forge secure!

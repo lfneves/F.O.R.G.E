@@ -67,7 +67,7 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 
 // Configure Spring Boot plugin
 springBoot {
-    mainClass.set("com.forge.spring.example.SpringBootWebFrameworkApplicationKt")
+    mainClass.set("com.forge.spring.example.SpringBootForgeApplicationKt")
 }
 
 tasks.test {

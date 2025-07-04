@@ -1,7 +1,7 @@
 package com.forge.security
 
 import com.forge.core.Context
-import com.forge.core.WebFramework
+import com.forge.core.Forge
 import org.junit.jupiter.api.*
 import org.junit.jupiter.api.Assertions.*
 import java.time.Duration
@@ -17,18 +17,18 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 
 /**
- * Basic security testing suite for the WebFramework security features
+ * Basic security testing suite for the Forge security features
  * This is a simplified version that tests basic functionality without complex security implementations
  */
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class SecurityTestSuite {
     
-    private lateinit var framework: WebFramework
+    private lateinit var framework: Forge
     private val objectMapper = ObjectMapper().registerKotlinModule()
     
     @BeforeAll
     fun setup() {
-        framework = WebFramework.create()
+        framework = Forge.create()
     }
     
     @AfterAll
@@ -192,14 +192,14 @@ class SecurityTestSuite {
         @Test
         @DisplayName("Should create framework instance")
         fun testFrameworkCreation() {
-            val testFramework = WebFramework.create()
+            val testFramework = Forge.create()
             assertNotNull(testFramework)
         }
         
         @Test
         @DisplayName("Should register routes")
         fun testRouteRegistration() {
-            val testFramework = WebFramework.create()
+            val testFramework = Forge.create()
             
             assertDoesNotThrow {
                 testFramework.get("/test") { ctx ->
@@ -211,7 +211,7 @@ class SecurityTestSuite {
         @Test
         @DisplayName("Should register middleware")
         fun testMiddlewareRegistration() {
-            val testFramework = WebFramework.create()
+            val testFramework = Forge.create()
             
             assertDoesNotThrow {
                 testFramework.before { ctx ->
@@ -223,7 +223,7 @@ class SecurityTestSuite {
         @Test
         @DisplayName("Should register exception handlers")
         fun testExceptionHandlerRegistration() {
-            val testFramework = WebFramework.create()
+            val testFramework = Forge.create()
             
             assertDoesNotThrow {
                 testFramework.exception(RuntimeException::class.java) { ex, ctx ->

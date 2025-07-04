@@ -1,6 +1,6 @@
 package com.forge.spring
 
-import com.forge.core.WebFramework
+import com.forge.core.Forge
 import com.forge.config.VirtualThreadConfig
 import org.slf4j.LoggerFactory
 import org.springframework.boot.autoconfigure.AutoConfiguration
@@ -12,14 +12,14 @@ import org.springframework.context.annotation.ComponentScan
 import org.springframework.context.annotation.Configuration
 
 @AutoConfiguration
-@ConditionalOnClass(WebFramework::class)
-@EnableConfigurationProperties(WebFrameworkProperties::class)
+@ConditionalOnClass(Forge::class)
+@EnableConfigurationProperties(ForgeProperties::class)
 @ComponentScan(basePackages = ["com.forge.spring"])
-class WebFrameworkAutoConfiguration(
-    private val properties: WebFrameworkProperties
+class ForgeAutoConfiguration(
+    private val properties: ForgeProperties
 ) {
     
-    private val logger = LoggerFactory.getLogger(WebFrameworkAutoConfiguration::class.java)
+    private val logger = LoggerFactory.getLogger(ForgeAutoConfiguration::class.java)
     
     @Bean
     @ConditionalOnMissingBean
@@ -30,18 +30,18 @@ class WebFrameworkAutoConfiguration(
     
     @Bean
     @ConditionalOnMissingBean
-    fun webFramework(virtualThreadConfig: VirtualThreadConfig): WebFramework {
-        logger.info("Creating WebFramework with port: ${properties.port}, context path: ${properties.contextPath}")
-        return WebFramework.create(virtualThreadConfig)
+    fun forge(virtualThreadConfig: VirtualThreadConfig): Forge {
+        logger.info("Creating Forge with port: ${properties.port}, context path: ${properties.contextPath}")
+        return Forge.create(virtualThreadConfig)
     }
     
     @Bean
-    fun webFrameworkStarter(webFramework: WebFramework): WebFrameworkStarter {
-        return WebFrameworkStarter(webFramework, properties)
+    fun forgeStarter(forge: Forge): ForgeStarter {
+        return ForgeStarter(forge, properties)
     }
     
     @Bean
-    fun webFrameworkControllerProcessor(webFramework: WebFramework, applicationContext: org.springframework.context.ApplicationContext): WebFrameworkControllerProcessor {
-        return WebFrameworkControllerProcessor(webFramework, applicationContext)
+    fun forgeControllerProcessor(forge: Forge, applicationContext: org.springframework.context.ApplicationContext): ForgeControllerProcessor {
+        return ForgeControllerProcessor(forge, applicationContext)
     }
 }

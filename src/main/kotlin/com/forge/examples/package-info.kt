@@ -1,5 +1,5 @@
 /**
- * Example applications demonstrating WebFramework features and capabilities.
+ * Example applications demonstrating Forge features and capabilities.
  * 
  * This package contains comprehensive examples:
  * 

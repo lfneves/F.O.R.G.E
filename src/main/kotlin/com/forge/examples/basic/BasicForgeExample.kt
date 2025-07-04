@@ -1,13 +1,13 @@
 package com.forge.examples.basic
 
-import com.forge.core.WebFramework
+import com.forge.core.Forge
 import com.forge.config.VirtualThreadConfig
 
 fun main() {
-    val framework = WebFramework.create()
+    val framework = Forge.create()
     
     framework.get("/") { ctx ->
-        ctx.json(mapOf("message" to "Hello, WebFramework!"))
+        ctx.json(mapOf("message" to "Hello, Forge!"))
     }
     
     framework.get("/hello/:name") { ctx ->
@@ -20,7 +20,7 @@ fun main() {
         ctx.json(mapOf("echo" to message))
     }
     
-    println("Starting basic WebFramework example on port 8080...")
+    println("Starting basic Forge example on port 8080...")
     println("Try: http://localhost:8080/")
     println("Try: http://localhost:8080/hello/John")
     println("Try: http://localhost:8080/echo?message=Hello%20World")

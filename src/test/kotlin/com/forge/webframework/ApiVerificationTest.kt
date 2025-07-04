@@ -1,6 +1,6 @@
 package com.forge
 
-import com.forge.core.WebFramework
+import com.forge.core.Forge
 import com.forge.config.VirtualThreadConfig
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.DisplayName
@@ -29,7 +29,7 @@ fun isVirtualThread(thread: Thread): Boolean {
 @DisplayName("API Verification and End-to-End Tests")
 class ApiVerificationTest {
     
-    private lateinit var framework: WebFramework
+    private lateinit var framework: Forge
     private val testPort = 8083
     private val baseUrl = "http://localhost:$testPort"
     private val httpClient = HttpClient.newBuilder()
@@ -38,7 +38,7 @@ class ApiVerificationTest {
     
     @BeforeEach
     fun setUp() {
-        framework = WebFramework.create()
+        framework = Forge.create()
     }
     
     @AfterEach
@@ -343,7 +343,7 @@ class ApiVerificationTest {
                 .enableMetrics(true)
                 .build()
             
-            val customFramework = WebFramework.create(customConfig)
+            val customFramework = Forge.create(customConfig)
             
             customFramework.get("/config-test") { ctx ->
                 ctx.json(mapOf(
@@ -378,7 +378,7 @@ class ApiVerificationTest {
         @DisplayName("Should work with disabled virtual threads")
         fun shouldWorkWithDisabledVirtualThreads() {
             val disabledConfig = VirtualThreadConfig.disabled()
-            val traditionalFramework = WebFramework.create(disabledConfig)
+            val traditionalFramework = Forge.create(disabledConfig)
             
             traditionalFramework.get("/traditional-test") { ctx ->
                 ctx.json(mapOf(

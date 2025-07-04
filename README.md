@@ -128,10 +128,10 @@ Direct JAR downloads available from [GitHub Releases](https://github.com/lfneves
 ### Basic Usage
 
 ```kotlin
-import com.forge.core.WebFramework
+import com.forge.core.Forge
 
 fun main() {
-    val framework = WebFramework.create()
+    val framework = Forge.create()
     
     framework.get("/") { ctx ->
         ctx.json(mapOf("message" to "Hello, World!"))
@@ -152,7 +152,7 @@ fun main() {
 @SpringBootApplication
 class MyApplication
 
-@WebFrameworkController
+@ForgeController
 class ApiController {
     @GetMapping("/api/users")
     fun getUsers(ctx: Context) {
@@ -167,7 +167,7 @@ fun main(args: Array<String>) {
 
 ## Security Features
 
-WebFramework provides enterprise-grade security features out of the box:
+FORGE provides enterprise-grade security features out of the box:
 
 ### 🔐 Authentication & Authorization
 - **Multiple Authentication Providers**: In-memory, JWT tokens, API keys, custom providers
@@ -202,7 +202,7 @@ WebFramework provides enterprise-grade security features out of the box:
 
 ```kotlin
 // Quick security setup
-val framework = WebFramework.create()
+val framework = Forge.create()
     .enableSecurity {
         // Authentication
         addAuthenticationProvider(InMemoryAuthenticationProvider().apply {
@@ -245,7 +245,7 @@ val framework = WebFramework.create()
 ```
 src/main/kotlin/com/forge/
 ├── core/                           # Core framework components
-│   ├── WebFramework.kt            # Main framework class
+│   ├── Forge.kt                  # Main framework class
 │   └── Context.kt                 # Request/Response context
 ├── routing/                        # Routing system
 │   ├── Handler.kt                 # Request handler interface
@@ -264,8 +264,8 @@ src/main/kotlin/com/forge/
 │   ├── RequestValidation.kt       # Input validation and sanitization
 │   └── SecurityHeaders.kt         # Security headers and HTTPS
 ├── spring/                         # Spring Boot integration
-│   ├── WebFrameworkAutoConfiguration.kt
-│   ├── WebFrameworkProperties.kt
+│   ├── ForgeAutoConfiguration.kt
+│   ├── ForgeProperties.kt
 │   ├── annotations/               # Spring-style annotations
 │   └── example/                   # Spring Boot examples
 └── examples/                       # Framework examples
@@ -277,7 +277,7 @@ src/main/kotlin/com/forge/
 
 ## Virtual Threads Configuration
 
-WebFramework is built natively for JDK 21 virtual threads, providing optimal performance and scalability.
+FORGE is built natively for JDK 21 virtual threads, providing optimal performance and scalability.
 
 ### Programmatic Configuration
 
@@ -289,7 +289,7 @@ val config = VirtualThreadConfig.builder()
     .shutdownTimeoutMs(10000)
     .build()
 
-val framework = WebFramework.create(config)
+val framework = Forge.create(config)
 ```
 
 ### Spring Boot Configuration (application.yml)
@@ -323,7 +323,7 @@ forge:
 ### Annotations
 
 ```kotlin
-@WebFrameworkController
+@ForgeController
 class UserController(private val userService: UserService) {
     
     @GetMapping("/users")
@@ -343,7 +343,7 @@ class UserController(private val userService: UserService) {
 
 ## API Reference
 
-### WebFramework
+### Forge
 
 | Method | Description |
 |--------|-------------|
@@ -375,7 +375,7 @@ class UserController(private val userService: UserService) {
 
 | Annotation | Description |
 |------------|-------------|
-| `@WebFrameworkController` | Mark class as controller |
+| `@ForgeController` | Mark class as controller |
 | `@GetMapping(path)` | Handle GET requests |
 | `@PostMapping(path)` | Handle POST requests |
 | `@PutMapping(path)` | Handle PUT requests |
@@ -460,7 +460,7 @@ fun main() {
     val users = mutableListOf<User>()
     var nextId = 1
     
-    WebFramework.create()
+    Forge.create()
         .before { ctx ->
             ctx.header("X-API-Version", "1.0")
         }
@@ -498,7 +498,7 @@ fun main() {
 @Test
 fun `should handle complete CRUD operations`() {
     // Framework automatically uses virtual threads for high concurrency
-    val framework = WebFramework.create()
+    val framework = Forge.create()
     
     // Setup your routes
     framework.get("/test") { ctx ->
@@ -536,7 +536,7 @@ val jwtConfig = jwtConfig {
     expirationMinutes(60)
 }
 
-val framework = WebFramework.create()
+val framework = Forge.create()
 
 // Login endpoint
 framework.post("/auth/login") { ctx ->
@@ -578,7 +578,7 @@ framework.get("/api/profile") { ctx ->
 
 ```kotlin
 // Configure security with role-based access
-val framework = WebFramework.create()
+val framework = Forge.create()
     .before(securityConfig {
         addAuthenticationProvider(InMemoryAuthenticationProvider().apply {
             addUser("admin", "admin123", roles = setOf("ADMIN"))
@@ -612,7 +612,7 @@ framework.get("/api/data") { ctx ->
 
 ```kotlin
 // Different rate limiting strategies
-val framework = WebFramework.create()
+val framework = Forge.create()
 
 // Fixed window rate limiting (100 requests per minute)
 framework.before("/api/public/*", RateLimitingMiddleware(
@@ -658,7 +658,7 @@ val prodCorsConfig = corsConfig {
     maxAge(86400) // 24 hours
 }
 
-val framework = WebFramework.create()
+val framework = Forge.create()
     .before(CORSMiddleware(if (isDevelopment) devCorsConfig else prodCorsConfig))
 ```
 
@@ -684,7 +684,7 @@ val securityConfig = securityHeadersConfig {
     addCustomHeader("X-API-Version", "1.0")
 }
 
-val framework = WebFramework.create()
+val framework = Forge.create()
     .before(SecurityHeadersMiddleware(securityConfig))
 ```
 
@@ -723,14 +723,14 @@ val validationConfig = requestValidationConfig {
     }
 }
 
-val framework = WebFramework.create()
+val framework = Forge.create()
     .before(RequestValidationMiddleware(validationConfig))
 ```
 
 ### Complete Security Setup
 
 ```kotlin
-fun createSecureFramework(): WebFramework {
+fun createSecureFramework(): Forge {
     // JWT Configuration
     val jwtConfig = jwtConfig {
         secret(System.getenv("JWT_SECRET") ?: "fallback-secret-key")
@@ -758,7 +758,7 @@ fun createSecureFramework(): WebFramework {
         SessionCredentialsExtractor()
     )
     
-    return WebFramework.create()
+    return Forge.create()
         // Security headers (first)
         .before(SecurityHeadersMiddleware(SecurityHeadersPresets.strict()))
         
@@ -866,7 +866,7 @@ Memory Usage (1,000 threads):
 
 ```bash
 # Basic example
-./gradlew run -PmainClass=com.forge.examples.basic.BasicWebFrameworkExample
+./gradlew run -PmainClass=com.forge.examples.basic.BasicForgeExample
 
 # Virtual threads example
 ./gradlew run -PmainClass=com.forge.examples.virtualthreads.VirtualThreadExample
@@ -882,7 +882,7 @@ Memory Usage (1,000 threads):
 ./gradlew test
 
 # Run specific test categories
-./gradlew test --tests "*WebFrameworkTest*"     # Core API tests
+./gradlew test --tests "*ForgeTest*"          # Core API tests
 ./gradlew test --tests "*VirtualThread*"        # Virtual threads tests
 ./gradlew test --tests "*SpringBoot*"           # Spring Boot integration tests
 ./gradlew test --tests "*Security*"             # Security framework tests
@@ -1025,7 +1025,7 @@ git checkout v1.0.0
 java -jar forge-1.0.0.jar --version
 
 # Run examples
-java -cp forge-1.0.0.jar com.forge.examples.basic.BasicWebFrameworkExample
+java -cp forge-1.0.0.jar com.forge.examples.basic.BasicForgeExample
 ```
 
 ### Next Steps & Upcoming Releases

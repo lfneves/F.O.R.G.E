@@ -1,6 +1,6 @@
 package com.forge.examples.config
 
-import com.forge.core.WebFramework
+import com.forge.core.Forge
 import com.forge.config.VirtualThreadConfig
 
 // Helper function to check if thread is virtual using reflection
@@ -20,7 +20,7 @@ fun main() {
         .shutdownTimeoutMs(10000)
         .build()
     
-    val framework = WebFramework.create(customConfig)
+    val framework = Forge.create(customConfig)
     
     framework.get("/config-example") { ctx ->
         ctx.json(mapOf(
@@ -34,7 +34,7 @@ fun main() {
     }
     
     val disabledConfig = VirtualThreadConfig.disabled()
-    val traditionalFramework = WebFramework.create(disabledConfig)
+    val traditionalFramework = Forge.create(disabledConfig)
     
     traditionalFramework.get("/traditional") { ctx ->
         ctx.json(mapOf(

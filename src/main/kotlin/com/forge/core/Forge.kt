@@ -14,11 +14,11 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import org.slf4j.LoggerFactory
 
-class WebFramework private constructor(
+class Forge private constructor(
     private val virtualThreadConfig: VirtualThreadConfig = VirtualThreadConfig.default()
 ) {
     
-    private val logger = LoggerFactory.getLogger(WebFramework::class.java)
+    private val logger = LoggerFactory.getLogger(Forge::class.java)
     private val routes = mutableListOf<Route>()
     private val beforeHandlers = mutableListOf<Handler>()
     private val afterHandlers = mutableListOf<Handler>()
@@ -30,52 +30,52 @@ class WebFramework private constructor(
     } else null
     
     companion object {
-        fun create(): WebFramework = WebFramework()
+        fun create(): Forge = Forge()
         
-        fun create(config: VirtualThreadConfig): WebFramework = WebFramework(config)
+        fun create(config: VirtualThreadConfig): Forge = Forge(config)
     }
     
-    fun get(path: String, handler: Handler): WebFramework {
+    fun get(path: String, handler: Handler): Forge {
         routes.add(Route("GET", path, handler))
         return this
     }
     
-    fun post(path: String, handler: Handler): WebFramework {
+    fun post(path: String, handler: Handler): Forge {
         routes.add(Route("POST", path, handler))
         return this
     }
     
-    fun put(path: String, handler: Handler): WebFramework {
+    fun put(path: String, handler: Handler): Forge {
         routes.add(Route("PUT", path, handler))
         return this
     }
     
-    fun delete(path: String, handler: Handler): WebFramework {
+    fun delete(path: String, handler: Handler): Forge {
         routes.add(Route("DELETE", path, handler))
         return this
     }
     
-    fun patch(path: String, handler: Handler): WebFramework {
+    fun patch(path: String, handler: Handler): Forge {
         routes.add(Route("PATCH", path, handler))
         return this
     }
     
-    fun before(handler: Handler): WebFramework {
+    fun before(handler: Handler): Forge {
         beforeHandlers.add(handler)
         return this
     }
     
-    fun after(handler: Handler): WebFramework {
+    fun after(handler: Handler): Forge {
         afterHandlers.add(handler)
         return this
     }
     
-    fun exception(exceptionClass: Class<out Exception>, handler: (Exception, Context) -> Unit): WebFramework {
+    fun exception(exceptionClass: Class<out Exception>, handler: (Exception, Context) -> Unit): Forge {
         exceptionHandlers[exceptionClass] = handler
         return this
     }
     
-    fun start(port: Int = 8080): WebFramework {
+    fun start(port: Int = 8080): Forge {
         server = Server(port)
         
         val context = ServletContextHandler(ServletContextHandler.SESSIONS)

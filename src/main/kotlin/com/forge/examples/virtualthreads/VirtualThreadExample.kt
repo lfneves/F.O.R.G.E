@@ -1,6 +1,6 @@
 package com.forge.examples.virtualthreads
 
-import com.forge.core.WebFramework
+import com.forge.core.Forge
 import com.forge.config.VirtualThreadConfig
 import java.time.LocalDateTime
 import java.util.concurrent.CompletableFuture
@@ -22,10 +22,10 @@ fun main() {
         .enableMetrics(true)
         .build()
     
-    val framework = WebFramework.create(config)
+    val framework = Forge.create(config)
     
     framework.get("/") { ctx ->
-        ctx.json(mapOf("message" to "Virtual Threads Web Framework", "timestamp" to LocalDateTime.now()))
+        ctx.json(mapOf("message" to "Virtual Threads Forge Framework", "timestamp" to LocalDateTime.now()))
     }
     
     framework.get("/sleep/:seconds") { ctx ->
@@ -144,7 +144,7 @@ fun main() {
         ))
     }
     
-    println("Starting Virtual Threads Web Framework on port 8080...")
+    println("Starting Virtual Threads Forge Framework on port 8080...")
     println("Try these endpoints:")
     println("  GET /                           - Basic info")
     println("  GET /sleep/3                    - Sleep for 3 seconds")

@@ -1,8 +1,8 @@
 package com.forge.spring
 
-import com.forge.core.WebFramework
+import com.forge.core.Forge
 import com.forge.config.VirtualThreadConfig
-import com.forge.spring.example.SpringBootWebFrameworkApplication
+import com.forge.spring.example.SpringBootForgeApplication
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Nested
@@ -23,15 +23,15 @@ import java.net.URI
 import java.time.Duration
 
 @SpringBootTest(
-    classes = [SpringBootWebFrameworkApplication::class],
+    classes = [SpringBootForgeApplication::class],
     webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT
 )
 @ActiveProfiles("test")
 @TestPropertySource(properties = [
-    "webframework.port=8082",
-    "webframework.virtual-threads.enabled=true",
-    "webframework.virtual-threads.thread-name-prefix=test-vt",
-    "webframework.virtual-threads.enable-metrics=true"
+    "forge.port=8082",
+    "forge.virtual-threads.enabled=true",
+    "forge.virtual-threads.thread-name-prefix=test-vt",
+    "forge.virtual-threads.enable-metrics=true"
 ])
 @DisplayName("Spring Boot Integration Tests")
 class SpringBootIntegrationTest {
@@ -59,11 +59,11 @@ class SpringBootIntegrationTest {
         }
         
         @Test
-        @DisplayName("Should auto-configure WebFramework bean")
-        fun shouldAutoConfigureWebFrameworkBean() {
-            assertTrue(applicationContext.containsBean("webFramework"))
-            val webFramework = applicationContext.getBean("webFramework", WebFramework::class.java)
-            assertNotNull(webFramework)
+        @DisplayName("Should auto-configure Forge bean")
+        fun shouldAutoConfigureForgeBean() {
+            assertTrue(applicationContext.containsBean("forge"))
+            val forge = applicationContext.getBean("forge", Forge::class.java)
+            assertNotNull(forge)
         }
         
         @Test
@@ -78,16 +78,16 @@ class SpringBootIntegrationTest {
         }
         
         @Test
-        @DisplayName("Should load WebFramework properties correctly")
-        fun shouldLoadWebFrameworkPropertiesCorrectly() {
-            // Check if WebFrameworkProperties bean exists
-            if (applicationContext.containsBean("webFrameworkProperties")) {
-                val webFrameworkProperties = applicationContext.getBean("webFrameworkProperties", WebFrameworkProperties::class.java)
-                assertNotNull(webFrameworkProperties)
-                assertEquals(8082, webFrameworkProperties.port)
-                assertTrue(webFrameworkProperties.virtualThreads.enabled)
-                assertEquals("test-vt", webFrameworkProperties.virtualThreads.threadNamePrefix)
-                assertTrue(webFrameworkProperties.virtualThreads.enableMetrics)
+        @DisplayName("Should load Forge properties correctly")
+        fun shouldLoadForgePropertiesCorrectly() {
+            // Check if ForgeProperties bean exists
+            if (applicationContext.containsBean("forgeProperties")) {
+                val forgeProperties = applicationContext.getBean("forgeProperties", ForgeProperties::class.java)
+                assertNotNull(forgeProperties)
+                assertEquals(8082, forgeProperties.port)
+                assertTrue(forgeProperties.virtualThreads.enabled)
+                assertEquals("test-vt", forgeProperties.virtualThreads.threadNamePrefix)
+                assertTrue(forgeProperties.virtualThreads.enableMetrics)
             } else {
                 // Properties might be configured differently, just verify context loaded
                 assertTrue(applicationContext.beanDefinitionCount > 0)
@@ -95,18 +95,18 @@ class SpringBootIntegrationTest {
         }
         
         @Test
-        @DisplayName("Should auto-configure WebFrameworkStarter bean")
-        fun shouldAutoConfigureWebFrameworkStarterBean() {
-            assertTrue(applicationContext.containsBean("webFrameworkStarter"))
-            val starter = applicationContext.getBean("webFrameworkStarter", WebFrameworkStarter::class.java)
+        @DisplayName("Should auto-configure ForgeStarter bean")
+        fun shouldAutoConfigureForgeStarterBean() {
+            assertTrue(applicationContext.containsBean("forgeStarter"))
+            val starter = applicationContext.getBean("forgeStarter", ForgeStarter::class.java)
             assertNotNull(starter)
         }
         
         @Test
-        @DisplayName("Should auto-configure WebFrameworkControllerProcessor bean")
-        fun shouldAutoConfigureWebFrameworkControllerProcessorBean() {
-            assertTrue(applicationContext.containsBean("webFrameworkControllerProcessor"))
-            val processor = applicationContext.getBean("webFrameworkControllerProcessor", WebFrameworkControllerProcessor::class.java)
+        @DisplayName("Should auto-configure ForgeControllerProcessor bean")
+        fun shouldAutoConfigureForgeControllerProcessorBean() {
+            assertTrue(applicationContext.containsBean("forgeControllerProcessor"))
+            val processor = applicationContext.getBean("forgeControllerProcessor", ForgeControllerProcessor::class.java)
             assertNotNull(processor)
         }
     }
@@ -116,9 +116,9 @@ class SpringBootIntegrationTest {
     inner class AnnotationProcessing {
         
         @Test
-        @DisplayName("Should detect WebFrameworkController beans")
-        fun shouldDetectWebFrameworkControllerBeans() {
-            val controllersMap = applicationContext.getBeansWithAnnotation(com.forge.spring.annotations.WebFrameworkController::class.java)
+        @DisplayName("Should detect ForgeController beans")
+        fun shouldDetectForgeControllerBeans() {
+            val controllersMap = applicationContext.getBeansWithAnnotation(com.forge.spring.annotations.ForgeController::class.java)
             assertTrue(controllersMap.isNotEmpty())
             assertTrue(controllersMap.containsKey("exampleController"))
         }
@@ -126,10 +126,10 @@ class SpringBootIntegrationTest {
         @Test
         @DisplayName("Should process route annotations correctly")
         fun shouldProcessRouteAnnotationsCorrectly() {
-            // This test verifies that the WebFrameworkControllerProcessor
+            // This test verifies that the ForgeControllerProcessor
             // correctly processes the annotations and registers routes
-            val webFramework = applicationContext.getBean("webFramework", WebFramework::class.java)
-            assertNotNull(webFramework)
+            val forge = applicationContext.getBean("forge", Forge::class.java)
+            assertNotNull(forge)
             // Route registration happens during application startup
         }
     }
@@ -149,15 +149,15 @@ class SpringBootIntegrationTest {
         }
         
         @Test
-        @DisplayName("Should handle Spring Boot endpoints via WebFramework")
-        fun shouldHandleSpringBootEndpointsViaWebFramework() {
+        @DisplayName("Should handle Spring Boot endpoints via Forge")
+        fun shouldHandleSpringBootEndpointsViaForge() {
             // Give the server time to start
             Thread.sleep(2000)
             
             val response = makeRequest("/spring-boot")
             
             assertEquals(200, response.statusCode())
-            assertTrue(response.body().contains("Welcome to WebFramework with Spring Boot"))
+            assertTrue(response.body().contains("Welcome to Forge with Spring Boot"))
         }
         
         @Test
@@ -203,8 +203,8 @@ class SpringBootIntegrationTest {
     inner class DependencyInjection {
         
         @Test
-        @DisplayName("Should inject dependencies into WebFramework controllers")
-        fun shouldInjectDependenciesIntoWebFrameworkControllers() {
+        @DisplayName("Should inject dependencies into Forge controllers")
+        fun shouldInjectDependenciesIntoForgeControllers() {
             val exampleController = applicationContext.getBean("exampleController")
             assertNotNull(exampleController)
             
@@ -242,15 +242,15 @@ class SpringBootIntegrationTest {
         }
         
         @Test
-        @DisplayName("Should validate WebFramework properties")
-        fun shouldValidateWebFrameworkProperties() {
-            // Check if WebFrameworkProperties bean exists
-            if (applicationContext.containsBean("webFrameworkProperties")) {
-                val webFrameworkProperties = applicationContext.getBean("webFrameworkProperties", WebFrameworkProperties::class.java)
-                assertEquals(8082, webFrameworkProperties.port)
-                assertEquals("/", webFrameworkProperties.contextPath)
+        @DisplayName("Should validate Forge properties")
+        fun shouldValidateForgeProperties() {
+            // Check if ForgeProperties bean exists
+            if (applicationContext.containsBean("forgeProperties")) {
+                val forgeProperties = applicationContext.getBean("forgeProperties", ForgeProperties::class.java)
+                assertEquals(8082, forgeProperties.port)
+                assertEquals("/", forgeProperties.contextPath)
                 
-                val vtProps = webFrameworkProperties.virtualThreads
+                val vtProps = forgeProperties.virtualThreads
                 assertTrue(vtProps.enabled)
                 assertEquals("test-vt", vtProps.threadNamePrefix)
                 assertEquals(-1, vtProps.maxConcurrentTasks)
@@ -274,14 +274,14 @@ class SpringBootIntegrationTest {
         fun shouldWorkWithSpringBootProfiles() {
             val environment = applicationContext.environment
             assertTrue(environment.acceptsProfiles("test"))
-            assertEquals("test-vt", environment.getProperty("webframework.virtual-threads.thread-name-prefix"))
+            assertEquals("test-vt", environment.getProperty("forge.virtual-threads.thread-name-prefix"))
         }
         
         @Test
         @DisplayName("Should integrate with Spring Boot logging")
         fun shouldIntegrateWithSpringBootLogging() {
             // Verify that logging configuration is working
-            // This is mainly to ensure no conflicts between WebFramework and Spring Boot logging
+            // This is mainly to ensure no conflicts between Forge and Spring Boot logging
             assertDoesNotThrow {
                 val logger = org.slf4j.LoggerFactory.getLogger(this::class.java)
                 logger.info("Test log message from Spring Boot integration test")
@@ -308,9 +308,9 @@ class SpringBootIntegrationTest {
         @DisplayName("Should handle application shutdown gracefully")
         fun shouldHandleApplicationShutdownGracefully() {
             assertDoesNotThrow {
-                // This test verifies that the WebFrameworkStarter
+                // This test verifies that the ForgeStarter
                 // handles shutdown properly when the application context closes
-                val starter = applicationContext.getBean("webFrameworkStarter", WebFrameworkStarter::class.java)
+                val starter = applicationContext.getBean("forgeStarter", ForgeStarter::class.java)
                 assertNotNull(starter)
             }
         }

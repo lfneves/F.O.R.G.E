@@ -9,7 +9,7 @@
  * - Automatic startup and lifecycle management
  * 
  * Features:
- * - @WebFrameworkController annotation for marking FORGE controllers
+ * - @ForgeController annotation for marking FORGE controllers
  * - HTTP method annotations (@GetMapping, @PostMapping, etc.)
  * - Dependency injection support
  * - Environment-specific configuration profiles

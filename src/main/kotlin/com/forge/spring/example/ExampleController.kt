@@ -16,13 +16,13 @@ fun isVirtualThread(thread: Thread): Boolean {
     }
 }
 
-@WebFrameworkController
+@ForgeController
 class ExampleController(private val userService: UserService) {
     
     @GetMapping("/spring-boot")
     fun welcome(ctx: Context) {
         ctx.json(mapOf(
-            "message" to "Welcome to WebFramework with Spring Boot!",
+            "message" to "Welcome to Forge with Spring Boot!",
             "timestamp" to LocalDateTime.now(),
             "thread" to Thread.currentThread().toString(),
             "isVirtual" to isVirtualThread(Thread.currentThread())
@@ -93,7 +93,7 @@ class ExampleController(private val userService: UserService) {
         ctx.json(mapOf(
             "status" to "UP",
             "timestamp" to LocalDateTime.now(),
-            "framework" to "WebFramework with Spring Boot",
+            "framework" to "Forge with Spring Boot",
             "virtualThreads" to isVirtualThread(Thread.currentThread())
         ))
     }

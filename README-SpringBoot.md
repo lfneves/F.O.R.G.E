@@ -1,10 +1,10 @@
-# WebFramework Spring Boot Integration
+# Forge Spring Boot Integration
 
-This document describes how to use the WebFramework with Spring Boot integration.
+This document describes how to use the Forge with Spring Boot integration.
 
 ## Features
 
-- **Auto-configuration**: Automatic WebFramework setup with Spring Boot
+- **Auto-configuration**: Automatic Forge setup with Spring Boot
 - **Configuration Properties**: YAML/Properties based configuration
 - **Annotation-based Controllers**: Use familiar Spring-style annotations
 - **Dependency Injection**: Full Spring IoC container support
@@ -31,7 +31,7 @@ fun main(args: Array<String>) {
 ### 3. Create Controllers
 
 ```kotlin
-@WebFrameworkController
+@ForgeController
 class ApiController(private val userService: UserService) {
     
     @GetMapping("/api/users")
@@ -76,8 +76,8 @@ webframework:
 
 ## Annotations
 
-### @WebFrameworkController
-Marks a class as a WebFramework controller. Must be used with Spring's component scanning.
+### @ForgeController
+Marks a class as a Forge controller. Must be used with Spring's component scanning.
 
 ### HTTP Method Annotations
 - `@GetMapping(path)` - Handle GET requests
@@ -97,7 +97,7 @@ The framework supports Spring Boot profiles:
 ## Example Usage
 
 ```kotlin
-@WebFrameworkController
+@ForgeController
 class ProductController(
     private val productService: ProductService,
     private val logger: Logger

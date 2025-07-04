@@ -2,7 +2,7 @@ package com.forge.spring
 
 import com.forge.core.Context
 import com.forge.routing.Handler
-import com.forge.core.WebFramework
+import com.forge.core.Forge
 import com.forge.spring.annotations.*
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
@@ -16,19 +16,19 @@ import kotlin.reflect.full.functions
 import kotlin.reflect.jvm.javaMethod
 
 @Component
-class WebFrameworkControllerProcessor(
-    @Autowired private val webFramework: WebFramework,
+class ForgeControllerProcessor(
+    @Autowired private val forge: Forge,
     @Autowired private val applicationContext: ApplicationContext
 ) : ApplicationListener<ContextRefreshedEvent> {
     
-    private val logger = LoggerFactory.getLogger(WebFrameworkControllerProcessor::class.java)
+    private val logger = LoggerFactory.getLogger(ForgeControllerProcessor::class.java)
     
     override fun onApplicationEvent(event: ContextRefreshedEvent) {
         processControllers()
     }
     
     private fun processControllers() {
-        val controllers = applicationContext.getBeansWithAnnotation(WebFrameworkController::class.java)
+        val controllers = applicationContext.getBeansWithAnnotation(ForgeController::class.java)
         
         controllers.forEach { (beanName, controller) ->
             logger.info("Processing FORGE controller: $beanName")
@@ -87,11 +87,11 @@ class WebFrameworkControllerProcessor(
         }
         
         when (method) {
-            "GET" -> webFramework.get(path, handler)
-            "POST" -> webFramework.post(path, handler)
-            "PUT" -> webFramework.put(path, handler)
-            "DELETE" -> webFramework.delete(path, handler)
-            "PATCH" -> webFramework.patch(path, handler)
+            "GET" -> forge.get(path, handler)
+            "POST" -> forge.post(path, handler)
+            "PUT" -> forge.put(path, handler)
+            "DELETE" -> forge.delete(path, handler)
+            "PATCH" -> forge.patch(path, handler)
         }
     }
 }

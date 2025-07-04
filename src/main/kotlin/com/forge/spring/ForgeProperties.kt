@@ -3,15 +3,15 @@ package com.forge.spring
 import com.forge.config.VirtualThreadConfig
 import org.springframework.boot.context.properties.ConfigurationProperties
 
-@ConfigurationProperties(prefix = "webframework")
-data class WebFrameworkProperties(
+@ConfigurationProperties(prefix = "forge")
+data class ForgeProperties(
     var port: Int = 8080,
     var contextPath: String = "/",
     var virtualThreads: VirtualThreadProperties = VirtualThreadProperties()
 ) {
     data class VirtualThreadProperties(
         var enabled: Boolean = true,
-        var threadNamePrefix: String = "vt-webframework",
+        var threadNamePrefix: String = "vt-forge",
         var maxConcurrentTasks: Int = -1,
         var enableMetrics: Boolean = false,
         var shutdownTimeoutMs: Long = 5000

@@ -1,6 +1,6 @@
-# Contributing to WebFramework
+# Contributing to Forge
 
-Thank you for your interest in contributing to WebFramework! This document provides guidelines and information for contributors.
+Thank you for your interest in contributing to Forge! This document provides guidelines and information for contributors.
 
 ## Table of Contents
 - [Code of Conduct](#code-of-conduct)
@@ -309,4 +309,4 @@ If you need help:
 3. Ask in [GitHub Discussions](../../discussions)
 4. Create a question issue with our template
 
-Thank you for contributing to WebFramework! 🚀
+Thank you for contributing to Forge! 🚀

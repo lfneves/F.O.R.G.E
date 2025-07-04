@@ -1,6 +1,6 @@
 package com.forge.spring
 
-import com.forge.core.WebFramework
+import com.forge.core.Forge
 import org.slf4j.LoggerFactory
 import org.springframework.context.ApplicationListener
 import org.springframework.context.event.ContextRefreshedEvent
@@ -8,26 +8,26 @@ import org.springframework.stereotype.Component
 import jakarta.annotation.PreDestroy
 
 @Component
-class WebFrameworkStarter(
-    private val webFramework: WebFramework,
-    private val properties: WebFrameworkProperties
+class ForgeStarter(
+    private val forge: Forge,
+    private val properties: ForgeProperties
 ) : ApplicationListener<ContextRefreshedEvent> {
     
-    private val logger = LoggerFactory.getLogger(WebFrameworkStarter::class.java)
+    private val logger = LoggerFactory.getLogger(ForgeStarter::class.java)
     private var started = false
     
     override fun onApplicationEvent(event: ContextRefreshedEvent) {
         if (!started) {
-            startWebFramework()
+            startForge()
             started = true
         }
     }
     
-    private fun startWebFramework() {
+    private fun startForge() {
         try {
             logger.info("Starting FORGE on port ${properties.port}")
             Thread {
-                webFramework.start(properties.port)
+                forge.start(properties.port)
             }.start()
         } catch (e: Exception) {
             logger.error("Failed to start FORGE", e)
@@ -36,10 +36,10 @@ class WebFrameworkStarter(
     }
     
     @PreDestroy
-    fun stopWebFramework() {
+    fun stopForge() {
         if (started) {
             logger.info("Stopping FORGE")
-            webFramework.stop()
+            forge.stop()
         }
     }
 }
