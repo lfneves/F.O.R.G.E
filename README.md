@@ -14,23 +14,23 @@ A high-performance, enterprise-ready web framework for Kotlin/Java built on JDK 
 
 *"In the FORGE of innovation, performance meets reliability."*
 
-[![Build Status](https://github.com/lfneves/forge/workflows/CI%2FCD%20Pipeline/badge.svg)](https://github.com/lfneves/forge/actions)
-[![Security Framework](https://img.shields.io/badge/Security%20Framework-Implemented-green)](https://github.com/lfneves/forge#security-features)
-[![Security Tests](https://img.shields.io/badge/Security%20Tests-Enabled-green)](https://github.com/lfneves/forge/actions)
-[![Security Checks](https://github.com/lfneves/forge/workflows/Security%20Checks/badge.svg)](https://github.com/lfneves/forge/actions)
+[![Build Status](https://github.com/lfneves/F.O.R.G.E/workflows/CI%2FCD%20Pipeline/badge.svg)](https://github.com/lfneves/F.O.R.G.E/actions)
+[![Security Framework](https://img.shields.io/badge/Security%20Framework-Implemented-green)](https://github.com/lfneves/F.O.R.G.E#security-features)
+[![Security Tests](https://img.shields.io/badge/Security%20Tests-Enabled-green)](https://github.com/lfneves/F.O.R.G.E/actions)
+[![Security Checks](https://github.com/lfneves/F.O.R.G.E/workflows/Security%20Checks/badge.svg)](https://github.com/lfneves/F.O.R.G.E/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![JDK Version](https://img.shields.io/badge/JDK-21%2B-orange)](https://openjdk.org/projects/jdk/21/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2.1-green)](https://spring.io/projects/spring-boot)
-[![Version](https://img.shields.io/badge/version-1.0.0-blue)](https://github.com/lfneves/forge/releases)
-[![Release](https://img.shields.io/github/v/release/lfneves/forge)](https://github.com/lfneves/forge/releases)
-[![Downloads](https://img.shields.io/github/downloads/lfneves/forge/total)](https://github.com/lfneves/forge/releases)
+[![Version](https://img.shields.io/badge/version-1.0.0-blue)](https://github.com/lfneves/F.O.R.G.E/releases)
+[![Release](https://img.shields.io/github/v/release/lfneves/forge)](https://github.com/lfneves/F.O.R.G.E/releases)
+[![Downloads](https://img.shields.io/github/downloads/lfneves/forge/total)](https://github.com/lfneves/F.O.R.G.E/releases)
 [![Virtual Threads](https://img.shields.io/badge/Virtual%20Threads-JDK%2021-brightgreen)](https://openjdk.org/jeps/444)
 
 > **⚡ Performance Notice**: Virtual Threads are **only available with JDK 21+**. Framework is compatible with JDK 17+ but uses platform threads (reduced performance) on JDK 17-20.
 
 ## 🔥 Latest Release: v1.0.0 - **F.O.R.G.E**
 
-**Initial FORGE Release & JDK 21 Native Virtual Threads** - [Download Now](https://github.com/lfneves/forge/releases/latest) | [Release Notes](https://github.com/lfneves/forge/releases/tag/v1.0.0) | [Changelog](CHANGELOG.md)
+**Initial FORGE Release & JDK 21 Native Virtual Threads** - [Download Now](https://github.com/lfneves/F.O.R.G.E/releases/latest) | [Release Notes](https://github.com/lfneves/F.O.R.G.E/releases/tag/v1.0.0) | [Changelog](CHANGELOG.md)
 
 ## Current Status
 
@@ -117,7 +117,7 @@ Add to your `pom.xml`:
 
 ### Download
 
-Direct JAR downloads available from [GitHub Releases](https://github.com/lfneves/forge/releases):
+Direct JAR downloads available from [GitHub Releases](https://github.com/lfneves/F.O.R.G.E/releases):
 
 - **Main JAR**: `forge-1.0.0.jar`
 - **Sources JAR**: `forge-1.0.0-sources.jar`
@@ -998,9 +998,9 @@ FORGE is built specifically for JDK 21 and leverages virtual threads for maximum
 
 | Artifact | Size | Download |
 |----------|------|----------|
-| Main JAR | ~2.5MB | [forge-1.0.0.jar](https://github.com/lfneves/forge/releases/download/v1.0.0/forge-1.0.0.jar) |
-| Sources JAR | ~800KB | [forge-1.0.0-sources.jar](https://github.com/lfneves/forge/releases/download/v1.0.0/forge-1.0.0-sources.jar) |
-| Javadoc JAR | ~1.2MB | [forge-1.0.0-javadoc.jar](https://github.com/lfneves/forge/releases/download/v1.0.0/forge-1.0.0-javadoc.jar) |
+| Main JAR | ~2.5MB | [forge-1.0.0.jar](https://github.com/lfneves/F.O.R.G.E/releases/download/v1.0.0/forge-1.0.0.jar) |
+| Sources JAR | ~800KB | [forge-1.0.0-sources.jar](https://github.com/lfneves/F.O.R.G.E/releases/download/v1.0.0/forge-1.0.0-sources.jar) |
+| Javadoc JAR | ~1.2MB | [forge-1.0.0-javadoc.jar](https://github.com/lfneves/F.O.R.G.E/releases/download/v1.0.0/forge-1.0.0-javadoc.jar) |
 
 #### Release Notes
 
@@ -1010,7 +1010,7 @@ View the complete [CHANGELOG.md](CHANGELOG.md) for detailed release information.
 
 ```bash
 # Clone and build the release
-git clone https://github.com/lfneves/forge.git
+git clone https://github.com/lfneves/F.O.R.G.E.git
 cd forge
 git checkout v1.0.0
 ./gradlew release
@@ -1051,7 +1051,7 @@ java -cp forge-1.0.0.jar com.forge.examples.basic.BasicForgeExample
 
 - 📖 [Documentation](README-SpringBoot.md)
 - 📋 [Changelog](CHANGELOG.md)
-- 🚀 [Releases](https://github.com/lfneves/forge/releases)
-- 🐛 [Issues](https://github.com/lfneves/forge/issues)
-- 💬 [Discussions](https://github.com/lfneves/forge/discussions)
-- ❓ [FAQ](https://github.com/lfneves/forge/wiki/FAQ)
+- 🚀 [Releases](https://github.com/lfneves/F.O.R.G.E/releases)
+- 🐛 [Issues](https://github.com/lfneves/F.O.R.G.E/issues)
+- 💬 [Discussions](https://github.com/lfneves/F.O.R.G.E/discussions)
+- ❓ [FAQ](https://github.com/lfneves/F.O.R.G.E/wiki/FAQ)

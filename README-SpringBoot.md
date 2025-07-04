@@ -53,7 +53,7 @@ class ApiController(private val userService: UserService) {
 
 **application.yml:**
 ```yaml
-webframework:
+forge:
   port: 8080
   context-path: "/"
   virtual-threads:
@@ -66,13 +66,13 @@ webframework:
 
 | Property | Default | Description |
 |----------|---------|-------------|
-| `webframework.port` | 8080 | Server port |
-| `webframework.context-path` | "/" | Application context path |
-| `webframework.virtual-threads.enabled` | true | Enable virtual threads |
-| `webframework.virtual-threads.thread-name-prefix` | "vt-webframework" | Thread name prefix |
-| `webframework.virtual-threads.max-concurrent-tasks` | -1 | Max concurrent tasks (-1 = unlimited) |
-| `webframework.virtual-threads.enable-metrics` | false | Enable thread metrics |
-| `webframework.virtual-threads.shutdown-timeout-ms` | 5000 | Shutdown timeout |
+| `forge.port` | 8080 | Server port |
+| `forge.context-path` | "/" | Application context path |
+| `forge.virtual-threads.enabled` | true | Enable virtual threads |
+| `forge.virtual-threads.thread-name-prefix` | "vt-webframework" | Thread name prefix |
+| `forge.virtual-threads.max-concurrent-tasks` | -1 | Max concurrent tasks (-1 = unlimited) |
+| `forge.virtual-threads.enable-metrics` | false | Enable thread metrics |
+| `forge.virtual-threads.shutdown-timeout-ms` | 5000 | Shutdown timeout |
 
 ## Annotations
 

@@ -214,8 +214,8 @@ release.pushTag=true
 ### Support
 
 For release-related issues:
-- Check the [FAQ](https://github.com/lfneves/forge/wiki/FAQ)
-- Open an [issue](https://github.com/lfneves/forge/issues)
+- Check the [FAQ](https://github.com/lfneves/F.O.R.G.E/wiki/FAQ)
+- Open an [issue](https://github.com/lfneves/F.O.R.G.E/issues)
 - Contact the maintainers
 
 ## Automated Release

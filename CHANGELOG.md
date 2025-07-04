@@ -81,7 +81,7 @@ fun main() {
 - **✅ Testing**: 120+ comprehensive tests with 93%+ coverage
 
 ### Release Information
-- **GitHub**: https://github.com/lfneves/forge
+- **GitHub**: https://github.com/lfneves/F.O.R.G.E
 - **Release Tag**: v1.0.0 - Initial FORGE release
 - **Downloads**: forge-1.0.0.jar, forge-1.0.0-sources.jar, forge-1.0.0-javadoc.jar
 
@@ -313,4 +313,4 @@ This was the initial prototype release of WebFramework, featuring:
 
 ---
 
-**Full Changelog**: https://github.com/lfneves/forge/commits/v1.0.0
+**Full Changelog**: https://github.com/lfneves/F.O.R.G.E/commits/v1.0.0

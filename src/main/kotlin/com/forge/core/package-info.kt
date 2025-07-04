@@ -1,8 +1,8 @@
 /**
- * Core framework components providing the main FORGE class and request/response context.
+ * Core framework components providing the main Forge class and request/response context.
  * 
  * This package contains the essential building blocks of the FORGE:
- * - [FORGE]: The main framework class for creating web applications
+ * - [Forge]: The main framework class for creating web applications
  * - [Context]: Request and response context for handling HTTP interactions
  * 
  * The core package provides a simple, fluent API for building web applications
