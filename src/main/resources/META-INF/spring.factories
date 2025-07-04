@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.webframework.spring.WebFrameworkAutoConfiguration
+com.forge.spring.WebFrameworkAutoConfiguration

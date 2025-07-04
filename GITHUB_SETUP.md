@@ -1,6 +1,6 @@
 # GitHub Repository Setup Guide
 
-Your WebFramework project is now ready for GitHub! Here's what you need to do:
+Your FORGE project is now ready for GitHub! Here's what you need to do:
 
 ## 🚀 Repository Setup Complete
 
@@ -24,12 +24,12 @@ Your WebFramework project is now ready for GitHub! Here's what you need to do:
 ### 1. Create GitHub Repository
 ```bash
 # Option A: Create via GitHub CLI (if installed)
-gh repo create webframework --public --description "Modern, lightweight web framework for Kotlin/Java with JDK 21 Virtual Threads"
+gh repo create forge --public --description "F.O.R.G.E - Framework Optimized for Resilient, Global Execution. High-performance web framework built on JDK 21 Virtual Threads"
 
 # Option B: Create manually on GitHub.com
 # - Go to https://github.com/new
-# - Repository name: webframework
-# - Description: Modern, lightweight web framework for Kotlin/Java with JDK 21 Virtual Threads
+# - Repository name: forge
+# - Description: F.O.R.G.E - Framework Optimized for Resilient, Global Execution. High-performance web framework built on JDK 21 Virtual Threads
 # - Public repository
 # - Don't initialize with README (we already have one)
 ```
@@ -37,7 +37,7 @@ gh repo create webframework --public --description "Modern, lightweight web fram
 ### 2. Push to GitHub
 ```bash
 # Add GitHub remote (replace with your username/repo)
-git remote add origin https://github.com/yourusername/webframework.git
+git remote add origin https://github.com/yourusername/forge.git
 
 # Push main branch
 git push -u origin main
@@ -77,14 +77,14 @@ Enable these features (Settings → General):
 #### Manual Release
 1. Go to Releases → Create a new release
 2. Tag: `v1.0.0`
-3. Title: `WebFramework v1.0.0 - Initial Release`
+3. Title: `FORGE v1.0.0 - Initial Release`
 4. Description: Copy from CHANGELOG.md
 5. Upload artifacts: JARs from `build/libs/`
 
 #### Automated Release
 ```bash
 # Create and push release tag
-git tag -a v1.0.0 -m "WebFramework v1.0.0 - Initial Release with Comprehensive Security Framework"
+git tag -a v1.0.0 -m "FORGE v1.0.0 - Initial Release with JDK 21 Native Virtual Threads"
 git push origin v1.0.0
 
 # GitHub Actions will automatically create release
@@ -164,11 +164,11 @@ Your repository includes comprehensive security features:
 ## 🎯 Repository URLs
 
 After creating the repository, your project will be available at:
-- **Repository**: `https://github.com/yourusername/webframework`
-- **Issues**: `https://github.com/yourusername/webframework/issues`
-- **Discussions**: `https://github.com/yourusername/webframework/discussions`
-- **Releases**: `https://github.com/yourusername/webframework/releases`
-- **Security**: `https://github.com/yourusername/webframework/security`
+- **Repository**: `https://github.com/yourusername/forge`
+- **Issues**: `https://github.com/yourusername/forge/issues`
+- **Discussions**: `https://github.com/yourusername/forge/discussions`
+- **Releases**: `https://github.com/yourusername/forge/releases`
+- **Security**: `https://github.com/yourusername/forge/security`
 
 ## 📈 Post-Setup Tasks
 
@@ -178,4 +178,4 @@ After creating the repository, your project will be available at:
 4. **Set up monitoring** - Dependabot, CodeQL, security advisories
 5. **Community health** - Ensure all community standards are met
 
-Your WebFramework repository is now production-ready with enterprise-grade security! 🚀🔒
+Your FORGE repository is now production-ready with enterprise-grade security! 🚀🔒

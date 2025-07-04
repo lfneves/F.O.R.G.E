@@ -159,6 +159,6 @@ jobs:
         echo "**Release URL**: ${{ github.server_url }}/${{ github.repository }}/releases/tag/${{ steps.version.outputs.VERSION }}" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
         echo "### 📦 Artifacts Generated:" >> $GITHUB_STEP_SUMMARY
-        echo "- Main JAR: \`webframework-${{ steps.version.outputs.CLEAN_VERSION }}.jar\`" >> $GITHUB_STEP_SUMMARY
-        echo "- Sources JAR: \`webframework-${{ steps.version.outputs.CLEAN_VERSION }}-sources.jar\`" >> $GITHUB_STEP_SUMMARY
-        echo "- Javadoc JAR: \`webframework-${{ steps.version.outputs.CLEAN_VERSION }}-javadoc.jar\`" >> $GITHUB_STEP_SUMMARY
+        echo "- Main JAR: \`forge-${{ steps.version.outputs.CLEAN_VERSION }}.jar\`" >> $GITHUB_STEP_SUMMARY
+        echo "- Sources JAR: \`forge-${{ steps.version.outputs.CLEAN_VERSION }}-sources.jar\`" >> $GITHUB_STEP_SUMMARY
+        echo "- Javadoc JAR: \`forge-${{ steps.version.outputs.CLEAN_VERSION }}-javadoc.jar\`" >> $GITHUB_STEP_SUMMARY

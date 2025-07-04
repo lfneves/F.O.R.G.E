@@ -1,9 +1,9 @@
-webframework:
+forge:
   port: 8080
   context-path: "/"
   virtual-threads:
     enabled: true
-    thread-name-prefix: "spring-vt-webframework"
+    thread-name-prefix: "spring-vt-forge"
     max-concurrent-tasks: -1
     enable-metrics: true
     shutdown-timeout-ms: 10000
@@ -11,7 +11,7 @@ webframework:
 # Spring Boot configuration
 spring:
   application:
-    name: webframework-spring-boot-example
+    name: forge-spring-boot-example
   
   # Disable default web server since we're using our own
   main:
@@ -19,7 +19,7 @@ spring:
 
 logging:
   level:
-    com.webframework: DEBUG
+    com.forge: DEBUG
     org.springframework: INFO
   pattern:
     console: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"

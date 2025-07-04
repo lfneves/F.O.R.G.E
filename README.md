@@ -21,16 +21,16 @@ A high-performance, enterprise-ready web framework for Kotlin/Java built on JDK 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![JDK Version](https://img.shields.io/badge/JDK-21%2B-orange)](https://openjdk.org/projects/jdk/21/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2.1-green)](https://spring.io/projects/spring-boot)
-[![Version](https://img.shields.io/badge/version-2.0.0-blue)](https://github.com/lfneves/forge/releases)
+[![Version](https://img.shields.io/badge/version-1.0.0-blue)](https://github.com/lfneves/forge/releases)
 [![Release](https://img.shields.io/github/v/release/lfneves/forge)](https://github.com/lfneves/forge/releases)
 [![Downloads](https://img.shields.io/github/downloads/lfneves/forge/total)](https://github.com/lfneves/forge/releases)
 [![Virtual Threads](https://img.shields.io/badge/Virtual%20Threads-JDK%2021-brightgreen)](https://openjdk.org/jeps/444)
 
 > **⚡ Performance Notice**: Virtual Threads are **only available with JDK 21+**. Framework is compatible with JDK 17+ but uses platform threads (reduced performance) on JDK 17-20.
 
-## 🔥 Latest Release: v2.0.0 - **F.O.R.G.E**
+## 🔥 Latest Release: v1.0.0 - **F.O.R.G.E**
 
-**Major Rebranding & JDK 21 Native Virtual Threads** - [Download Now](https://github.com/lfneves/forge/releases/latest) | [Release Notes](https://github.com/lfneves/forge/releases/tag/v2.0.0) | [Changelog](CHANGELOG.md)
+**Initial FORGE Release & JDK 21 Native Virtual Threads** - [Download Now](https://github.com/lfneves/forge/releases/latest) | [Release Notes](https://github.com/lfneves/forge/releases/tag/v1.0.0) | [Changelog](CHANGELOG.md)
 
 ## Current Status
 
@@ -40,7 +40,7 @@ A high-performance, enterprise-ready web framework for Kotlin/Java built on JDK 
 ✅ **Security Framework** - Complete security features implemented  
 ✅ **Spring Boot** - Full Spring Boot integration available  
 ✅ **Security Tests** - All security tests enabled and passing  
-🔥 **FORGE v2.0.0** - Major rebranding with JDK 21 native virtual thread support  
+🔥 **FORGE v1.0.0** - Initial release with JDK 21 native virtual thread support  
 
 ## Table of Contents
 - [Installation](#installation)
@@ -83,7 +83,7 @@ Add to your `build.gradle.kts`:
 
 ```kotlin
 dependencies {
-    implementation("com.forge:forge:2.0.0")
+    implementation("com.forge:forge:1.0.0")
 }
 
 repositories {
@@ -101,7 +101,7 @@ Add to your `pom.xml`:
 <dependency>
     <groupId>com.forge</groupId>
     <artifactId>forge</artifactId>
-    <version>2.0.0</version>
+    <version>1.0.0</version>
 </dependency>
 ```
 
@@ -119,9 +119,9 @@ Add to your `pom.xml`:
 
 Direct JAR downloads available from [GitHub Releases](https://github.com/lfneves/forge/releases):
 
-- **Main JAR**: `forge-2.0.0.jar`
-- **Sources JAR**: `forge-2.0.0-sources.jar`
-- **Javadoc JAR**: `forge-2.0.0-javadoc.jar`
+- **Main JAR**: `forge-1.0.0.jar`
+- **Sources JAR**: `forge-1.0.0-sources.jar`
+- **Javadoc JAR**: `forge-1.0.0-javadoc.jar`
 
 ## Quick Start
 
@@ -974,7 +974,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Release Information
 
-### Current Release: v2.0.0
+### Current Release: v1.0.0
 
 **Release Date**: July 3, 2025  
 **JDK 21 Native Release**
@@ -983,24 +983,24 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 FORGE is built specifically for JDK 21 and leverages virtual threads for maximum performance and scalability. All features are optimized for the virtual thread execution model.
 
-#### What's New in v2.0.0 - **F.O.R.G.E**
+#### What's New in v1.0.0 - **F.O.R.G.E**
 
-- 🔥 **Major Rebranding**: From WebFramework to F.O.R.G.E (Framework Optimized for Resilient, Global Execution)
+- 🔥 **Initial FORGE Release**: F.O.R.G.E (Framework Optimized for Resilient, Global Execution) - First official release
 - 🚀 **JDK 21 Native**: Complete native virtual threads implementation with Thread.ofVirtual() API
 - ⚡ **Performance**: Significant improvements - ~1KB per virtual thread vs ~2MB per platform thread
 - 🧪 **Enhanced Testing**: 120+ tests with improved reliability and virtual thread verification
 - 🌱 **Spring Boot 3.2.1**: Enhanced auto-configuration and dependency injection
 - 🔧 **Error Handling**: Improved Context class and exception management
 - 🛡️ **Security Framework**: All security tests passing with enhanced coverage
-- 📦 **New Artifact Names**: com.forge:forge (previously com.webframework:webframework)
+- 📦 **Artifact Coordinates**: com.forge:forge - Clean, professional Maven coordinates
 
 #### Downloads
 
 | Artifact | Size | Download |
 |----------|------|----------|
-| Main JAR | ~2.5MB | [forge-2.0.0.jar](https://github.com/lfneves/forge/releases/download/v2.0.0/forge-2.0.0.jar) |
-| Sources JAR | ~800KB | [forge-2.0.0-sources.jar](https://github.com/lfneves/forge/releases/download/v2.0.0/forge-2.0.0-sources.jar) |
-| Javadoc JAR | ~1.2MB | [forge-2.0.0-javadoc.jar](https://github.com/lfneves/forge/releases/download/v2.0.0/forge-2.0.0-javadoc.jar) |
+| Main JAR | ~2.5MB | [forge-1.0.0.jar](https://github.com/lfneves/forge/releases/download/v1.0.0/forge-1.0.0.jar) |
+| Sources JAR | ~800KB | [forge-1.0.0-sources.jar](https://github.com/lfneves/forge/releases/download/v1.0.0/forge-1.0.0-sources.jar) |
+| Javadoc JAR | ~1.2MB | [forge-1.0.0-javadoc.jar](https://github.com/lfneves/forge/releases/download/v1.0.0/forge-1.0.0-javadoc.jar) |
 
 #### Release Notes
 
@@ -1012,7 +1012,7 @@ View the complete [CHANGELOG.md](CHANGELOG.md) for detailed release information.
 # Clone and build the release
 git clone https://github.com/lfneves/forge.git
 cd forge
-git checkout v2.0.0
+git checkout v1.0.0
 ./gradlew release
 
 # Output will be in build/libs/
@@ -1022,15 +1022,15 @@ git checkout v2.0.0
 
 ```bash
 # Check version
-java -jar forge-2.0.0.jar --version
+java -jar forge-1.0.0.jar --version
 
 # Run examples
-java -cp forge-2.0.0.jar com.forge.examples.basic.BasicWebFrameworkExample
+java -cp forge-1.0.0.jar com.forge.examples.basic.BasicWebFrameworkExample
 ```
 
 ### Next Steps & Upcoming Releases
 
-#### Completed in v2.0.0
+#### Completed in v1.0.0
 - ✅ **JDK 21 Native Build**: CI/CD pipeline updated to use JDK 21 for full virtual threads support
 - ✅ **Virtual Threads Tests**: All virtual thread tests enhanced and optimized for JDK 21
 - ✅ **Performance Optimization**: Native virtual thread performance benefits unlocked

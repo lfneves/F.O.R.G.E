@@ -13,7 +13,7 @@ plugins {
 }
 
 group = "com.forge"
-version = "2.0.0"
+version = "1.0.0"
 description = "F.O.R.G.E - Framework Optimized for Resilient, Global Execution. High-performance web framework built on JDK 21 Virtual Threads"
 
 val isSnapshot = version.toString().endsWith("-SNAPSHOT")
@@ -67,7 +67,7 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 
 // Configure Spring Boot plugin
 springBoot {
-    mainClass.set("com.webframework.spring.example.SpringBootWebFrameworkApplicationKt")
+    mainClass.set("com.forge.spring.example.SpringBootWebFrameworkApplicationKt")
 }
 
 tasks.test {

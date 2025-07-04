@@ -1,6 +1,6 @@
 # Release Guide
 
-This document provides instructions for creating and publishing releases of WebFramework.
+This document provides instructions for creating and publishing releases of FORGE.
 
 ## Release Process
 
@@ -18,13 +18,13 @@ Ensure you have:
 
 1. Update version in `build.gradle.kts`:
 ```kotlin
-version = "1.0.0" // Remove -SNAPSHOT suffix
+version = "1.0.0" // FORGE initial release
 ```
 
 2. Update version in `src/main/resources/version.properties`:
 ```properties
 version=1.0.0
-build.date=2025-01-07
+build.date=2025-07-04
 ```
 
 #### Update Documentation
@@ -48,9 +48,9 @@ ls -la build/libs/
 ```
 
 #### Expected Artifacts
-- `webframework-1.0.0.jar` - Main library
-- `webframework-1.0.0-sources.jar` - Source code
-- `webframework-1.0.0-javadoc.jar` - Documentation
+- `forge-1.0.0.jar` - Main library
+- `forge-1.0.0-sources.jar` - Source code
+- `forge-1.0.0-javadoc.jar` - Documentation
 
 ### 4. Testing the Release
 
@@ -62,10 +62,10 @@ ls -la build/libs/
 #### Test Examples
 ```bash
 # Test basic example
-./gradlew run -PmainClass=com.webframework.examples.basic.BasicWebFrameworkExample
+./gradlew run -PmainClass=com.forge.examples.basic.BasicWebFrameworkExample
 
 # Test virtual threads example
-./gradlew run -PmainClass=com.webframework.examples.virtualthreads.VirtualThreadExample
+./gradlew run -PmainClass=com.forge.examples.virtualthreads.VirtualThreadExample
 
 # Test Spring Boot integration
 ./gradlew bootRun
@@ -74,10 +74,10 @@ ls -la build/libs/
 #### Verify JAR
 ```bash
 # Check JAR contents
-jar -tf build/libs/webframework-1.0.0.jar | head -20
+jar -tf build/libs/forge-1.0.0.jar | head -20
 
 # Verify version
-java -cp build/libs/webframework-1.0.0.jar -version
+java -cp build/libs/forge-1.0.0.jar -version
 ```
 
 ### 5. Publishing the Release
@@ -105,7 +105,7 @@ export TOKEN=your-github-token
 
 #### Tag the Release
 ```bash
-git tag -a v1.0.0 -m "Release version 1.0.0"
+git tag -a v1.0.0 -m "FORGE v1.0.0 - Initial Release"
 git push origin v1.0.0
 ```
 
@@ -122,7 +122,7 @@ git push origin v1.0.0
 #### Update to Next Development Version
 ```kotlin
 // In build.gradle.kts
-version = "1.1.0-SNAPSHOT"
+version = "1.0.1-SNAPSHOT"
 ```
 
 #### Communication
@@ -214,8 +214,8 @@ release.pushTag=true
 ### Support
 
 For release-related issues:
-- Check the [FAQ](https://github.com/example/webframework/wiki/FAQ)
-- Open an [issue](https://github.com/example/webframework/issues)
+- Check the [FAQ](https://github.com/lfneves/forge/wiki/FAQ)
+- Open an [issue](https://github.com/lfneves/forge/issues)
 - Contact the maintainers
 
 ## Automated Release
@@ -242,6 +242,6 @@ jobs:
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: webframework-artifacts
+          name: forge-artifacts
           path: build/libs/
 ```

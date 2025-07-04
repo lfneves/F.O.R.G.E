@@ -5,7 +5,93 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.1.0] - 2025-07-03
+## [1.0.0] - 2025-07-04
+
+### 🔥 **F.O.R.G.E - Initial Release**
+
+#### Framework Optimized for Resilient, Global Execution
+
+### Added
+- **🔥 FORGE Framework**: F.O.R.G.E - Framework Optimized for Resilient, Global Execution
+- **🎯 New Tagline**: "Forged for Performance. Built for Scale. Designed for the Future."
+- **📦 Artifact Coordinates**: `com.forge:forge:1.0.0` - Professional Maven coordinates
+- **🌟 Enhanced README**: Comprehensive FORGE branding with compelling messaging
+- **🚀 Release Process**: Comprehensive GitHub workflows and automated release system
+
+### Changed
+- **📂 Package Structure**: Clean `com.forge.*` package hierarchy
+- **🔧 Build Configuration**: Updated all Gradle configurations for FORGE
+- **⚙️ Configuration Properties**: All YAML properties now use `forge.*` prefix
+- **🏷️ Artifact Names**: All JAR files now use `forge-*` naming convention
+- **📋 GitHub Templates**: Updated issue templates and workflows for FORGE branding
+- **🔗 URLs and References**: Updated all repository URLs and documentation links
+
+### Updated
+- **📚 Documentation**: Complete documentation overhaul with FORGE branding
+- **🎭 Examples**: All examples updated to use `com.forge.*` imports
+- **🧪 Test Suite**: All 120+ tests updated with new package structure
+- **🌱 Spring Boot Integration**: Configuration and auto-configuration for FORGE
+- **🔒 Security Framework**: All security components updated with new branding
+- **📊 Version**: v1.0.0 initial release with full feature set
+
+### Technical Changes
+- **Package Migration**: All source files migrated from `com.webframework` to `com.forge`
+- **Import Updates**: All import statements updated throughout the codebase
+- **Configuration Files**: Updated `application.yml`, Spring factories, and all config files
+- **Release Workflows**: Updated GitHub Actions for new artifact naming
+- **Main Class**: Updated Spring Boot main class reference in build configuration
+
+### Features
+- **✅ Package Structure**: Clean `com.forge.*` package naming
+- **✅ Artifact Coordinates**: Standard Maven coordinates `com.forge:forge:1.0.0`
+- **✅ Configuration**: Intuitive `forge.*` configuration properties
+- **✅ Modern Architecture**: Built for JDK 21+ virtual threads
+
+### Getting Started
+#### Installation:
+```kotlin
+// Gradle
+implementation("com.forge:forge:1.0.0")
+```
+
+```xml
+<!-- Maven -->
+<dependency>
+    <groupId>com.forge</groupId>
+    <artifactId>forge</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
+
+#### Basic Usage:
+```kotlin
+import com.forge.core.WebFramework
+
+fun main() {
+    WebFramework.create()
+        .get("/") { ctx -> ctx.json(mapOf("message" to "Hello FORGE!")) }
+        .start(8080)
+}
+```
+
+### Technical Specifications
+- **✅ JDK**: 21+ required for virtual threads (17+ for basic functionality)
+- **✅ Spring Boot**: Full integration with Spring Boot 3.2.1+
+- **✅ Performance**: Native virtual threads for maximum scalability
+- **✅ Testing**: 120+ comprehensive tests with 93%+ coverage
+
+### Release Information
+- **GitHub**: https://github.com/lfneves/forge
+- **Release Tag**: v1.0.0 - Initial FORGE release
+- **Downloads**: forge-1.0.0.jar, forge-1.0.0-sources.jar, forge-1.0.0-javadoc.jar
+
+---
+
+> **Note**: Versions 0.1.0 - 0.3.0 were the WebFramework prototype releases. Version 1.0.0 marks the first official FORGE release with the new branding and architecture.
+
+---
+
+## [0.3.0] - 2025-07-03 (WebFramework - Final Prototype)
 
 ### Added
 - **JDK 21 Native Support**: Full native JDK 21 virtual threads implementation
@@ -40,7 +126,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Test Framework**: Enhanced with JDK 21 virtual thread testing capabilities
 - **Build Time**: Improved compilation and test execution performance
 
-## [1.0.1] - 2025-07-03
+## [0.2.0] - 2025-07-03 (WebFramework - Compatibility Update)
 
 ### Changed
 - **Java 17 Compatibility**: Updated framework to work with JDK 17+ (JDK 21+ recommended for virtual threads)
@@ -64,7 +150,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Test Suite**: Main source compilation works, test compilation requires Java 21 features
 - **CI Pipeline**: Successfully builds and creates release artifacts on JDK 17
 
-## [1.0.0] - 2025-01-07
+## [0.1.0] - 2025-01-07 (WebFramework - Initial Prototype)
 
 ### Added
 
@@ -211,7 +297,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Release Notes
 
-This is the initial release of WebFramework, featuring:
+This was the initial prototype release of WebFramework, featuring:
 
 1. **Modern Architecture**: Built specifically for JDK 21 and virtual threads
 2. **Production Ready**: Comprehensive configuration and monitoring support
@@ -227,4 +313,4 @@ This is the initial release of WebFramework, featuring:
 
 ---
 
-**Full Changelog**: https://github.com/example/webframework/commits/v1.0.0
+**Full Changelog**: https://github.com/lfneves/forge/commits/v1.0.0

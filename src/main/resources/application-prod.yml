@@ -1,15 +1,15 @@
-webframework:
+forge:
   port: 8080
   virtual-threads:
     enabled: true
-    thread-name-prefix: "prod-vt-webframework"
+    thread-name-prefix: "prod-vt-forge"
     max-concurrent-tasks: 10000
     enable-metrics: false
     shutdown-timeout-ms: 30000
 
 logging:
   level:
-    com.webframework: INFO
+    com.forge: INFO
     root: WARN
   file:
-    name: "/var/log/webframework/application.log"
+    name: "/var/log/forge/application.log"
