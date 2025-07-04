@@ -1055,7 +1055,7 @@ java -cp forge-1.0.0.jar com.forge.examples.basic.BasicForgeExample
 
 #### Important Notes
 - 📋 **Virtual Threads**: Only available with JDK 21+. Framework falls back to platform threads on JDK 17-20
-- 🔄 **Compatibility**: JDK 17+ supported, but JDK 21+ required for virtual threads features
+- 🔄 **Compatibility**: JDK 21+ required for virtual threads features
 - 📊 **Performance**: Significant performance gains only available with JDK 21+ virtual threads
 
 ## Support
