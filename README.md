@@ -1,24 +1,36 @@
-# WebFramework
+# F.O.R.G.E
+## Framework Optimized for Resilient, Global Execution
 
-A modern, lightweight web framework for Kotlin/Java built on JDK 21 Virtual Threads, with Spring Boot integration and comprehensive security features.
+**Forged for Performance. Built for Scale. Designed for the Future.**
 
-[![Build Status](https://github.com/lfneves/webframework/workflows/CI%2FCD%20Pipeline/badge.svg)](https://github.com/lfneves/webframework/actions)
-[![Security Framework](https://img.shields.io/badge/Security%20Framework-Implemented-green)](https://github.com/lfneves/webframework#security-features)
-[![Security Tests](https://img.shields.io/badge/Security%20Tests-Enabled-green)](https://github.com/lfneves/webframework/actions)
-[![Security Checks](https://github.com/lfneves/webframework/workflows/Security%20Checks/badge.svg)](https://github.com/lfneves/webframework/actions)
+A high-performance, enterprise-ready web framework for Kotlin/Java built on JDK 21 Virtual Threads, with comprehensive Spring Boot integration and advanced security features.
+
+### 🎯 **Why FORGE?**
+- **Framework** - Complete web development solution
+- **Optimized** - JDK 21 virtual threads for maximum performance  
+- **Resilient** - Comprehensive testing and error handling
+- **Global** - Enterprise-ready with Spring Boot integration
+- **Execution** - Lightning-fast concurrent request processing
+
+*"In the FORGE of innovation, performance meets reliability."*
+
+[![Build Status](https://github.com/lfneves/forge/workflows/CI%2FCD%20Pipeline/badge.svg)](https://github.com/lfneves/forge/actions)
+[![Security Framework](https://img.shields.io/badge/Security%20Framework-Implemented-green)](https://github.com/lfneves/forge#security-features)
+[![Security Tests](https://img.shields.io/badge/Security%20Tests-Enabled-green)](https://github.com/lfneves/forge/actions)
+[![Security Checks](https://github.com/lfneves/forge/workflows/Security%20Checks/badge.svg)](https://github.com/lfneves/forge/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![JDK Version](https://img.shields.io/badge/JDK-21%2B-orange)](https://openjdk.org/projects/jdk/21/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2.1-green)](https://spring.io/projects/spring-boot)
-[![Version](https://img.shields.io/badge/version-1.1.0-blue)](https://github.com/lfneves/webframework/releases)
-[![Release](https://img.shields.io/github/v/release/lfneves/webframework)](https://github.com/lfneves/webframework/releases)
-[![Downloads](https://img.shields.io/github/downloads/lfneves/webframework/total)](https://github.com/lfneves/webframework/releases)
+[![Version](https://img.shields.io/badge/version-2.0.0-blue)](https://github.com/lfneves/forge/releases)
+[![Release](https://img.shields.io/github/v/release/lfneves/forge)](https://github.com/lfneves/forge/releases)
+[![Downloads](https://img.shields.io/github/downloads/lfneves/forge/total)](https://github.com/lfneves/forge/releases)
 [![Virtual Threads](https://img.shields.io/badge/Virtual%20Threads-JDK%2021-brightgreen)](https://openjdk.org/jeps/444)
 
 > **⚡ Performance Notice**: Virtual Threads are **only available with JDK 21+**. Framework is compatible with JDK 17+ but uses platform threads (reduced performance) on JDK 17-20.
 
-## 🚀 Latest Release: v1.1.0
+## 🔥 Latest Release: v2.0.0 - **F.O.R.G.E**
 
-**JDK 21 Native Virtual Threads** - [Download Now](https://github.com/lfneves/webframework/releases/latest) | [Release Notes](https://github.com/lfneves/webframework/releases/tag/v1.1.0) | [Changelog](CHANGELOG.md)
+**Major Rebranding & JDK 21 Native Virtual Threads** - [Download Now](https://github.com/lfneves/forge/releases/latest) | [Release Notes](https://github.com/lfneves/forge/releases/tag/v2.0.0) | [Changelog](CHANGELOG.md)
 
 ## Current Status
 
@@ -28,7 +40,7 @@ A modern, lightweight web framework for Kotlin/Java built on JDK 21 Virtual Thre
 ✅ **Security Framework** - Complete security features implemented  
 ✅ **Spring Boot** - Full Spring Boot integration available  
 ✅ **Security Tests** - All security tests enabled and passing  
-✅ **Release v1.1.0** - JDK 21 native release with full virtual thread support  
+🔥 **FORGE v2.0.0** - Major rebranding with JDK 21 native virtual thread support  
 
 ## Table of Contents
 - [Installation](#installation)
@@ -71,7 +83,7 @@ Add to your `build.gradle.kts`:
 
 ```kotlin
 dependencies {
-    implementation("com.webframework:webframework:1.1.0")
+    implementation("com.forge:forge:2.0.0")
 }
 
 repositories {
@@ -87,9 +99,9 @@ Add to your `pom.xml`:
 
 ```xml
 <dependency>
-    <groupId>com.webframework</groupId>
-    <artifactId>webframework</artifactId>
-    <version>1.1.0</version>
+    <groupId>com.forge</groupId>
+    <artifactId>forge</artifactId>
+    <version>2.0.0</version>
 </dependency>
 ```
 
@@ -105,18 +117,18 @@ Add to your `pom.xml`:
 
 ### Download
 
-Direct JAR downloads available from [GitHub Releases](https://github.com/lfneves/webframework/releases):
+Direct JAR downloads available from [GitHub Releases](https://github.com/lfneves/forge/releases):
 
-- **Main JAR**: `webframework-1.1.0.jar`
-- **Sources JAR**: `webframework-1.1.0-sources.jar`
-- **Javadoc JAR**: `webframework-1.1.0-javadoc.jar`
+- **Main JAR**: `forge-2.0.0.jar`
+- **Sources JAR**: `forge-2.0.0-sources.jar`
+- **Javadoc JAR**: `forge-2.0.0-javadoc.jar`
 
 ## Quick Start
 
 ### Basic Usage
 
 ```kotlin
-import com.webframework.core.WebFramework
+import com.forge.core.WebFramework
 
 fun main() {
     val framework = WebFramework.create()
@@ -231,7 +243,7 @@ val framework = WebFramework.create()
 ## Project Structure
 
 ```
-src/main/kotlin/com/webframework/
+src/main/kotlin/com/forge/
 ├── core/                           # Core framework components
 │   ├── WebFramework.kt            # Main framework class
 │   └── Context.kt                 # Request/Response context
@@ -283,7 +295,7 @@ val framework = WebFramework.create(config)
 ### Spring Boot Configuration (application.yml)
 
 ```yaml
-webframework:
+forge:
   port: 8080
   virtual-threads:
     enabled: true
@@ -299,12 +311,12 @@ The framework provides seamless Spring Boot integration with auto-configuration:
 ### Configuration Properties
 
 ```yaml
-webframework:
+forge:
   port: 8080
   context-path: "/"
   virtual-threads:
     enabled: true
-    thread-name-prefix: "spring-vt-webframework"
+    thread-name-prefix: "spring-vt-forge"
     enable-metrics: true
 ```
 
@@ -854,10 +866,10 @@ Memory Usage (1,000 threads):
 
 ```bash
 # Basic example
-./gradlew run -PmainClass=com.webframework.examples.basic.BasicWebFrameworkExample
+./gradlew run -PmainClass=com.forge.examples.basic.BasicWebFrameworkExample
 
 # Virtual threads example
-./gradlew run -PmainClass=com.webframework.examples.virtualthreads.VirtualThreadExample
+./gradlew run -PmainClass=com.forge.examples.virtualthreads.VirtualThreadExample
 
 # Spring Boot example
 ./gradlew bootRun
@@ -911,13 +923,13 @@ The framework includes comprehensive test coverage:
 
 | Property | Default | Description |
 |----------|---------|-------------|
-| `webframework.port` | 8080 | Server port |
-| `webframework.context-path` | "/" | Application context path |
-| `webframework.virtual-threads.enabled` | true | Enable virtual threads |
-| `webframework.virtual-threads.thread-name-prefix` | "vt-webframework" | Thread name prefix |
-| `webframework.virtual-threads.max-concurrent-tasks` | -1 | Max concurrent tasks |
-| `webframework.virtual-threads.enable-metrics` | false | Enable thread metrics |
-| `webframework.virtual-threads.shutdown-timeout-ms` | 5000 | Shutdown timeout |
+| `forge.port` | 8080 | Server port |
+| `forge.context-path` | "/" | Application context path |
+| `forge.virtual-threads.enabled` | true | Enable virtual threads |
+| `forge.virtual-threads.thread-name-prefix` | "vt-forge" | Thread name prefix |
+| `forge.virtual-threads.max-concurrent-tasks` | -1 | Max concurrent tasks |
+| `forge.virtual-threads.enable-metrics` | false | Enable thread metrics |
+| `forge.virtual-threads.shutdown-timeout-ms` | 5000 | Shutdown timeout |
 
 ### Environment Profiles
 
@@ -962,31 +974,33 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Release Information
 
-### Current Release: v1.1.0
+### Current Release: v2.0.0
 
 **Release Date**: July 3, 2025  
 **JDK 21 Native Release**
 
 ## JDK 21 Virtual Threads
 
-WebFramework is built specifically for JDK 21 and leverages virtual threads for maximum performance and scalability. All features are optimized for the virtual thread execution model.
+FORGE is built specifically for JDK 21 and leverages virtual threads for maximum performance and scalability. All features are optimized for the virtual thread execution model.
 
-#### What's New in v1.1.0
+#### What's New in v2.0.0 - **F.O.R.G.E**
 
+- 🔥 **Major Rebranding**: From WebFramework to F.O.R.G.E (Framework Optimized for Resilient, Global Execution)
 - 🚀 **JDK 21 Native**: Complete native virtual threads implementation with Thread.ofVirtual() API
 - ⚡ **Performance**: Significant improvements - ~1KB per virtual thread vs ~2MB per platform thread
 - 🧪 **Enhanced Testing**: 120+ tests with improved reliability and virtual thread verification
 - 🌱 **Spring Boot 3.2.1**: Enhanced auto-configuration and dependency injection
 - 🔧 **Error Handling**: Improved Context class and exception management
 - 🛡️ **Security Framework**: All security tests passing with enhanced coverage
+- 📦 **New Artifact Names**: com.forge:forge (previously com.webframework:webframework)
 
 #### Downloads
 
 | Artifact | Size | Download |
 |----------|------|----------|
-| Main JAR | ~2.5MB | [webframework-1.1.0.jar](https://github.com/lfneves/webframework/releases/download/v1.1.0/webframework-1.1.0.jar) |
-| Sources JAR | ~800KB | [webframework-1.1.0-sources.jar](https://github.com/lfneves/webframework/releases/download/v1.1.0/webframework-1.1.0-sources.jar) |
-| Javadoc JAR | ~1.2MB | [webframework-1.1.0-javadoc.jar](https://github.com/lfneves/webframework/releases/download/v1.1.0/webframework-1.1.0-javadoc.jar) |
+| Main JAR | ~2.5MB | [forge-2.0.0.jar](https://github.com/lfneves/forge/releases/download/v2.0.0/forge-2.0.0.jar) |
+| Sources JAR | ~800KB | [forge-2.0.0-sources.jar](https://github.com/lfneves/forge/releases/download/v2.0.0/forge-2.0.0-sources.jar) |
+| Javadoc JAR | ~1.2MB | [forge-2.0.0-javadoc.jar](https://github.com/lfneves/forge/releases/download/v2.0.0/forge-2.0.0-javadoc.jar) |
 
 #### Release Notes
 
@@ -996,9 +1010,9 @@ View the complete [CHANGELOG.md](CHANGELOG.md) for detailed release information.
 
 ```bash
 # Clone and build the release
-git clone https://github.com/lfneves/webframework.git
-cd webframework
-git checkout v1.1.0
+git clone https://github.com/lfneves/forge.git
+cd forge
+git checkout v2.0.0
 ./gradlew release
 
 # Output will be in build/libs/
@@ -1008,24 +1022,25 @@ git checkout v1.1.0
 
 ```bash
 # Check version
-java -jar webframework-1.1.0.jar --version
+java -jar forge-2.0.0.jar --version
 
 # Run examples
-java -cp webframework-1.1.0.jar com.webframework.examples.basic.BasicWebFrameworkExample
+java -cp forge-2.0.0.jar com.forge.examples.basic.BasicWebFrameworkExample
 ```
 
 ### Next Steps & Upcoming Releases
 
-#### Completed in v1.1.0
+#### Completed in v2.0.0
 - ✅ **JDK 21 Native Build**: CI/CD pipeline updated to use JDK 21 for full virtual threads support
 - ✅ **Virtual Threads Tests**: All virtual thread tests enhanced and optimized for JDK 21
 - ✅ **Performance Optimization**: Native virtual thread performance benefits unlocked
 - ✅ **Spring Boot Integration**: Enhanced auto-configuration and dependency injection
 
 #### Upcoming Releases
-- **v1.1.1**: Minor bug fixes and remaining test stability improvements
-- **v1.2.0**: Enhanced metrics and monitoring capabilities
-- **v1.3.0**: Additional Spring Boot features and configuration options
+- **v2.0.1**: Minor bug fixes and remaining test stability improvements  
+- **v2.1.0**: Enhanced metrics and monitoring capabilities
+- **v2.2.0**: Additional Spring Boot features and configuration options
+- **v3.0.0**: Advanced virtual thread features and enterprise capabilities
 
 #### Important Notes
 - 📋 **Virtual Threads**: Only available with JDK 21+. Framework falls back to platform threads on JDK 17-20
@@ -1036,7 +1051,7 @@ java -cp webframework-1.1.0.jar com.webframework.examples.basic.BasicWebFramewor
 
 - 📖 [Documentation](README-SpringBoot.md)
 - 📋 [Changelog](CHANGELOG.md)
-- 🚀 [Releases](https://github.com/lfneves/webframework/releases)
-- 🐛 [Issues](https://github.com/lfneves/webframework/issues)
-- 💬 [Discussions](https://github.com/lfneves/webframework/discussions)
-- ❓ [FAQ](https://github.com/lfneves/webframework/wiki/FAQ)
+- 🚀 [Releases](https://github.com/lfneves/forge/releases)
+- 🐛 [Issues](https://github.com/lfneves/forge/issues)
+- 💬 [Discussions](https://github.com/lfneves/forge/discussions)
+- ❓ [FAQ](https://github.com/lfneves/forge/wiki/FAQ)

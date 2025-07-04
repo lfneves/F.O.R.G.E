@@ -96,8 +96,9 @@ jobs:
         
         ${CHANGELOG}
         
-        ## Features
+        ## F.O.R.G.E Features
         
+        - 🔥 Framework Optimized for Resilient, Global Execution
         - 🚀 JDK 21 Virtual Threads (High-performance concurrent processing)
         - 🔒 Comprehensive Security Framework
         - 🌱 Spring Boot Integration
@@ -106,24 +107,24 @@ jobs:
         
         ## Downloads
         
-        - **Main JAR**: webframework-${{ steps.version.outputs.CLEAN_VERSION }}.jar
-        - **Sources JAR**: webframework-${{ steps.version.outputs.CLEAN_VERSION }}-sources.jar  
-        - **Javadoc JAR**: webframework-${{ steps.version.outputs.CLEAN_VERSION }}-javadoc.jar
+        - **Main JAR**: forge-${{ steps.version.outputs.CLEAN_VERSION }}.jar
+        - **Sources JAR**: forge-${{ steps.version.outputs.CLEAN_VERSION }}-sources.jar  
+        - **Javadoc JAR**: forge-${{ steps.version.outputs.CLEAN_VERSION }}-javadoc.jar
         
         ## Installation
         
         ### Gradle
         \`\`\`kotlin
         dependencies {
-            implementation("com.webframework:webframework:${{ steps.version.outputs.CLEAN_VERSION }}")
+            implementation("com.forge:forge:${{ steps.version.outputs.CLEAN_VERSION }}")
         }
         \`\`\`
         
         ### Maven
         \`\`\`xml
         <dependency>
-            <groupId>com.webframework</groupId>
-            <artifactId>webframework</artifactId>
+            <groupId>com.forge</groupId>
+            <artifactId>forge</artifactId>
             <version>${{ steps.version.outputs.CLEAN_VERSION }}</version>
         </dependency>
         \`\`\`
@@ -133,7 +134,7 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         tag_name: ${{ steps.version.outputs.VERSION }}
-        name: WebFramework ${{ steps.version.outputs.VERSION }}
+        name: FORGE ${{ steps.version.outputs.VERSION }}
         body_path: RELEASE_CHANGELOG.md
         draft: false
         prerelease: ${{ contains(steps.version.outputs.VERSION, '-') }}

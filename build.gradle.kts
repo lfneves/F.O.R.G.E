@@ -12,9 +12,9 @@ plugins {
     jacoco
 }
 
-group = "com.webframework"
-version = "1.1.0"
-description = "A modern, lightweight web framework for Kotlin/Java built on JDK 21 Virtual Threads"
+group = "com.forge"
+version = "2.0.0"
+description = "F.O.R.G.E - Framework Optimized for Resilient, Global Execution. High-performance web framework built on JDK 21 Virtual Threads"
 
 val isSnapshot = version.toString().endsWith("-SNAPSHOT")
 
@@ -101,9 +101,9 @@ publishing {
             from(components["java"])
             
             pom {
-                name.set("WebFramework")
-                description.set("A modern, lightweight web framework for Kotlin/Java built on JDK 21 Virtual Threads")
-                url.set("https://github.com/lfneves/webframework")
+                name.set("FORGE")
+                description.set("F.O.R.G.E - Framework Optimized for Resilient, Global Execution. High-performance web framework built on JDK 21 Virtual Threads")
+                url.set("https://github.com/lfneves/forge")
                 
                 licenses {
                     license {
@@ -121,9 +121,9 @@ publishing {
                 }
                 
                 scm {
-                    connection.set("scm:git:git://github.com/lfneves/webframework.git")
-                    developerConnection.set("scm:git:ssh://github.com:lfneves/webframework.git")
-                    url.set("https://github.com/lfneves/webframework")
+                    connection.set("scm:git:git://github.com/lfneves/forge.git")
+                    developerConnection.set("scm:git:ssh://github.com:lfneves/forge.git")
+                    url.set("https://github.com/lfneves/forge")
                 }
             }
         }
@@ -132,7 +132,7 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/lfneves/webframework")
+            url = uri("https://maven.pkg.github.com/lfneves/forge")
             credentials {
                 username = project.findProperty("gpr.user") as String? ?: System.getenv("USERNAME")
                 password = project.findProperty("gpr.key") as String? ?: System.getenv("TOKEN")
@@ -143,15 +143,15 @@ publishing {
 
 // JAR configuration
 tasks.jar {
-    archiveBaseName.set("webframework")
+    archiveBaseName.set("forge")
     archiveVersion.set(version.toString())
     
     manifest {
         attributes(
             mapOf(
-                "Implementation-Title" to "WebFramework",
+                "Implementation-Title" to "FORGE",
                 "Implementation-Version" to version,
-                "Implementation-Vendor" to "WebFramework Team",
+                "Implementation-Vendor" to "FORGE Team",
                 "Built-By" to System.getProperty("user.name"),
                 "Built-Date" to LocalDateTime.now().toString(),
                 "Built-JDK" to System.getProperty("java.version"),
@@ -186,10 +186,10 @@ tasks.register("release") {
     dependsOn("clean", "build", "publishToMavenLocal")
     
     doLast {
-        println("✅ Release ${version} created successfully!")
-        println("📦 JAR: build/libs/webframework-${version}.jar")
-        println("📚 Sources: build/libs/webframework-${version}-sources.jar")
-        println("📖 Javadoc: build/libs/webframework-${version}-javadoc.jar")
+        println("🔥 FORGE Release ${version} created successfully!")
+        println("📦 JAR: build/libs/forge-${version}.jar")
+        println("📚 Sources: build/libs/forge-${version}-sources.jar")
+        println("📖 Javadoc: build/libs/forge-${version}-javadoc.jar")
     }
 }
 
