@@ -1,3 +1,5 @@
+⚙️ This project (including code, documentation, and tooling) is under active development. Features, APIs, and guides may change before the 1.0.0 official release.
+
 <div align="center">
 
 <img src="forge-logo.png" alt="F.O.R.G.E Logo" width="300"/>
