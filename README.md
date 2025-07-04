@@ -5,7 +5,7 @@ A modern, lightweight web framework for Kotlin/Java built on JDK 21 Virtual Thre
 [![Build Status](https://github.com/lfneves/webframework/workflows/CI%2FCD%20Pipeline/badge.svg)](https://github.com/lfneves/webframework/actions)
 [![Security Framework](https://img.shields.io/badge/Security%20Framework-Implemented-green)](https://github.com/lfneves/webframework#security-features)
 [![Security Tests](https://img.shields.io/badge/Security%20Tests-Enabled-green)](https://github.com/lfneves/webframework/actions)
-[![CodeQL](https://github.com/lfneves/webframework/workflows/Security%20Checks/badge.svg)](https://github.com/lfneves/webframework/actions)
+[![Security Checks](https://github.com/lfneves/webframework/workflows/Security%20Checks/badge.svg)](https://github.com/lfneves/webframework/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![JDK Version](https://img.shields.io/badge/JDK-21%2B-orange)](https://openjdk.org/projects/jdk/21/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2.1-green)](https://spring.io/projects/spring-boot)

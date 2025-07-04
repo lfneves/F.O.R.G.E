@@ -93,48 +93,50 @@ jobs:
         name: dependency-check-report
         path: build/reports/dependency-check-report.html
 
-  codeql:
-    name: CodeQL Security Analysis
-    runs-on: ubuntu-latest
-    permissions:
-      actions: read
-      contents: read
-      security-events: write
-    
-    steps:
-    - name: Checkout Code
-      uses: actions/checkout@v4
-      
-    - name: Initialize CodeQL
-      uses: github/codeql-action/init@v3
-      with:
-        languages: java
-        queries: security-and-quality
-        
-    - name: Set up JDK 21
-      uses: actions/setup-java@v4
-      with:
-        java-version: '21'
-        distribution: 'temurin'
-        
-    - name: Cache Gradle packages
-      uses: actions/cache@v4
-      with:
-        path: |
-          ~/.gradle/caches
-          ~/.gradle/wrapper
-        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-        restore-keys: |
-          ${{ runner.os }}-gradle-
-          
-    - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
-      
-    - name: Build for CodeQL
-      run: ./gradlew compileKotlin compileTestKotlin
-      
-    - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v3
+  # CodeQL analysis - requires code scanning to be enabled in repository settings
+  # Uncomment this job if you want to enable CodeQL security analysis
+  # codeql:
+  #   name: CodeQL Security Analysis  
+  #   runs-on: ubuntu-latest
+  #   permissions:
+  #     actions: read
+  #     contents: read
+  #     security-events: write
+  #   
+  #   steps:
+  #   - name: Checkout Code
+  #     uses: actions/checkout@v4
+  #     
+  #   - name: Initialize CodeQL
+  #     uses: github/codeql-action/init@v3
+  #     with:
+  #       languages: java
+  #       queries: security-and-quality
+  #       
+  #   - name: Set up JDK 21
+  #     uses: actions/setup-java@v4
+  #     with:
+  #       java-version: '21'
+  #       distribution: 'temurin'
+  #       
+  #   - name: Cache Gradle packages
+  #     uses: actions/cache@v4
+  #     with:
+  #       path: |
+  #         ~/.gradle/caches
+  #         ~/.gradle/wrapper
+  #       key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+  #       restore-keys: |
+  #         ${{ runner.os }}-gradle-
+  #         
+  #   - name: Grant execute permission for gradlew
+  #     run: chmod +x gradlew
+  #     
+  #   - name: Build for CodeQL
+  #     run: ./gradlew compileKotlin compileTestKotlin
+  #     
+  #   - name: Perform CodeQL Analysis
+  #     uses: github/codeql-action/analyze@v3
 
   secrets-scan:
     name: Secrets Detection
