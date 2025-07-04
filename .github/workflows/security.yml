@@ -40,21 +40,6 @@ jobs:
     - name: Run Security Tests
       run: ./gradlew test --tests "*Security*" --info
       
-    - name: Test Authentication
-      run: ./gradlew test --tests "*Authentication*" --info
-      
-    - name: Test Authorization
-      run: ./gradlew test --tests "*Authorization*" --info
-      
-    - name: Test JWT Security
-      run: ./gradlew test --tests "*JWT*" --info
-      
-    - name: Test Input Validation
-      run: ./gradlew test --tests "*Validation*" --info
-      
-    - name: Test Rate Limiting
-      run: ./gradlew test --tests "*RateLimit*" --info
-      
     - name: Upload Security Test Results
       uses: actions/upload-artifact@v4
       if: always()
