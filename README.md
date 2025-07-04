@@ -1045,10 +1045,13 @@ java -cp forge-1.0.0.jar com.forge.examples.basic.BasicForgeExample
 - ✅ **Spring Boot Integration**: Enhanced auto-configuration and dependency injection
 
 #### Upcoming Releases
-- **v2.0.1**: Minor bug fixes and remaining test stability improvements  
-- **v2.1.0**: Enhanced metrics and monitoring capabilities
-- **v2.2.0**: Additional Spring Boot features and configuration options
-- **v3.0.0**: Advanced virtual thread features and enterprise capabilities
+- **v1.0.0**: Initial FORGE Release & JDK 21 Native Virtual Threads  
+- **v1.0.1**: Patch release—minor bug fixes and doc tweaks  
+- **v1.0.2**: Patch release—security enhancements and performance optimizations  
+- **v1.0.3**: Minor bug fixes and remaining test stability improvements  
+- **v1.0.4**: Enhanced metrics and monitoring capabilities  
+- **v1.0.5**: Additional Spring Boot features and configuration options  
+- **v1.0.6**: Advanced virtual thread features and enterprise capabilities  
 
 #### Important Notes
 - 📋 **Virtual Threads**: Only available with JDK 21+. Framework falls back to platform threads on JDK 17-20
