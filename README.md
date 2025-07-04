@@ -1,7 +1,13 @@
+<div align="center">
+
+<img src="forge-logo.png" alt="F.O.R.G.E Logo" width="300"/>
+
 # F.O.R.G.E
 ## Framework Optimized for Resilient, Global Execution
 
 **Forged for Performance. Built for Scale. Designed for the Future.**
+
+</div>
 
 A high-performance, enterprise-ready web framework for Kotlin/Java built on JDK 21 Virtual Threads, with comprehensive Spring Boot integration and advanced security features.
 
