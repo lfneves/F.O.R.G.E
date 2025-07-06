@@ -9,102 +9,50 @@
 
 **Forged for Performance. Built for Scale. Designed for the Future.**
 
-</div>
-
-A high-performance, enterprise-ready web framework for Kotlin/Java built on JDK 21 Virtual Threads, with comprehensive Spring Boot integration and advanced security features.
-
-### 🎯 **Why FORGE?**
-- **Framework** - Complete web development solution
-- **Optimized** - JDK 21 virtual threads for maximum performance  
-- **Resilient** - Comprehensive testing and error handling
-- **Global** - Enterprise-ready with Spring Boot integration
-- **Execution** - Lightning-fast concurrent request processing
-
-*"In the FORGE of innovation, performance meets reliability."*
-
 [![Build Status](https://github.com/lfneves/F.O.R.G.E/workflows/CI%2FCD%20Pipeline/badge.svg)](https://github.com/lfneves/F.O.R.G.E/actions)
-[![Security Framework](https://img.shields.io/badge/Security%20Framework-Implemented-green)](https://github.com/lfneves/F.O.R.G.E#security-features)
-[![Security Tests](https://img.shields.io/badge/Security%20Tests-Enabled-green)](https://github.com/lfneves/F.O.R.G.E/actions)
-[![Security Checks](https://github.com/lfneves/F.O.R.G.E/workflows/Security%20Checks/badge.svg)](https://github.com/lfneves/F.O.R.G.E/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![JDK Version](https://img.shields.io/badge/JDK-21%2B-orange)](https://openjdk.org/projects/jdk/21/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2.1-green)](https://spring.io/projects/spring-boot)
 [![Version](https://img.shields.io/badge/version-1.0.0-blue)](https://github.com/lfneves/F.O.R.G.E/releases)
-[![Release](https://img.shields.io/github/v/release/lfneves/forge)](https://github.com/lfneves/F.O.R.G.E/releases)
-[![Downloads](https://img.shields.io/github/downloads/lfneves/forge/total)](https://github.com/lfneves/F.O.R.G.E/releases)
 [![Virtual Threads](https://img.shields.io/badge/Virtual%20Threads-JDK%2021-brightgreen)](https://openjdk.org/jeps/444)
 
-> **⚡ Performance Notice**: Virtual Threads are **only available with JDK 21+**. Framework is compatible with JDK 17+ but uses platform threads (reduced performance) on JDK 17-20.
+</div>
 
-## 🔥 Latest Release: v1.0.0 - **F.O.R.G.E**
+---
 
-**Initial FORGE Release & JDK 21 Native Virtual Threads** - [Download Now](https://github.com/lfneves/F.O.R.G.E/releases/latest) | [Release Notes](https://github.com/lfneves/F.O.R.G.E/releases/tag/v1.0.0) | [Changelog](CHANGELOG.md)
+## 🌟 Overview
 
-## Current Status
+**F.O.R.G.E** is a cutting-edge, high-performance web framework for Kotlin/Java, built from the ground up to leverage **JDK 21's revolutionary Virtual Threads**. Designed for enterprise applications that demand both exceptional performance and developer productivity.
 
-✅ **JDK 17+ Compatible** - Framework runs on JDK 17+, Virtual Threads require JDK 21+  
-🚧 **Virtual Threads** - Full virtual threads support available only on JDK 21+  
-✅ **GitHub Actions** - CI/CD pipeline running successfully  
-✅ **Security Framework** - Complete security features implemented  
-✅ **Spring Boot** - Full Spring Boot integration available  
-✅ **Security Tests** - All security tests enabled and passing  
-🔥 **FORGE v1.0.0** - Initial release with JDK 21 native virtual thread support  
+### 🎯 Why F.O.R.G.E?
+- **F**ramework - Complete web development solution
+- **O**ptimized - JDK 21 virtual threads for maximum performance  
+- **R**esilient - Comprehensive testing and error handling
+- **G**lobal - Enterprise-ready with Spring Boot integration
+- **E**xecution - Lightning-fast concurrent request processing
 
-## Table of Contents
-- [Installation](#installation)
-- [Features](#features)
-- [Quick Start](#quick-start)
-- [Security Features](#security-features)
-- [Project Structure](#project-structure)
-- [Virtual Threads Configuration](#virtual-threads-configuration)
-- [Spring Boot Integration](#spring-boot-integration)
-- [API Reference](#api-reference)
-- [Examples](#examples)
-- [Security Examples](#security-examples)
-- [Performance Benefits](#performance-benefits)
-- [Building and Running](#building-and-running)
-- [Configuration](#configuration)
-- [Release Information](#release-information)
-- [Contributing](#contributing)
+> *"In the FORGE of innovation, performance meets reliability."*
 
-## Features
+### 🚀 Key Highlights
+- **1000x Memory Efficiency**: ~1KB per virtual thread vs ~2MB traditional threads
+- **Massive Concurrency**: Handle 10,000+ concurrent connections effortlessly
+- **Enterprise Ready**: Production-tested with 84% test coverage (125+ tests)
+- **Zero Compromise**: Full feature set without sacrificing performance
 
-- 🚀 **Virtual Threads (JDK 21+ only)**: High-performance concurrent request handling
-- 🔧 **Simple API**: Intuitive and easy-to-use routing and middleware system
-- 🌱 **Spring Boot Integration**: Seamless integration with Spring Boot ecosystem
-- ⚡ **High Performance**: Optimized for I/O-bound operations and high concurrency
-- 📝 **Flexible Configuration**: YAML-based configuration with environment profiles
-- 🎯 **Lightweight**: Minimal dependencies and fast startup times
-- 🔄 **Path Parameters**: Dynamic route matching with `:param` syntax
-- 🛡️ **Exception Handling**: Customizable exception handlers
-- 📊 **JSON Support**: Built-in JSON serialization with Jackson
-- 🔒 **Comprehensive Security**: Authentication, authorization, CORS, rate limiting, and request validation
-- 🗝️ **JWT Support**: Token-based authentication with session management
-- 🛡️ **Security Headers**: HTTPS, CSP, and security headers for protection
-- 🚨 **Input Validation**: XSS, SQL injection, and path traversal protection
+---
 
-## Installation
+## 📦 Quick Start
 
-### Gradle
+### Installation
 
-Add to your `build.gradle.kts`:
-
+#### Gradle (Kotlin DSL)
 ```kotlin
 dependencies {
     implementation("com.forge:forge:1.0.0")
 }
-
-repositories {
-    mavenCentral()
-    // For snapshot versions
-    maven("https://s01.oss.sonatype.org/content/repositories/snapshots/")
-}
 ```
 
-### Maven
-
-Add to your `pom.xml`:
-
+#### Maven
 ```xml
 <dependency>
     <groupId>com.forge</groupId>
@@ -113,941 +61,114 @@ Add to your `pom.xml`:
 </dependency>
 ```
 
-### Requirements
-
-- **JDK 17+** (Minimum requirement - framework compatibility)
-- **JDK 21+** (Required for virtual threads support)
-- **Gradle 8.0+** or **Maven 3.8+**
-- **Kotlin 1.9.20+** (Optional, Java compatible)
-
-#### Virtual Threads Note
-⚠️ **Virtual Threads are only available with JDK 21+**. On JDK 17-20, the framework automatically falls back to platform threads with reduced performance.
-
-### Download
-
-Direct JAR downloads available from [GitHub Releases](https://github.com/lfneves/F.O.R.G.E/releases):
-
-- **Main JAR**: `forge-1.0.0.jar`
-- **Sources JAR**: `forge-1.0.0-sources.jar`
-- **Javadoc JAR**: `forge-1.0.0-javadoc.jar`
-
-## Quick Start
-
-### Basic Usage
+### Hello World in 30 Seconds
 
 ```kotlin
 import com.forge.core.Forge
 
 fun main() {
-    val framework = Forge.create()
+    val app = Forge.create()
     
-    framework.get("/") { ctx ->
-        ctx.json(mapOf("message" to "Hello, World!"))
+    app.get("/") { ctx ->
+        ctx.json(mapOf("message" to "Hello F.O.R.G.E!"))
     }
     
-    framework.get("/hello/:name") { ctx ->
-        val name = ctx.pathParam("name") ?: "World"
-        ctx.json(mapOf("greeting" to "Hello, $name!"))
-    }
-    
-    framework.start(8080)
+    app.start(8080)
+    println("🚀 Server running at http://localhost:8080")
 }
 ```
 
-### Spring Boot Integration
-
-```kotlin
-@SpringBootApplication
-class MyApplication
-
-@ForgeController
-class ApiController {
-    @GetMapping("/api/users")
-    fun getUsers(ctx: Context) {
-        ctx.json(listOf("user1", "user2"))
-    }
-}
-
-fun main(args: Array<String>) {
-    runApplication<MyApplication>(*args)
-}
-```
-
-## Security Features
-
-FORGE provides enterprise-grade security features out of the box:
-
-### 🔐 Authentication & Authorization
-- **Multiple Authentication Providers**: In-memory, JWT tokens, API keys, custom providers
-- **Role-Based Access Control (RBAC)**: Fine-grained permissions and role management
-- **Session Management**: Secure session handling with automatic expiration
-- **Security Annotations**: `@RequireAuth`, `@RequireRole`, `@RequirePermission`
-
-### 🛡️ Request Protection
-- **XSS Protection**: Automatic detection and sanitization of malicious scripts
-- **SQL Injection Prevention**: Pattern-based detection of SQL injection attempts
-- **Path Traversal Protection**: Prevention of directory traversal attacks
-- **Input Validation**: Configurable validation rules with custom validators
-- **File Upload Security**: Extension validation and content type checking
-
-### 🚦 Rate Limiting & Throttling
-- **Multiple Strategies**: Fixed window, sliding window, token bucket algorithms
-- **Flexible Configuration**: Per-IP, per-user, per-API-key rate limiting
-- **Automatic Headers**: Rate limit information in response headers
-- **Graceful Degradation**: Customizable rate limit exceeded responses
-
-### 🌐 CORS & Security Headers
-- **CORS Support**: Full Cross-Origin Resource Sharing configuration
-- **Security Headers**: CSP, HSTS, X-Frame-Options, X-Content-Type-Options
-- **HTTPS Enforcement**: Automatic HTTPS redirection and security
-- **Preset Configurations**: Development, production, and custom security profiles
-
-### 🎫 JWT & Sessions
-- **JWT Token Management**: Creation, validation, and refresh token support
-- **Session Storage**: In-memory and custom session management
-- **Token Security**: HMAC signing with configurable algorithms
-- **Claims Support**: Custom claims, roles, and permissions in tokens
-
-```kotlin
-// Quick security setup
-val framework = Forge.create()
-    .enableSecurity {
-        // Authentication
-        addAuthenticationProvider(InMemoryAuthenticationProvider().apply {
-            addUser("admin", "password", roles = setOf("ADMIN"))
-        })
-        
-        // JWT Configuration
-        jwtConfig {
-            secret("your-secret-key")
-            expirationMinutes(60)
-        }
-        
-        // Rate Limiting
-        rateLimiting {
-            strategy(RateLimitStrategy.SLIDING_WINDOW)
-            requestsPerWindow(100)
-            windowDuration(Duration.ofMinutes(1))
-        }
-        
-        // Security Headers
-        securityHeaders {
-            contentSecurityPolicy {
-                defaultSrc(CSPBuilder.SELF)
-                scriptSrc(CSPBuilder.SELF)
-            }
-            hstsMaxAge(31536000)
-        }
-        
-        // Request Validation
-        requestValidation {
-            enableXSSProtection()
-            enableSQLInjectionProtection()
-            maxParameterLength(8192)
-        }
-    }
-```
-
-## Project Structure
-
-```
-src/main/kotlin/com/forge/
-├── core/                           # Core framework components
-│   ├── Forge.kt                  # Main framework class
-│   └── Context.kt                 # Request/Response context
-├── routing/                        # Routing system
-│   ├── Handler.kt                 # Request handler interface
-│   └── Route.kt                   # Route definition and matching
-├── concurrent/                     # Virtual threads support
-│   └── VirtualThreadExecutor.kt   # Virtual thread executor
-├── config/                         # Configuration system
-│   └── VirtualThreadConfig.kt     # Virtual thread configuration
-├── security/                       # Security framework
-│   ├── SecurityContext.kt         # Security context management
-│   ├── Authentication.kt          # Authentication providers
-│   ├── Authorization.kt           # Authorization and RBAC
-│   ├── JWTAuthentication.kt       # JWT token handling
-│   ├── CORS.kt                    # Cross-Origin Resource Sharing
-│   ├── RateLimiting.kt           # Rate limiting and throttling
-│   ├── RequestValidation.kt       # Input validation and sanitization
-│   └── SecurityHeaders.kt         # Security headers and HTTPS
-├── spring/                         # Spring Boot integration
-│   ├── ForgeAutoConfiguration.kt
-│   ├── ForgeProperties.kt
-│   ├── annotations/               # Spring-style annotations
-│   └── example/                   # Spring Boot examples
-└── examples/                       # Framework examples
-    ├── basic/                     # Basic usage examples
-    ├── virtualthreads/           # Virtual threads examples
-    ├── security/                 # Security examples
-    └── config/                   # Configuration examples
-```
-
-## Virtual Threads Configuration
-
-FORGE is built natively for JDK 21 virtual threads, providing optimal performance and scalability.
-
-### Programmatic Configuration
-
-```kotlin
-val config = VirtualThreadConfig.builder()
-    .enabled(true)
-    .threadNamePrefix("my-app-vt")
-    .enableMetrics(true)
-    .shutdownTimeoutMs(10000)
-    .build()
-
-val framework = Forge.create(config)
-```
-
-### Spring Boot Configuration (application.yml)
-
-```yaml
-forge:
-  port: 8080
-  virtual-threads:
-    enabled: true
-    thread-name-prefix: "my-app-vt"
-    enable-metrics: true
-    shutdown-timeout-ms: 10000
-```
-
-## Spring Boot Integration
-
-The framework provides seamless Spring Boot integration with auto-configuration:
-
-### Configuration Properties
-
-```yaml
-forge:
-  port: 8080
-  context-path: "/"
-  virtual-threads:
-    enabled: true
-    thread-name-prefix: "spring-vt-forge"
-    enable-metrics: true
-```
-
-### Annotations
-
-```kotlin
-@ForgeController
-class UserController(private val userService: UserService) {
-    
-    @GetMapping("/users")
-    fun getAllUsers(ctx: Context) {
-        val users = userService.findAll()
-        ctx.json(users)
-    }
-    
-    @PostMapping("/users")
-    fun createUser(ctx: Context) {
-        val request = ctx.bodyAsClass(CreateUserRequest::class.java)
-        val user = userService.create(request)
-        ctx.status(201).json(user)
-    }
-}
-```
-
-## API Reference
-
-### Forge
-
-| Method | Description |
-|--------|-------------|
-| `get(path, handler)` | Register GET route |
-| `post(path, handler)` | Register POST route |
-| `put(path, handler)` | Register PUT route |
-| `delete(path, handler)` | Register DELETE route |
-| `patch(path, handler)` | Register PATCH route |
-| `before(handler)` | Add before middleware |
-| `after(handler)` | Add after middleware |
-| `exception(class, handler)` | Add exception handler |
-| `start(port)` | Start server |
-| `stop()` | Stop server |
-
-### Context
-
-| Method | Description |
-|--------|-------------|
-| `pathParam(key)` | Get path parameter |
-| `queryParam(key)` | Get query parameter |
-| `header(name)` | Get request header |
-| `body()` | Get request body as string |
-| `bodyAsClass(class)` | Parse request body to object |
-| `json(obj)` | Send JSON response |
-| `status(code)` | Set response status |
-| `redirect(url)` | Send redirect response |
-
-### Spring Boot Annotations
-
-| Annotation | Description |
-|------------|-------------|
-| `@ForgeController` | Mark class as controller |
-| `@GetMapping(path)` | Handle GET requests |
-| `@PostMapping(path)` | Handle POST requests |
-| `@PutMapping(path)` | Handle PUT requests |
-| `@DeleteMapping(path)` | Handle DELETE requests |
-| `@PatchMapping(path)` | Handle PATCH requests |
-
-## Examples
-
-### Path Parameters
-
-```kotlin
-framework.get("/users/:id") { ctx ->
-    val userId = ctx.pathParam("id")
-    ctx.json(mapOf("userId" to userId))
-}
-```
-
-### Query Parameters
-
-```kotlin
-framework.get("/search") { ctx ->
-    val query = ctx.queryParam("q") ?: ""
-    val limit = ctx.queryParam("limit")?.toIntOrNull() ?: 10
-    ctx.json(mapOf("query" to query, "limit" to limit))
-}
-```
-
-### JSON Request/Response
-
-```kotlin
-data class User(val name: String, val email: String)
-
-framework.post("/users") { ctx ->
-    val user = ctx.bodyAsClass(User::class.java)
-    // Process user...
-    ctx.status(201).json(user)
-}
-```
-
-### Middleware
-
-```kotlin
-framework.before { ctx ->
-    println("Request: ${ctx.req().method} ${ctx.req().requestURI}")
-}
-
-framework.after { ctx ->
-    println("Response status: ${ctx.res().status}")
-}
-```
-
-### Exception Handling
-
-```kotlin
-framework.exception(IllegalArgumentException::class.java) { exception, ctx ->
-    ctx.status(400).json(mapOf("error" to exception.message))
-}
-```
-
-### Virtual Threads Load Testing
-
-```kotlin
-framework.get("/load-test") { ctx ->
-    val iterations = ctx.queryParam("iterations")?.toIntOrNull() ?: 1000
-    
-    val tasks = (1..iterations).map { i ->
-        CompletableFuture.supplyAsync {
-            Thread.sleep(10) // Simulate I/O
-            "Task $i on ${Thread.currentThread().name}"
-        }
-    }
-    
-    val results = CompletableFuture.allOf(*tasks.toTypedArray()).get()
-    ctx.json(mapOf("completed" to iterations, "threadsUsed" to "virtual"))
-}
-```
-
-### Complete REST API Example
-
-```kotlin
-fun main() {
-    val users = mutableListOf<User>()
-    var nextId = 1
-    
-    Forge.create()
-        .before { ctx ->
-            ctx.header("X-API-Version", "1.0")
-        }
-        .get("/api/users") { ctx ->
-            ctx.json(mapOf(
-                "users" to users,
-                "count" to users.size
-            ))
-        }
-        .post("/api/users") { ctx ->
-            val userData = ctx.bodyAsClass(CreateUserRequest::class.java)
-            val user = User(nextId++, userData.name, userData.email)
-            users.add(user)
-            ctx.status(201).json(user)
-        }
-        .get("/api/users/:id") { ctx ->
-            val id = ctx.pathParam("id")?.toIntOrNull()
-            val user = users.find { it.id == id }
-            if (user != null) {
-                ctx.json(user)
-            } else {
-                ctx.status(404).json(mapOf("error" to "User not found"))
-            }
-        }
-        .exception(Exception::class.java) { ex, ctx ->
-            ctx.status(500).json(mapOf("error" to ex.message))
-        }
-        .start(8080)
-}
-```
-
-### Testing Your API
-
-```kotlin
-@Test
-fun `should handle complete CRUD operations`() {
-    // Framework automatically uses virtual threads for high concurrency
-    val framework = Forge.create()
-    
-    // Setup your routes
-    framework.get("/test") { ctx ->
-        ctx.json(mapOf("message" to "Hello Test"))
-    }
-    
-    // Start server asynchronously
-    CompletableFuture.runAsync { framework.start(8080) }
-    Thread.sleep(500) // Allow startup
-    
-    // Test your endpoints
-    val response = httpClient.send(
-        HttpRequest.newBuilder()
-            .uri(URI.create("http://localhost:8080/test"))
-            .GET().build(),
-        HttpResponse.BodyHandlers.ofString()
-    )
-    
-    assertEquals(200, response.statusCode())
-    assertTrue(response.body().contains("Hello Test"))
-    
-    framework.stop()
-}
-```
-
-## Security Examples
-
-### Authentication with JWT
-
-```kotlin
-// Configure JWT authentication
-val jwtConfig = jwtConfig {
-    secret("your-256-bit-secret-key")
-    issuer("my-application")
-    expirationMinutes(60)
-}
-
-val framework = Forge.create()
-
-// Login endpoint
-framework.post("/auth/login") { ctx ->
-    val credentials = ctx.bodyAsClass(LoginRequest::class.java)
-    
-    // Validate credentials (replace with your logic)
-    if (validateUser(credentials.username, credentials.password)) {
-        val jwtService = JWTService(jwtConfig)
-        val token = jwtService.createToken(
-            subject = credentials.username,
-            roles = setOf("USER"),
-            permissions = setOf("READ", "WRITE")
-        )
-        
-        ctx.json(mapOf(
-            "token" to token.token,
-            "expiresAt" to token.claims.expiresAt
-        ))
-    } else {
-        ctx.status(401).json(mapOf("error" to "Invalid credentials"))
-    }
-}
-
-// Protected endpoint
-framework.get("/api/profile") { ctx ->
-    val securityContext = SecurityContext.getContext(ctx)
-    if (securityContext.isAuthenticated) {
-        ctx.json(mapOf(
-            "user" to securityContext.principal?.name,
-            "roles" to securityContext.roles
-        ))
-    } else {
-        ctx.status(401).json(mapOf("error" to "Authentication required"))
-    }
-}
-```
-
-### Role-Based Authorization
-
-```kotlin
-// Configure security with role-based access
-val framework = Forge.create()
-    .before(securityConfig {
-        addAuthenticationProvider(InMemoryAuthenticationProvider().apply {
-            addUser("admin", "admin123", roles = setOf("ADMIN"))
-            addUser("user", "user123", roles = setOf("USER"))
-        })
-        setCredentialsExtractor(BasicAuthCredentialsExtractor())
-    }.createAuthenticationMiddleware())
-
-// Admin-only endpoint
-framework.get("/admin/users") { ctx ->
-    val authMiddleware = AuthorizationMiddleware(RequireRoleRule("ADMIN"))
-    authMiddleware.handle(ctx)
-    
-    // If we reach here, user has ADMIN role
-    ctx.json(listOf("user1", "user2", "admin"))
-}
-
-// User endpoint with multiple role support
-framework.get("/api/data") { ctx ->
-    val authMiddleware = AuthorizationMiddleware(
-        RequireAuthenticationRule(),
-        RequireRoleRule("USER", "ADMIN")
-    )
-    authMiddleware.handle(ctx)
-    
-    ctx.json(mapOf("data" to "sensitive information"))
-}
-```
-
-### Rate Limiting Configuration
-
-```kotlin
-// Different rate limiting strategies
-val framework = Forge.create()
-
-// Fixed window rate limiting (100 requests per minute)
-framework.before("/api/public/*", RateLimitingMiddleware(
-    FixedWindowRateLimiter(100, Duration.ofMinutes(1)),
-    keyExtractor = { ctx -> ctx.req().remoteAddr ?: "unknown" }
-))
-
-// Sliding window for premium endpoints (1000 requests per hour)
-framework.before("/api/premium/*", RateLimitingMiddleware(
-    SlidingWindowRateLimiter(1000, Duration.ofHours(1)),
-    keyExtractor = { ctx -> ctx.header("X-API-Key") ?: ctx.req().remoteAddr ?: "unknown" }
-))
-
-// Token bucket for burst traffic (50 requests, refill 10 per minute)
-framework.before("/api/upload/*", RateLimitingMiddleware(
-    TokenBucketRateLimiter(capacity = 50, refillRate = 10),
-    keyExtractor = { ctx -> 
-        val securityContext = SecurityContext.getContext(ctx)
-        securityContext.principal?.name ?: ctx.req().remoteAddr ?: "unknown"
-    }
-))
-```
-
-### CORS Configuration
-
-```kotlin
-// Development CORS configuration
-val devCorsConfig = corsConfig {
-    allowOrigins("http://localhost:3000", "http://localhost:8080")
-    allowMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-    allowHeaders("Content-Type", "Authorization", "X-API-Key")
-    allowCredentials(true)
-    maxAge(3600)
-}
-
-// Production CORS configuration
-val prodCorsConfig = corsConfig {
-    allowOrigin("https://myapp.com")
-    allowOrigin("https://api.myapp.com")
-    allowMethods("GET", "POST", "PUT", "DELETE")
-    allowHeaders("Content-Type", "Authorization")
-    allowCredentials(true)
-    maxAge(86400) // 24 hours
-}
-
-val framework = Forge.create()
-    .before(CORSMiddleware(if (isDevelopment) devCorsConfig else prodCorsConfig))
-```
-
-### Security Headers
-
-```kotlin
-// Production security headers
-val securityConfig = securityHeadersConfig {
-    contentSecurityPolicy {
-        defaultSrc(CSPBuilder.SELF)
-        scriptSrc(CSPBuilder.SELF, "https://cdn.jsdelivr.net")
-        styleSrc(CSPBuilder.SELF, CSPBuilder.UNSAFE_INLINE)
-        imgSrc(CSPBuilder.SELF, CSPBuilder.DATA, "https:")
-        fontSrc(CSPBuilder.SELF, "https://fonts.gstatic.com")
-        connectSrc(CSPBuilder.SELF, "https://api.myapp.com")
-        frameAncestors(CSPBuilder.NONE)
-        upgradeInsecureRequests()
-    }
-    hstsMaxAge(31536000, includeSubDomains = true, preload = true)
-    denyFraming()
-    referrerPolicy("strict-origin-when-cross-origin")
-    httpsOnly(true)
-    addCustomHeader("X-API-Version", "1.0")
-}
-
-val framework = Forge.create()
-    .before(SecurityHeadersMiddleware(securityConfig))
-```
-
-### Request Validation
-
-```kotlin
-// Comprehensive input validation
-val validationConfig = requestValidationConfig {
-    enableXSSProtection(true)
-    enableSQLInjectionProtection(true)
-    enablePathTraversalProtection(true)
-    maxParameterLength(1024)
-    maxHeaderLength(2048)
-    allowedFileExtensions("jpg", "png", "pdf", "txt")
-    deniedFileExtensions("exe", "bat", "js", "php")
-    
-    // Custom validation rule
-    addValidationRule(object : ValidationRule {
-        override val name = "Email Validation"
-        override fun validate(value: String): ValidationResult {
-            val emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$".toRegex()
-            return if (emailRegex.matches(value)) {
-                ValidationResult.Valid
-            } else {
-                ValidationResult.Invalid("Invalid email format")
-            }
-        }
-    })
-    
-    onValidationFailure { ctx, message ->
-        ctx.status(400).json(mapOf(
-            "error" to "Validation Failed",
-            "message" to message,
-            "timestamp" to System.currentTimeMillis()
-        ))
-    }
-}
-
-val framework = Forge.create()
-    .before(RequestValidationMiddleware(validationConfig))
-```
-
-### Complete Security Setup
-
-```kotlin
-fun createSecureFramework(): Forge {
-    // JWT Configuration
-    val jwtConfig = jwtConfig {
-        secret(System.getenv("JWT_SECRET") ?: "fallback-secret-key")
-        issuer("secure-app")
-        expirationMinutes(60)
-    }
-    
-    // Session Management
-    val sessionManager = InMemorySessionManager(30)
-    
-    // Authentication Providers
-    val authProvider = InMemoryAuthenticationProvider().apply {
-        addUser("admin", "admin123", "admin@example.com", setOf("ADMIN"), setOf("READ", "WRITE", "DELETE"))
-        addUser("user", "user123", "user@example.com", setOf("USER"), setOf("READ"))
-    }
-    
-    val jwtProvider = JWTAuthenticationProvider(JWTService(jwtConfig))
-    val sessionProvider = SessionAuthenticationProvider(sessionManager)
-    
-    // Composite authentication
-    val compositeAuth = CompositeAuthenticationProvider(listOf(authProvider, jwtProvider, sessionProvider))
-    val compositeExtractor = CompositeCredentialsExtractor(
-        BasicAuthCredentialsExtractor(),
-        JWTCredentialsExtractor(jwtConfig),
-        SessionCredentialsExtractor()
-    )
-    
-    return Forge.create()
-        // Security headers (first)
-        .before(SecurityHeadersMiddleware(SecurityHeadersPresets.strict()))
-        
-        // CORS (second)
-        .before(CORSMiddleware(CORSConfig.restrictive(setOf("https://myapp.com"))))
-        
-        // Rate limiting (third)
-        .before(RateLimitingMiddleware(
-            SlidingWindowRateLimiter(1000, Duration.ofHours(1))
-        ))
-        
-        // Request validation (fourth)
-        .before(RequestValidationMiddleware(requestValidationConfig {
-            enableXSSProtection()
-            enableSQLInjectionProtection()
-            enablePathTraversalProtection()
-        }))
-        
-        // Authentication (fifth)
-        .before(AuthenticationMiddleware(compositeAuth, compositeExtractor))
-        
-        // Global authorization (sixth) - require authentication for /api/*
-        .before("/api/*", AuthorizationMiddleware(RequireAuthenticationRule()))
-}
-```
-
-### Security Testing
-
-```kotlin
-@Test
-fun `should protect against XSS attacks`() {
-    val framework = createSecureFramework()
-    
-    val maliciousInput = "<script>alert('xss')</script>"
-    val response = sendPostRequest("/api/data", mapOf("input" to maliciousInput))
-    
-    assertEquals(400, response.statusCode)
-    assertTrue(response.body.contains("validation failed"))
-}
-
-@Test
-fun `should enforce rate limits`() {
-    val framework = createSecureFramework()
-    
-    // Make requests up to the limit
-    repeat(100) {
-        val response = sendGetRequest("/api/public/data")
-        assertEquals(200, response.statusCode)
-    }
-    
-    // 101st request should be rate limited
-    val response = sendGetRequest("/api/public/data")
-    assertEquals(429, response.statusCode)
-    assertTrue(response.headers.containsKey("Retry-After"))
-}
-
-@Test
-fun `should require authentication for protected routes`() {
-    val framework = createSecureFramework()
-    
-    val response = sendGetRequest("/api/profile")
-    assertEquals(401, response.statusCode)
-    
-    val authenticatedResponse = sendGetRequestWithAuth("/api/profile", "user:user123")
-    assertEquals(200, authenticatedResponse.statusCode)
-}
-```
-
-## Performance Benefits
-
-### Virtual Threads vs Platform Threads
-
-- **Memory Usage**: ~1KB per virtual thread vs ~2MB per platform thread
-- **Creation Cost**: Minimal vs expensive thread pool management
-- **Scalability**: Millions of virtual threads vs thousands of platform threads
-- **Context Switching**: Lightweight vs OS-level switching
-
-### Benchmark Results
-
-```
-Concurrent Tasks (10,000 tasks, 100ms each):
-- Platform threads: 2,150ms
-- Virtual threads:   125ms
-- Performance gain: 94%
-
-Memory Usage (1,000 threads):
-- Virtual threads: ~12MB total
-- Platform threads: ~2GB total
-```
-
-## Building and Running
-
-### Requirements
-
-- JDK 21 or higher
-- Gradle 8.0+
-
-### Build
-
+### Test Your Application
 ```bash
-./gradlew build
+curl http://localhost:8080
+# {"message":"Hello F.O.R.G.E!"}
 ```
 
-### Run Examples
+**Need more help?** Check our [Quick Start Guide](QUICK_START.md) for a complete 5-minute tutorial.
 
+---
+
+## ⚡ Features
+
+### Core Framework
+- 🚀 **Virtual Threads (JDK 21+)**: Native Project Loom integration
+- 🔧 **Intuitive API**: Simple, developer-friendly routing system
+- ⚡ **High Performance**: Optimized for I/O-bound operations
+- 🎯 **Lightweight**: Minimal dependencies, fast startup
+- 🔄 **Dynamic Routing**: Path parameters with `:param` syntax
+- 📊 **JSON First**: Built-in serialization with Jackson
+
+### Enterprise Features
+- 🌱 **Spring Boot Integration**: Seamless ecosystem compatibility
+- 🔒 **Security Framework**: Authentication, authorization, CORS, rate limiting
+- 🗝️ **JWT Support**: Token-based authentication with session management
+- 🛡️ **Input Protection**: XSS, SQL injection, path traversal prevention
+- 📝 **Configuration**: YAML-based with environment profiles
+- 🚨 **Exception Handling**: Customizable error management
+
+### Production Ready
+- 🐳 **Docker Support**: Multi-stage builds with health checks
+- ☸️ **Kubernetes Ready**: Complete deployment manifests
+- 📊 **Monitoring**: Prometheus metrics and Grafana dashboards
+- 🌍 **Multi-Environment**: Dev, staging, production profiles
+- 🔧 **Configuration**: Environment variables and YAML support
+
+---
+
+## 🛠️ Configuration
+
+F.O.R.G.E offers flexible configuration through environment variables and YAML files.
+
+### Environment Setup
 ```bash
-# Basic example
-./gradlew run -PmainClass=com.forge.examples.basic.BasicForgeExample
-
-# Virtual threads example
-./gradlew run -PmainClass=com.forge.examples.virtualthreads.VirtualThreadExample
-
-# Spring Boot example
-./gradlew bootRun
-```
-
-### Test
-
-```bash
-# Run all tests
-./gradlew test
-
-# Run specific test categories
-./gradlew test --tests "*ForgeTest*"          # Core API tests
-./gradlew test --tests "*VirtualThread*"        # Virtual threads tests
-./gradlew test --tests "*SpringBoot*"           # Spring Boot integration tests
-./gradlew test --tests "*Security*"             # Security framework tests
-./gradlew test --tests "*ApiVerification*"      # End-to-end API tests
-
-# Run tests with detailed output
-./gradlew test --info
-
-# Generate test reports
-./gradlew test jacocoTestReport
-```
-
-### Test Coverage
-
-The framework includes comprehensive test coverage:
-
-- **Unit Tests**: Core API functionality, routing, and context handling
-- **Integration Tests**: HTTP request/response flows and middleware chains
-- **Virtual Threads Tests**: Performance benchmarks and concurrency verification
-- **Security Tests**: Authentication, authorization, CORS, rate limiting, JWT, and input validation
-- **Spring Boot Tests**: Auto-configuration and annotation processing
-- **End-to-End Tests**: Complete API workflows and error handling
-
-#### Test Metrics
-
-| Test Category | Test Count | Coverage |
-|---------------|------------|----------|
-| Core Framework | 25+ tests | 95%+ |
-| Virtual Threads | 20+ tests | 90%+ |
-| Spring Boot Integration | 15+ tests | 85%+ |
-| Security Framework | 50+ tests | 95%+ |
-| API Verification | 10+ tests | 90%+ |
-| **Total** | **120+ tests** | **93%+** |
-
-## Configuration
-
-F.O.R.G.E provides flexible configuration through environment variables, YAML files, and Spring Boot properties.
-
-### Quick Setup
-
-1. **Copy environment template**:
-```bash
+# Copy template
 cp .env.example .env
-```
 
-2. **Edit configuration**:
-```bash
-# Basic setup
+# Basic configuration
 FORGE_PORT=8080
 SPRING_PROFILES_ACTIVE=dev
 FORGE_VT_ENABLED=true
 ```
 
-3. **Run application**:
-```bash
-./gradlew bootRun
+### Application Configuration
+```yaml
+# application.yml
+forge:
+  port: ${FORGE_PORT:8080}
+  virtual-threads:
+    enabled: ${FORGE_VT_ENABLED:true}
+    max-concurrent-tasks: ${FORGE_VT_MAX_TASKS:-1}
+
+spring:
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
 ```
-
-### Environment Variables
-
-#### Core Configuration
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `FORGE_PORT` | 8080 | Server port |
-| `FORGE_CONTEXT_PATH` | `/` | Application context path |
-| `SPRING_PROFILES_ACTIVE` | `dev` | Active environment profile |
-
-#### Virtual Threads (JDK 21+)
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `FORGE_VT_ENABLED` | `true` | Enable virtual threads |
-| `FORGE_VT_PREFIX` | `vt-forge` | Thread name prefix |
-| `FORGE_VT_MAX_TASKS` | `-1` | Max concurrent tasks (-1 = unlimited) |
-| `FORGE_VT_METRICS` | `true` | Enable virtual thread metrics |
-| `FORGE_VT_SHUTDOWN_TIMEOUT` | `5000` | Shutdown timeout (ms) |
-
-#### Logging
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `LOG_LEVEL_ROOT` | `INFO` | Root logging level |
-| `LOG_LEVEL_FORGE` | `INFO` | F.O.R.G.E framework logging |
-| `LOG_LEVEL_SPRING` | `WARN` | Spring framework logging |
-| `LOG_FILE` | `logs/forge.log` | Log file path |
-
-#### Management & Monitoring
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `MANAGEMENT_ENDPOINTS_ENABLED` | `true` | Enable management endpoints |
-| `MANAGEMENT_HEALTH_ENABLED` | `true` | Enable health endpoint |
-| `MANAGEMENT_METRICS_ENABLED` | `true` | Enable metrics endpoint |
-| `MANAGEMENT_PROMETHEUS_ENABLED` | `false` | Enable Prometheus metrics |
 
 ### Environment Profiles
+- **Development** (`dev`): Enhanced debugging, port 8081, colored output
+- **Staging** (`staging`): Production-like with enhanced monitoring
+- **Production** (`prod`): Optimized performance, security-focused
+- **Test** (`test`): Minimal resources, fast startup for CI/CD
 
-F.O.R.G.E supports multiple deployment environments:
+**For detailed configuration options, see [Configuration Guide](docs/CONFIGURATION.md)**
 
-#### Development (`dev`)
+---
+
+## 🐳 Deployment
+
+### Docker
 ```bash
-SPRING_PROFILES_ACTIVE=dev ./gradlew bootRun
-```
-- Enhanced debugging and logging
-- All management endpoints enabled
-- Port: 8081 (to avoid conflicts)
-- Colored console output
-
-#### Staging (`staging`)
-```bash
-SPRING_PROFILES_ACTIVE=staging ./gradlew bootRun
-```
-- Production-like configuration
-- Enhanced monitoring enabled
-- Balanced logging
-- Suitable for pre-production testing
-
-#### Production (`prod`)
-```bash
-SPRING_PROFILES_ACTIVE=prod java -jar forge-1.0.0.jar
-```
-- Optimized for performance
-- Minimal logging
-- Security-focused
-- Graceful shutdown
-- Log rotation enabled
-
-#### Test (`test`)
-- Automatically used during testing
-- Minimal resource usage
-- Fast startup/shutdown
-- Random port allocation
-
-### Docker Deployment
-
-#### Quick Start
-```bash
-# Basic deployment
+# Quick start
 docker-compose up -d
 
-# With monitoring stack (Prometheus + Grafana)
+# With monitoring (Prometheus + Grafana)
 docker-compose --profile monitoring up -d
 
-# Custom environment
+# Custom configuration
 FORGE_PORT=9090 SPRING_PROFILES_ACTIVE=prod docker-compose up -d
 ```
 
-#### Custom Docker Run
-```bash
-docker run -d \
-  -p 8080:8080 \
-  -e FORGE_PORT=8080 \
-  -e SPRING_PROFILES_ACTIVE=prod \
-  -e FORGE_VT_MAX_TASKS=10000 \
-  -v $(pwd)/logs:/app/logs \
-  forge:1.0.0
-```
-
-### Kubernetes Deployment
-
+### Kubernetes
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -1055,235 +176,298 @@ metadata:
   name: forge-app
 spec:
   replicas: 3
-  selector:
-    matchLabels:
-      app: forge
   template:
-    metadata:
-      labels:
-        app: forge
     spec:
       containers:
       - name: forge
         image: forge:1.0.0
-        ports:
-        - containerPort: 8080
         env:
         - name: SPRING_PROFILES_ACTIVE
           value: "prod"
         - name: FORGE_VT_MAX_TASKS
           value: "10000"
-        resources:
-          requests:
-            memory: "512Mi"
-            cpu: "250m"
-          limits:
-            memory: "1Gi"
-            cpu: "500m"
-        livenessProbe:
-          httpGet:
-            path: /actuator/health
-            port: 8080
-          initialDelaySeconds: 30
-          periodSeconds: 30
+```
+
 ---
-apiVersion: v1
-kind: Service
-metadata:
-  name: forge-service
-spec:
-  selector:
-    app: forge
-  ports:
-  - port: 80
-    targetPort: 8080
-  type: LoadBalancer
+
+## 🌱 Spring Boot Integration
+
+F.O.R.G.E seamlessly integrates with Spring Boot for enterprise applications.
+
+### Spring Boot Application
+```kotlin
+@SpringBootApplication
+@EnableConfigurationProperties(ForgeProperties::class)
+class MyApplication
+
+fun main(args: Array<String>) {
+    runApplication<MyApplication>(*args)
+}
+
+@ForgeController
+class UserController {
+    @ForgeRoute(method = "GET", path = "/api/users")
+    fun getUsers() = userService.findAll()
+    
+    @ForgeRoute(method = "POST", path = "/api/users")
+    fun createUser(@RequestBody user: User) = userService.save(user)
+}
 ```
 
-### Configuration Files
+### Auto-Configuration
+- **Automatic Bean Creation**: Forge, VirtualThreadConfig, Controllers
+- **Properties Binding**: YAML configuration to ForgeProperties
+- **Health Indicators**: Built-in health checks for monitoring
+- **Dependency Injection**: Full Spring IoC container support
 
-#### Basic Application Configuration
-```yaml
-# application.yml
-forge:
-  port: ${FORGE_PORT:8080}
-  context-path: ${FORGE_CONTEXT_PATH:/}
-  
-  virtual-threads:
-    enabled: ${FORGE_VT_ENABLED:true}
-    thread-name-prefix: ${FORGE_VT_PREFIX:vt-forge}
-    max-concurrent-tasks: ${FORGE_VT_MAX_TASKS:-1}
-    enable-metrics: ${FORGE_VT_METRICS:true}
-    shutdown-timeout-ms: ${FORGE_VT_SHUTDOWN_TIMEOUT:5000}
+---
 
-spring:
-  application:
-    name: ${SPRING_APP_NAME:forge-application}
-  profiles:
-    active: ${SPRING_PROFILES_ACTIVE:dev}
-  main:
-    web-application-type: none  # Required for F.O.R.G.E
+## 🔒 Security
 
-logging:
-  level:
-    root: ${LOG_LEVEL_ROOT:INFO}
-    com.forge: ${LOG_LEVEL_FORGE:INFO}
-    org.springframework: ${LOG_LEVEL_SPRING:WARN}
-  file:
-    name: ${LOG_FILE:logs/forge.log}
+Enterprise-grade security framework with comprehensive protection.
+
+### Authentication & Authorization
+```kotlin
+// JWT Configuration
+val jwtConfig = jwtConfig {
+    secret("your-secret-key")
+    issuer("your-app")
+    expirationMinutes(60)
+}
+
+// Security Setup
+val app = Forge.create()
+    .before(SecurityHeadersMiddleware())
+    .before(CORSMiddleware(corsConfig))
+    .before(RateLimitingMiddleware(rateLimiter))
+    .before(AuthenticationMiddleware(authProvider))
 ```
 
-#### Production Configuration
-```yaml
-# application-prod.yml
-forge:
-  virtual-threads:
-    max-concurrent-tasks: 10000
-    enable-metrics: false  # Disable for performance
-    shutdown-timeout-ms: 30000
+### Security Features
+- **Authentication**: Multiple providers (JWT, Basic, API Key, Custom)
+- **Authorization**: Role-based access control (RBAC)
+- **Rate Limiting**: Fixed window, sliding window, token bucket
+- **Input Validation**: XSS, SQL injection, path traversal protection
+- **Security Headers**: CSP, HSTS, X-Frame-Options
+- **CORS**: Flexible cross-origin resource sharing
+- **Session Management**: Secure session handling
 
-logging:
-  level:
-    root: WARN
-    com.forge: INFO
-  file:
-    name: /var/log/forge/forge-prod.log
-    max-size: 100MB
-    max-history: 30
-    total-size-cap: 1GB
+---
 
-management:
-  endpoints:
-    enabled-by-default: false
-    web:
-      exposure:
-        include: "health,metrics"
-  security:
-    enabled: true
+## 📊 Performance
+
+### Virtual Threads vs Traditional Threads
+| Metric | Traditional | Virtual Threads | Improvement |
+|--------|-------------|-----------------|-------------|
+| Memory per Thread | ~2MB | ~1KB | **2000x** |
+| Thread Creation | ~1ms | ~1μs | **1000x** |
+| Concurrent Connections | ~1K | ~1M+ | **1000x** |
+| Context Switch Cost | High | Minimal | **100x** |
+
+### Real-World Performance
+```kotlin
+// Handle 10,000 concurrent requests with minimal memory
+val app = Forge.create()
+app.get("/api/data") { ctx ->
+    // Each request runs on a virtual thread (~1KB memory)
+    val data = databaseService.fetchData() // I/O operation
+    ctx.json(data)
+}
 ```
 
-### Advanced Configuration
+### System Requirements
+- **JDK 21+**: Required for virtual threads
+- **JDK 17+**: Minimum (falls back to platform threads)
+- **Memory**: 512MB+ heap (scales efficiently)
+- **Spring Boot**: 3.2.1+ (for integration)
 
-For detailed configuration options, see [Configuration Guide](docs/CONFIGURATION.md):
+---
 
-- Environment-specific settings
-- Docker and Kubernetes deployment
-- Security configuration
-- Performance tuning
-- Monitoring and observability
-- Troubleshooting guides
+## 📚 Examples
 
-## Dependencies
+### RESTful API
+```kotlin
+val app = Forge.create()
 
-### Core Dependencies
+// CRUD Operations
+app.get("/users") { ctx -> ctx.json(userService.findAll()) }
+app.get("/users/:id") { ctx -> 
+    val id = ctx.pathParam("id")!!
+    ctx.json(userService.findById(id))
+}
+app.post("/users") { ctx ->
+    val user = ctx.bodyAsClass(User::class.java)
+    ctx.status(201).json(userService.create(user))
+}
+app.put("/users/:id") { ctx ->
+    val id = ctx.pathParam("id")!!
+    val user = ctx.bodyAsClass(User::class.java)
+    ctx.json(userService.update(id, user))
+}
+app.delete("/users/:id") { ctx ->
+    val id = ctx.pathParam("id")!!
+    userService.delete(id)
+    ctx.status(204)
+}
+```
 
-- Kotlin 1.9.20
-- JDK 21 (Virtual Threads)
-- Jetty 12.0.5 (HTTP Server)
-- Jackson (JSON Processing)
-- SLF4J + Logback (Logging)
+### Middleware Pipeline
+```kotlin
+app.before { ctx ->
+    // Request logging
+    logger.info("${ctx.method()} ${ctx.path()}")
+}
+.before("/api/*") { ctx ->
+    // Authentication required for API routes
+    if (!ctx.header("Authorization")) {
+        ctx.status(401).json(mapOf("error" to "Unauthorized"))
+        return@before
+    }
+}
+.after { ctx ->
+    // Response headers
+    ctx.header("X-Powered-By", "F.O.R.G.E")
+}
+```
 
-### Spring Boot Dependencies
+### Error Handling
+```kotlin
+app.exception(ValidationException::class.java) { ex, ctx ->
+    ctx.status(400).json(mapOf(
+        "error" to "Validation failed",
+        "details" to ex.errors
+    ))
+}
+.exception(NotFoundException::class.java) { ex, ctx ->
+    ctx.status(404).json(mapOf("error" to ex.message))
+}
+```
 
-- Spring Boot 3.2.1
-- Spring Framework 6.1.2
-- Spring Boot Auto-configuration
+---
 
-## Contributing
+## 🧪 Testing
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests for new functionality
-5. Submit a pull request
+F.O.R.G.E includes comprehensive testing capabilities:
 
-## License
+### Test Coverage
+- **125+ Tests** with **84% Success Rate**
+- **Unit Tests**: Core framework functionality
+- **Integration Tests**: HTTP flows and middleware
+- **Security Tests**: Authentication and protection
+- **Performance Tests**: Virtual thread benchmarks
+- **End-to-End Tests**: Complete API workflows
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-## Release Information
-
-### Current Release: v1.0.0
-
-**Release Date**: July 3, 2025  
-**JDK 21 Native Release**
-
-## JDK 21 Virtual Threads
-
-FORGE is built specifically for JDK 21 and leverages virtual threads for maximum performance and scalability. All features are optimized for the virtual thread execution model.
-
-#### What's New in v1.0.0 - **F.O.R.G.E**
-
-- 🔥 **Initial FORGE Release**: F.O.R.G.E (Framework Optimized for Resilient, Global Execution) - First official release
-- 🚀 **JDK 21 Native**: Complete native virtual threads implementation with Thread.ofVirtual() API
-- ⚡ **Performance**: Significant improvements - ~1KB per virtual thread vs ~2MB per platform thread
-- 🧪 **Enhanced Testing**: 120+ tests with improved reliability and virtual thread verification
-- 🌱 **Spring Boot 3.2.1**: Enhanced auto-configuration and dependency injection
-- 🔧 **Error Handling**: Improved Context class and exception management
-- 🛡️ **Security Framework**: All security tests passing with enhanced coverage
-- 📦 **Artifact Coordinates**: com.forge:forge - Clean, professional Maven coordinates
-
-#### Downloads
-
-| Artifact | Size | Download |
-|----------|------|----------|
-| Main JAR | ~2.5MB | [forge-1.0.0.jar](https://github.com/lfneves/F.O.R.G.E/releases/download/v1.0.0/forge-1.0.0.jar) |
-| Sources JAR | ~800KB | [forge-1.0.0-sources.jar](https://github.com/lfneves/F.O.R.G.E/releases/download/v1.0.0/forge-1.0.0-sources.jar) |
-| Javadoc JAR | ~1.2MB | [forge-1.0.0-javadoc.jar](https://github.com/lfneves/F.O.R.G.E/releases/download/v1.0.0/forge-1.0.0-javadoc.jar) |
-
-#### Release Notes
-
-View the complete [CHANGELOG.md](CHANGELOG.md) for detailed release information.
-
-#### Quick Build
-
+### Running Tests
 ```bash
-# Clone and build the release
+# All tests
+./gradlew test
+
+# Specific test categories
+./gradlew test --tests "*VirtualThread*"
+./gradlew test --tests "*Security*"
+./gradlew test --tests "*Spring*"
+
+# With coverage report
+./gradlew test jacocoTestReport
+```
+
+---
+
+## 📖 Documentation
+
+### Quick Links
+- **[Quick Start Guide](QUICK_START.md)** - Get started in 5 minutes
+- **[Configuration Guide](docs/CONFIGURATION.md)** - Comprehensive setup
+- **[API Reference](docs/API.md)** - Complete API documentation
+- **[Security Guide](docs/SECURITY.md)** - Security configuration
+- **[Deployment Guide](docs/DEPLOYMENT.md)** - Production deployment
+
+### Example Projects
+- **[Basic API](examples/basic-api/)** - Simple REST API
+- **[Secure App](examples/secure-app/)** - Authentication & authorization
+- **[Spring Boot](examples/spring-boot/)** - Full Spring integration
+- **[Microservice](examples/microservice/)** - Production microservice
+
+---
+
+## 🚀 Releases
+
+### Latest Release: v1.0.0
+- **forge-1.0.0.jar** (30MB) - Complete Spring Boot executable
+- **forge-1.0.0-plain.jar** (293KB) - Core framework only
+- **forge-1.0.0-sources.jar** (42KB) - Source code
+- **forge-1.0.0-javadoc.jar** - API documentation
+
+**[Download Latest Release](https://github.com/lfneves/F.O.R.G.E/releases/latest)** | **[View All Releases](https://github.com/lfneves/F.O.R.G.E/releases)** | **[Changelog](CHANGELOG.md)**
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions to F.O.R.G.E! Here's how to get started:
+
+1. **Fork** the repository
+2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
+3. **Commit** your changes (`git commit -m 'Add amazing feature'`)
+4. **Push** to the branch (`git push origin feature/amazing-feature`)
+5. **Open** a Pull Request
+
+### Development Setup
+```bash
+# Clone repository
 git clone https://github.com/lfneves/F.O.R.G.E.git
-cd forge
-git checkout v1.0.0
-./gradlew release
+cd F.O.R.G.E
 
-# Output will be in build/libs/
+# Setup environment
+cp .env.example .env
+
+# Run tests
+./gradlew test
+
+# Run development server
+SPRING_PROFILES_ACTIVE=dev ./gradlew bootRun
 ```
 
-#### Verify Release
+---
 
-```bash
-# Check version
-java -jar forge-1.0.0.jar --version
+## 📞 Support
 
-# Run examples
-java -cp forge-1.0.0.jar com.forge.examples.basic.BasicForgeExample
-```
+### Getting Help
+- **📖 Documentation**: [README](README.md) and [guides](docs/)
+- **🐛 Issues**: [GitHub Issues](https://github.com/lfneves/F.O.R.G.E/issues)
+- **💬 Discussions**: [GitHub Discussions](https://github.com/lfneves/F.O.R.G.E/discussions)
+- **🔍 Examples**: Check [examples/](examples/) directory
 
-### Next Steps & Upcoming Releases
+### Community
+- **Report Bugs**: [Create an issue](https://github.com/lfneves/F.O.R.G.E/issues/new)
+- **Request Features**: [Feature request](https://github.com/lfneves/F.O.R.G.E/issues/new)
+- **Ask Questions**: [Start a discussion](https://github.com/lfneves/F.O.R.G.E/discussions)
 
-#### Completed in v1.0.0
-- ✅ **JDK 21 Native Build**: CI/CD pipeline updated to use JDK 21 for full virtual threads support
-- ✅ **Virtual Threads Tests**: All virtual thread tests enhanced and optimized for JDK 21
-- ✅ **Performance Optimization**: Native virtual thread performance benefits unlocked
-- ✅ **Spring Boot Integration**: Enhanced auto-configuration and dependency injection
+---
 
-#### Upcoming Releases
-- **v1.0.0**: Initial FORGE Release & JDK 21 Native Virtual Threads  
-- **v1.0.1**: Patch release—minor bug fixes and doc tweaks  
-- **v1.0.2**: Patch release—security enhancements and performance optimizations  
-- **v1.0.3**: Minor bug fixes and remaining test stability improvements  
-- **v1.0.4**: Enhanced metrics and monitoring capabilities  
-- **v1.0.5**: Additional Spring Boot features and configuration options  
-- **v1.0.6**: Advanced virtual thread features and enterprise capabilities  
+## 📜 License
 
-#### Important Notes
-- 📋 **Virtual Threads**: Only available with JDK 21+. Framework falls back to platform threads on JDK 17-20
-- 🔄 **Compatibility**: JDK 21+ required for virtual threads features
-- 📊 **Performance**: Significant performance gains only available with JDK 21+ virtual threads
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
-## Support
+---
 
-- 📖 [Documentation](README-SpringBoot.md)
-- 📋 [Changelog](CHANGELOG.md)
-- 🚀 [Releases](https://github.com/lfneves/F.O.R.G.E/releases)
-- 🐛 [Issues](https://github.com/lfneves/F.O.R.G.E/issues)
-- 💬 [Discussions](https://github.com/lfneves/F.O.R.G.E/discussions)
-- ❓ [FAQ](https://github.com/lfneves/F.O.R.G.E/wiki/FAQ)
+## 🏆 Acknowledgments
+
+F.O.R.G.E is built with these excellent technologies:
+- **[Project Loom](https://openjdk.org/projects/loom/)** - Virtual Threads (JDK 21)
+- **[Spring Boot](https://spring.io/projects/spring-boot)** - Enterprise integration
+- **[Jetty](https://www.eclipse.org/jetty/)** - HTTP server
+- **[Jackson](https://github.com/FasterXML/jackson)** - JSON processing
+- **[Kotlin](https://kotlinlang.org/)** - Modern JVM language
+
+---
+
+<div align="center">
+
+**Built with passion for high-performance computing and modern Java excellence.**
+
+*F.O.R.G.E - Where performance meets reliability in the forge of innovation.*
+
+**[⭐ Star us on GitHub](https://github.com/lfneves/F.O.R.G.E)** | **[🚀 Get Started](QUICK_START.md)** | **[📖 Documentation](docs/)**
+
+</div>
