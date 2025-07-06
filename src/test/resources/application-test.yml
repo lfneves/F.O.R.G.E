@@ -1,0 +1,27 @@
+# Test Configuration for FORGE
+spring:
+  profiles:
+    active: test
+  main:
+    banner-mode: off
+    lazy-initialization: true
+  output:
+    ansi:
+      enabled: never
+
+forge:
+  port: 8082
+  context-path: "/"
+  virtual-threads:
+    enabled: true
+    thread-name-prefix: "test-vt-forge"
+    max-concurrent-tasks: -1
+    enable-metrics: false
+    shutdown-timeout-ms: 1000
+
+logging:
+  level:
+    com.forge: INFO
+    org.springframework: WARN
+    org.eclipse.jetty: WARN
+    org.springframework.boot: WARN

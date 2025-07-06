@@ -19,21 +19,38 @@ import java.util.concurrent.TimeUnit
 class ForgeTest {
     
     private lateinit var framework: Forge
-    private val testPort = 8081
-    private val baseUrl = "http://localhost:$testPort"
+    private var testPort = 0 // Will be set to random available port
+    private lateinit var baseUrl: String
     private val httpClient = HttpClient.newBuilder()
         .connectTimeout(Duration.ofSeconds(5))
         .build()
     
+    private fun getRandomPort(): Int {
+        return try {
+            val socket = java.net.ServerSocket(0)
+            val port = socket.localPort
+            socket.close()
+            port
+        } catch (e: Exception) {
+            (7000..8000).random()
+        }
+    }
+    
     @BeforeEach
     fun setUp() {
+        testPort = getRandomPort()
+        baseUrl = "http://localhost:$testPort"
         framework = Forge.create()
     }
     
     @AfterEach
     fun tearDown() {
-        framework.stop()
-        Thread.sleep(100) // Allow server to stop
+        try {
+            framework.stop()
+            Thread.sleep(300) // Allow server to stop
+        } catch (e: Exception) {
+            // Ignore shutdown errors
+        }
     }
     
     @Nested
