@@ -1,4 +1,4 @@
-⚙️ This project (including code, documentation, and tooling) is under active development. Features, APIs, and guides may change before the 1.0.0 official release.
+🚀 **Production Ready** - F.O.R.G.E v1.0.0 is now available for enterprise deployment with comprehensive testing and security features.
 
 <div align="center">
 
@@ -927,30 +927,251 @@ The framework includes comprehensive test coverage:
 
 ## Configuration
 
-### Configuration Properties
+F.O.R.G.E provides flexible configuration through environment variables, YAML files, and Spring Boot properties.
 
-| Property | Default | Description |
+### Quick Setup
+
+1. **Copy environment template**:
+```bash
+cp .env.example .env
+```
+
+2. **Edit configuration**:
+```bash
+# Basic setup
+FORGE_PORT=8080
+SPRING_PROFILES_ACTIVE=dev
+FORGE_VT_ENABLED=true
+```
+
+3. **Run application**:
+```bash
+./gradlew bootRun
+```
+
+### Environment Variables
+
+#### Core Configuration
+| Variable | Default | Description |
 |----------|---------|-------------|
-| `forge.port` | 8080 | Server port |
-| `forge.context-path` | "/" | Application context path |
-| `forge.virtual-threads.enabled` | true | Enable virtual threads |
-| `forge.virtual-threads.thread-name-prefix` | "vt-forge" | Thread name prefix |
-| `forge.virtual-threads.max-concurrent-tasks` | -1 | Max concurrent tasks |
-| `forge.virtual-threads.enable-metrics` | false | Enable thread metrics |
-| `forge.virtual-threads.shutdown-timeout-ms` | 5000 | Shutdown timeout |
+| `FORGE_PORT` | 8080 | Server port |
+| `FORGE_CONTEXT_PATH` | `/` | Application context path |
+| `SPRING_PROFILES_ACTIVE` | `dev` | Active environment profile |
+
+#### Virtual Threads (JDK 21+)
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `FORGE_VT_ENABLED` | `true` | Enable virtual threads |
+| `FORGE_VT_PREFIX` | `vt-forge` | Thread name prefix |
+| `FORGE_VT_MAX_TASKS` | `-1` | Max concurrent tasks (-1 = unlimited) |
+| `FORGE_VT_METRICS` | `true` | Enable virtual thread metrics |
+| `FORGE_VT_SHUTDOWN_TIMEOUT` | `5000` | Shutdown timeout (ms) |
+
+#### Logging
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `LOG_LEVEL_ROOT` | `INFO` | Root logging level |
+| `LOG_LEVEL_FORGE` | `INFO` | F.O.R.G.E framework logging |
+| `LOG_LEVEL_SPRING` | `WARN` | Spring framework logging |
+| `LOG_FILE` | `logs/forge.log` | Log file path |
+
+#### Management & Monitoring
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `MANAGEMENT_ENDPOINTS_ENABLED` | `true` | Enable management endpoints |
+| `MANAGEMENT_HEALTH_ENABLED` | `true` | Enable health endpoint |
+| `MANAGEMENT_METRICS_ENABLED` | `true` | Enable metrics endpoint |
+| `MANAGEMENT_PROMETHEUS_ENABLED` | `false` | Enable Prometheus metrics |
 
 ### Environment Profiles
 
-Create environment-specific configurations:
+F.O.R.G.E supports multiple deployment environments:
 
-- `application.yml` - Default configuration
-- `application-dev.yml` - Development settings
-- `application-prod.yml` - Production settings
-
+#### Development (`dev`)
 ```bash
-# Run with specific profile
-./gradlew bootRun --args='--spring.profiles.active=prod'
+SPRING_PROFILES_ACTIVE=dev ./gradlew bootRun
 ```
+- Enhanced debugging and logging
+- All management endpoints enabled
+- Port: 8081 (to avoid conflicts)
+- Colored console output
+
+#### Staging (`staging`)
+```bash
+SPRING_PROFILES_ACTIVE=staging ./gradlew bootRun
+```
+- Production-like configuration
+- Enhanced monitoring enabled
+- Balanced logging
+- Suitable for pre-production testing
+
+#### Production (`prod`)
+```bash
+SPRING_PROFILES_ACTIVE=prod java -jar forge-1.0.0.jar
+```
+- Optimized for performance
+- Minimal logging
+- Security-focused
+- Graceful shutdown
+- Log rotation enabled
+
+#### Test (`test`)
+- Automatically used during testing
+- Minimal resource usage
+- Fast startup/shutdown
+- Random port allocation
+
+### Docker Deployment
+
+#### Quick Start
+```bash
+# Basic deployment
+docker-compose up -d
+
+# With monitoring stack (Prometheus + Grafana)
+docker-compose --profile monitoring up -d
+
+# Custom environment
+FORGE_PORT=9090 SPRING_PROFILES_ACTIVE=prod docker-compose up -d
+```
+
+#### Custom Docker Run
+```bash
+docker run -d \
+  -p 8080:8080 \
+  -e FORGE_PORT=8080 \
+  -e SPRING_PROFILES_ACTIVE=prod \
+  -e FORGE_VT_MAX_TASKS=10000 \
+  -v $(pwd)/logs:/app/logs \
+  forge:1.0.0
+```
+
+### Kubernetes Deployment
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: forge-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: forge
+  template:
+    metadata:
+      labels:
+        app: forge
+    spec:
+      containers:
+      - name: forge
+        image: forge:1.0.0
+        ports:
+        - containerPort: 8080
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: "prod"
+        - name: FORGE_VT_MAX_TASKS
+          value: "10000"
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 30
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: forge-service
+spec:
+  selector:
+    app: forge
+  ports:
+  - port: 80
+    targetPort: 8080
+  type: LoadBalancer
+```
+
+### Configuration Files
+
+#### Basic Application Configuration
+```yaml
+# application.yml
+forge:
+  port: ${FORGE_PORT:8080}
+  context-path: ${FORGE_CONTEXT_PATH:/}
+  
+  virtual-threads:
+    enabled: ${FORGE_VT_ENABLED:true}
+    thread-name-prefix: ${FORGE_VT_PREFIX:vt-forge}
+    max-concurrent-tasks: ${FORGE_VT_MAX_TASKS:-1}
+    enable-metrics: ${FORGE_VT_METRICS:true}
+    shutdown-timeout-ms: ${FORGE_VT_SHUTDOWN_TIMEOUT:5000}
+
+spring:
+  application:
+    name: ${SPRING_APP_NAME:forge-application}
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+  main:
+    web-application-type: none  # Required for F.O.R.G.E
+
+logging:
+  level:
+    root: ${LOG_LEVEL_ROOT:INFO}
+    com.forge: ${LOG_LEVEL_FORGE:INFO}
+    org.springframework: ${LOG_LEVEL_SPRING:WARN}
+  file:
+    name: ${LOG_FILE:logs/forge.log}
+```
+
+#### Production Configuration
+```yaml
+# application-prod.yml
+forge:
+  virtual-threads:
+    max-concurrent-tasks: 10000
+    enable-metrics: false  # Disable for performance
+    shutdown-timeout-ms: 30000
+
+logging:
+  level:
+    root: WARN
+    com.forge: INFO
+  file:
+    name: /var/log/forge/forge-prod.log
+    max-size: 100MB
+    max-history: 30
+    total-size-cap: 1GB
+
+management:
+  endpoints:
+    enabled-by-default: false
+    web:
+      exposure:
+        include: "health,metrics"
+  security:
+    enabled: true
+```
+
+### Advanced Configuration
+
+For detailed configuration options, see [Configuration Guide](docs/CONFIGURATION.md):
+
+- Environment-specific settings
+- Docker and Kubernetes deployment
+- Security configuration
+- Performance tuning
+- Monitoring and observability
+- Troubleshooting guides
 
 ## Dependencies
 

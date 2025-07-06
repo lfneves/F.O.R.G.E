@@ -1,27 +1,57 @@
-# Test Configuration for FORGE
+# F.O.R.G.E Test Environment Configuration
+# Optimized for fast test execution and CI/CD pipelines
+
 spring:
   profiles:
     active: test
+  
+  # Fast startup for tests
   main:
     banner-mode: off
     lazy-initialization: true
+    web-application-type: none
+  
+  # Disable unnecessary features for tests
   output:
     ansi:
       enabled: never
+  
+  jmx:
+    enabled: false
 
 forge:
-  port: 8082
+  # Test server settings
+  port: ${FORGE_TEST_PORT:0}  # Random port for parallel tests
   context-path: "/"
+  
+  # Minimal virtual threads configuration for tests
   virtual-threads:
-    enabled: true
+    enabled: ${FORGE_VT_ENABLED:true}
     thread-name-prefix: "test-vt-forge"
-    max-concurrent-tasks: -1
-    enable-metrics: false
-    shutdown-timeout-ms: 1000
+    max-concurrent-tasks: ${FORGE_VT_MAX_TASKS:50}  # Limited for tests
+    enable-metrics: false  # Disable metrics in tests
+    shutdown-timeout-ms: 1000  # Fast shutdown
 
+# Minimal logging for tests
 logging:
   level:
-    com.forge: INFO
-    org.springframework: WARN
-    org.eclipse.jetty: WARN
-    org.springframework.boot: WARN
+    root: ${LOG_LEVEL_ROOT:WARN}
+    com.forge: ${LOG_LEVEL_FORGE:INFO}
+    org.springframework: ERROR
+    org.eclipse.jetty: ERROR
+    org.springframework.boot: ERROR
+    org.hibernate: ERROR
+  
+  pattern:
+    console: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+
+# Disable management endpoints in tests
+management:
+  endpoints:
+    enabled-by-default: false
+  health:
+    enabled: false
+
+# Test-specific optimizations
+server:
+  shutdown: immediate  # Fast shutdown for tests

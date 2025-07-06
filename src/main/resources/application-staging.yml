@@ -1,0 +1,76 @@
+# F.O.R.G.E Staging Environment Configuration
+# Use: --spring.profiles.active=staging or SPRING_PROFILES_ACTIVE=staging
+
+forge:
+  # Staging server settings (production-like but with more debugging)
+  port: ${FORGE_PORT:8080}
+  context-path: ${FORGE_CONTEXT_PATH:/}
+  
+  # Production-like virtual threads with enhanced monitoring
+  virtual-threads:
+    enabled: true
+    thread-name-prefix: "staging-vt-forge"
+    max-concurrent-tasks: ${FORGE_VT_MAX_TASKS:5000}  # Medium concurrency
+    enable-metrics: ${FORGE_VT_METRICS:true}  # Enable for staging tests
+    shutdown-timeout-ms: ${FORGE_VT_SHUTDOWN_TIMEOUT:15000}
+
+# Spring Boot staging settings
+spring:
+  main:
+    banner-mode: log
+  
+  # Enhanced monitoring for staging
+  jmx:
+    enabled: true
+
+# Staging logging (balance between dev and prod)
+logging:
+  level:
+    root: ${LOG_LEVEL_ROOT:INFO}
+    com.forge: ${LOG_LEVEL_FORGE:INFO}
+    org.springframework: WARN
+    org.eclipse.jetty: WARN
+  
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level [%X{traceId:-},%X{spanId:-}] %logger{36} - %msg%n"
+  
+  file:
+    name: ${LOG_FILE:logs/forge-staging.log}
+    max-size: 50MB
+    max-history: 7
+    total-size-cap: 500MB
+
+# Staging management endpoints (more open than production)
+management:
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: "health,info,metrics,prometheus,env,configprops"
+      base-path: /actuator
+  
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+    info:
+      enabled: true
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+    env:
+      enabled: true
+      show-values: when-authorized
+  
+  # Relaxed security for staging
+  security:
+    enabled: false
+
+# Staging optimizations
+server:
+  compression:
+    enabled: true
+  max-connections: 5000
+  shutdown: graceful

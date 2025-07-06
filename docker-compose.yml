@@ -1,0 +1,94 @@
+version: '3.8'
+
+services:
+  # F.O.R.G.E Application
+  forge-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${FORGE_PORT:-8080}:8080"
+    environment:
+      # Server configuration
+      - FORGE_PORT=8080
+      - FORGE_CONTEXT_PATH=${FORGE_CONTEXT_PATH:-/}
+      
+      # Virtual threads
+      - FORGE_VT_ENABLED=${FORGE_VT_ENABLED:-true}
+      - FORGE_VT_PREFIX=${FORGE_VT_PREFIX:-docker-vt-forge}
+      - FORGE_VT_MAX_TASKS=${FORGE_VT_MAX_TASKS:-1000}
+      - FORGE_VT_METRICS=${FORGE_VT_METRICS:-true}
+      
+      # Spring Boot
+      - SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE:-staging}
+      - SPRING_APP_NAME=forge-docker-app
+      
+      # Logging
+      - LOG_LEVEL_ROOT=${LOG_LEVEL_ROOT:-INFO}
+      - LOG_LEVEL_FORGE=${LOG_LEVEL_FORGE:-INFO}
+      - LOG_FILE=/app/logs/forge.log
+      
+      # Management
+      - MANAGEMENT_ENDPOINTS_ENABLED=true
+      - MANAGEMENT_HEALTH_ENABLED=true
+      - MANAGEMENT_METRICS_ENABLED=true
+    
+    volumes:
+      - forge-logs:/app/logs
+    
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    
+    restart: unless-stopped
+    
+    networks:
+      - forge-network
+
+  # Prometheus for metrics (optional)
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./docker/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=200h'
+      - '--web.enable-lifecycle'
+    networks:
+      - forge-network
+    profiles:
+      - monitoring
+
+  # Grafana for visualization (optional)
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./docker/grafana/provisioning:/etc/grafana/provisioning
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD:-forge123}
+      - GF_USERS_ALLOW_SIGN_UP=false
+    networks:
+      - forge-network
+    profiles:
+      - monitoring
+
+volumes:
+  forge-logs:
+  prometheus-data:
+  grafana-data:
+
+networks:
+  forge-network:
+    driver: bridge

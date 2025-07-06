@@ -1,15 +1,79 @@
+# F.O.R.G.E Production Environment Configuration
+# Use: --spring.profiles.active=prod or SPRING_PROFILES_ACTIVE=prod
+
 forge:
-  port: 8080
+  # Production server settings
+  port: ${FORGE_PORT:8080}
+  context-path: ${FORGE_CONTEXT_PATH:/}
+  
+  # Optimized virtual threads for production
   virtual-threads:
     enabled: true
     thread-name-prefix: "prod-vt-forge"
-    max-concurrent-tasks: 10000
-    enable-metrics: false
-    shutdown-timeout-ms: 30000
+    max-concurrent-tasks: ${FORGE_VT_MAX_TASKS:10000}  # High concurrency
+    enable-metrics: ${FORGE_VT_METRICS:false}  # Disable for performance
+    shutdown-timeout-ms: ${FORGE_VT_SHUTDOWN_TIMEOUT:30000}  # Graceful shutdown
 
+# Spring Boot production settings
+spring:
+  main:
+    banner-mode: off  # No banner in production
+  
+  # JMX and monitoring
+  jmx:
+    enabled: ${SPRING_JMX_ENABLED:true}
+
+# Production logging configuration
 logging:
   level:
-    com.forge: INFO
-    root: WARN
+    root: ${LOG_LEVEL_ROOT:WARN}
+    com.forge: ${LOG_LEVEL_FORGE:INFO}
+    org.springframework: ERROR
+    org.eclipse.jetty: ERROR
+    org.hibernate: ERROR
+  
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level [%X{traceId:-},%X{spanId:-}] %logger{36} - %msg%n"
+  
   file:
-    name: "/var/log/forge/application.log"
+    name: ${LOG_FILE:/var/log/forge/forge-prod.log}
+    max-size: ${LOG_FILE_MAX_SIZE:100MB}
+    max-history: ${LOG_FILE_MAX_HISTORY:30}
+    total-size-cap: ${LOG_FILE_TOTAL_SIZE:1GB}
+
+# Production management and monitoring
+management:
+  endpoints:
+    enabled-by-default: false
+    web:
+      exposure:
+        include: ${MANAGEMENT_ENDPOINTS:health,info,metrics,prometheus}
+      base-path: ${MANAGEMENT_BASE_PATH:/actuator}
+  
+  endpoint:
+    health:
+      enabled: true
+      show-details: when-authorized
+    info:
+      enabled: true
+    metrics:
+      enabled: ${MANAGEMENT_METRICS_ENABLED:true}
+    prometheus:
+      enabled: ${MANAGEMENT_PROMETHEUS_ENABLED:false}
+  
+  # Security for management endpoints
+  security:
+    enabled: ${MANAGEMENT_SECURITY_ENABLED:true}
+
+# Production optimizations
+server:
+  # These would apply if using Spring Boot's embedded server
+  compression:
+    enabled: ${SERVER_COMPRESSION_ENABLED:true}
+  
+  # Connection settings
+  max-connections: ${SERVER_MAX_CONNECTIONS:10000}
+  
+  # Graceful shutdown
+  shutdown: ${SERVER_SHUTDOWN:graceful}

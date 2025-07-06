@@ -1,25 +1,51 @@
-forge:
-  port: 8080
-  context-path: "/"
-  virtual-threads:
-    enabled: true
-    thread-name-prefix: "spring-vt-forge"
-    max-concurrent-tasks: -1
-    enable-metrics: true
-    shutdown-timeout-ms: 10000
+# F.O.R.G.E Framework Configuration
+# Environment: default (development)
 
-# Spring Boot configuration
+forge:
+  # Server configuration
+  port: ${FORGE_PORT:8080}
+  context-path: ${FORGE_CONTEXT_PATH:/}
+  
+  # Virtual threads configuration (JDK 21+)
+  virtual-threads:
+    enabled: ${FORGE_VT_ENABLED:true}
+    thread-name-prefix: ${FORGE_VT_PREFIX:vt-forge}
+    max-concurrent-tasks: ${FORGE_VT_MAX_TASKS:-1}
+    enable-metrics: ${FORGE_VT_METRICS:true}
+    shutdown-timeout-ms: ${FORGE_VT_SHUTDOWN_TIMEOUT:5000}
+
+# Spring Boot integration
 spring:
   application:
-    name: forge-spring-boot-example
+    name: ${SPRING_APP_NAME:forge-application}
   
-  # Disable default web server since we're using our own
+  # Profile-based configuration
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+  
+  # Disable Spring Boot's embedded server (we use FORGE's)
   main:
     web-application-type: none
+    banner-mode: ${SPRING_BANNER_MODE:log}
 
+# Logging configuration
 logging:
   level:
-    com.forge: DEBUG
-    org.springframework: INFO
+    root: ${LOG_LEVEL_ROOT:INFO}
+    com.forge: ${LOG_LEVEL_FORGE:INFO}
+    org.springframework: ${LOG_LEVEL_SPRING:WARN}
+    org.eclipse.jetty: ${LOG_LEVEL_JETTY:WARN}
+  
   pattern:
-    console: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+  
+  file:
+    name: ${LOG_FILE:logs/forge.log}
+
+# Management and monitoring
+management:
+  endpoints:
+    enabled-by-default: ${MANAGEMENT_ENDPOINTS_ENABLED:false}
+  health:
+    enabled: ${MANAGEMENT_HEALTH_ENABLED:true}

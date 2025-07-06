@@ -1,11 +1,53 @@
+# F.O.R.G.E Development Environment Configuration
+# Use: --spring.profiles.active=dev or SPRING_PROFILES_ACTIVE=dev
+
 forge:
+  # Development server settings
   port: 8081
+  context-path: "/"
+  
+  # Enhanced virtual threads for development
   virtual-threads:
     enabled: true
     thread-name-prefix: "dev-vt-forge"
+    max-concurrent-tasks: 100  # Limited for development
     enable-metrics: true
+    shutdown-timeout-ms: 3000  # Faster shutdown in dev
 
+# Spring Boot development settings
+spring:
+  main:
+    banner-mode: console
+  
+  # Development-friendly settings
+  output:
+    ansi:
+      enabled: always
+
+# Enhanced logging for development
 logging:
   level:
-    com.forge: TRACE
-    root: DEBUG
+    root: INFO
+    com.forge: DEBUG
+    com.forge.core: TRACE
+    com.forge.concurrent: DEBUG
+    org.springframework: INFO
+    org.eclipse.jetty: INFO
+  
+  pattern:
+    console: "%clr(%d{HH:mm:ss.SSS}){faint} %clr([%thread]){magenta} %clr(%-5level){highlight} %clr(%logger{36}){cyan} - %msg%n"
+  
+  file:
+    name: logs/forge-dev.log
+
+# Development management endpoints
+management:
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: "health,info,metrics"
+  
+  health:
+    enabled: true
+    show-details: always
